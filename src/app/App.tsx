@@ -1,666 +1,780 @@
 import { useState, useEffect, useRef } from "react";
-import { Phone, Instagram, MapPin, Clock, Star, Wifi, Car, CreditCard, Wrench, Package, ShoppingBag, Truck } from "lucide-react";
+import { Phone, Instagram, MapPin, Clock, Star, Wifi, Car, CreditCard, Wrench, Package, ShoppingBag, Truck, ChevronDown, ArrowRight } from "lucide-react";
 
-// ── Scroll-reveal hook ──────────────────────────────────────────────────────
-function useScrollReveal() {
+// ── Logo SVG (replicating the diamond gem with Z lettermark) ─────────────────
+function DiamondLogo({ size = 48, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size * 1.1} viewBox="0 0 80 88" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#f5d060" />
+          <stop offset="40%" stopColor="#c9a84c" />
+          <stop offset="100%" stopColor="#8a6510" />
+        </linearGradient>
+        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#c9a84c" />
+          <stop offset="100%" stopColor="#5a3a00" />
+        </linearGradient>
+      </defs>
+      {/* Crown top */}
+      <polygon points="40,2 72,30 8,30" fill="url(#g1)" />
+      {/* Crown facet lines */}
+      <line x1="40" y1="2" x2="22" y2="30" stroke="#f0c840" strokeWidth="0.6" opacity="0.6" />
+      <line x1="40" y1="2" x2="58" y2="30" stroke="#f0c840" strokeWidth="0.6" opacity="0.6" />
+      {/* Z letterform in crown */}
+      <polyline points="18,11 62,11 18,27 62,27" stroke="#0d1b3e" strokeWidth="3.5" strokeLinejoin="round" strokeLinecap="round" fill="none" />
+      {/* Girdle (belt) */}
+      <rect x="8" y="28.5" width="64" height="3" fill="url(#g2)" />
+      {/* Pavilion */}
+      <polygon points="8,32 72,32 40,86" fill="url(#g2)" />
+      {/* Pavilion facet lines */}
+      <line x1="40" y1="86" x2="20" y2="48" stroke="#f0c840" strokeWidth="0.6" opacity="0.4" />
+      <line x1="40" y1="86" x2="60" y2="48" stroke="#f0c840" strokeWidth="0.6" opacity="0.4" />
+      <line x1="8" y1="32" x2="40" y2="56" stroke="#f0c840" strokeWidth="0.4" opacity="0.3" />
+      <line x1="72" y1="32" x2="40" y2="56" stroke="#f0c840" strokeWidth="0.4" opacity="0.3" />
+    </svg>
+  );
+}
+
+// Full brand lockup: ZEWEL ◆ STUDIO
+function BrandLockup({ size = "md", inverted = false }: { size?: "sm" | "md" | "lg" | "xl"; inverted?: boolean }) {
+  const textColor = inverted ? "text-[#0d1b3e]" : "text-white";
+  const configs = {
+    sm: { gem: 28, text: "text-[11px]", sub: "text-[7px]", gap: "gap-2" },
+    md: { gem: 40, text: "text-[14px]", sub: "text-[8px]", gap: "gap-3" },
+    lg: { gem: 56, text: "text-[20px]", sub: "text-[10px]", gap: "gap-4" },
+    xl: { gem: 80, text: "text-[30px]", sub: "text-[13px]", gap: "gap-5" },
+  };
+  const c = configs[size];
+  return (
+    <div className={`flex items-center ${c.gap}`}>
+      <div className="text-right">
+        <div className={`font-['Cinzel'] ${c.text} tracking-[0.35em] font-semibold ${textColor}`}>ZEWEL</div>
+        <div className={`font-['Lato'] ${c.sub} tracking-[0.5em] text-[#c9a84c] uppercase`}>Luxury</div>
+      </div>
+      <DiamondLogo size={c.gem} />
+      <div className="text-left">
+        <div className={`font-['Cinzel'] ${c.text} tracking-[0.35em] font-semibold ${textColor}`}>STUDIO</div>
+        <div className={`font-['Lato'] ${c.sub} tracking-[0.5em] text-[#c9a84c] uppercase`}>Mumbai</div>
+      </div>
+    </div>
+  );
+}
+
+// ── Scroll-reveal hook ───────────────────────────────────────────────────────
+function useReveal(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [v, setV] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.12 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, visible };
+    const o = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setV(true); o.disconnect(); } }, { threshold });
+    o.observe(el);
+    return () => o.disconnect();
+  }, [threshold]);
+  return { ref, visible: v };
 }
 
-// ── Data ────────────────────────────────────────────────────────────────────
-const CATEGORIES = [
-  {
-    id: "rings",
-    label: "Rings",
-    labelHi: "अंगूठियाँ",
-    images: [
-      { url: "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=600&h=600&fit=crop&auto=format", alt: "Three gold studded rings" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop&auto=format", alt: "Silver diamond ring on black box" },
-      { url: "https://images.unsplash.com/photo-1607703829739-c05b7beddf60?w=600&h=600&fit=crop&auto=format", alt: "Diamond ring on black velvet" },
-      { url: "https://images.unsplash.com/photo-1613945407943-59cd755fd69e?w=600&h=600&fit=crop&auto=format", alt: "Diamond ring on red textile" },
-      { url: "https://images.unsplash.com/photo-1613945409199-1b5527d31fe8?w=600&h=600&fit=crop&auto=format", alt: "Solitaire ring on red textile" },
-      { url: "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=600&h=600&fit=crop&auto=format", alt: "Gold diamond ring on white textile" },
-      { url: "https://images.unsplash.com/photo-1514612497953-05d1e5e171fa?w=600&h=600&fit=crop&auto=format", alt: "Clear gemstone statement ring" },
-      { url: "https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?w=600&h=600&fit=crop&auto=format", alt: "Silver diamond heart pendant ring" },
-    ],
-  },
-  {
-    id: "necklaces",
-    label: "Necklaces",
-    labelHi: "हार",
-    images: [
-      { url: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=600&h=600&fit=crop&auto=format", alt: "Gold and purple beaded necklace" },
-      { url: "https://images.unsplash.com/photo-1722410180687-b05b50922362?w=600&h=600&fit=crop&auto=format", alt: "Necklace on mannequin display" },
-      { url: "https://images.unsplash.com/photo-1722410180644-5955f83ec8b1?w=600&h=600&fit=crop&auto=format", alt: "Elegant necklace on table" },
-      { url: "https://images.unsplash.com/photo-1611583027838-515a1087afdb?w=600&h=600&fit=crop&auto=format", alt: "Silver diamond pendant necklace" },
-      { url: "https://images.unsplash.com/photo-1601121141461-920cb1993441?w=600&h=600&fit=crop&auto=format", alt: "Person wearing gold necklace" },
-      { url: "https://images.unsplash.com/photo-1600862754152-80a263dd564f?w=600&h=600&fit=crop&auto=format", alt: "Gold and red beaded necklace" },
-      { url: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=600&h=600&fit=crop&auto=format", alt: "Woman wearing gold necklace and earrings" },
-      { url: "https://images.unsplash.com/photo-1705326454924-f6777522b030?w=600&h=600&fit=crop&auto=format", alt: "White mannequin with gold necklace" },
-    ],
-  },
-  {
-    id: "earrings",
-    label: "Earrings",
-    labelHi: "झुमके",
-    images: [
-      { url: "https://images.unsplash.com/photo-1693212793204-bcea856c75fe?w=600&h=600&fit=crop&auto=format", alt: "Earrings on black cloth" },
-      { url: "https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?w=600&h=600&fit=crop&auto=format", alt: "Gold and silver ring earrings" },
-      { url: "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=600&h=600&fit=crop&auto=format", alt: "Silver earring collection" },
-      { url: "https://images.unsplash.com/photo-1665159882377-385d68d2bdff?w=600&h=600&fit=crop&auto=format", alt: "Collection of earrings" },
-      { url: "https://images.unsplash.com/photo-1722410180651-efd51636f260?w=600&h=600&fit=crop&auto=format", alt: "Woman wearing statement earrings" },
-      { url: "https://images.unsplash.com/photo-1674329042475-de1a95b4ca62?w=600&h=600&fit=crop&auto=format", alt: "Earrings on luxury black case" },
-      { url: "https://images.unsplash.com/photo-1588444650733-d0767b753fc8?w=600&h=600&fit=crop&auto=format", alt: "Silver diamond studded ring earring" },
-      { url: "https://images.unsplash.com/photo-1588444650700-fd887f15a9e7?w=600&h=600&fit=crop&auto=format", alt: "Silver and gold floral earrings" },
-    ],
-  },
-  {
-    id: "bracelets",
-    label: "Bracelets",
-    labelHi: "कंगन",
-    images: [
-      { url: "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?w=600&h=600&fit=crop&auto=format", alt: "Person wearing gold bracelet" },
-      { url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=600&fit=crop&auto=format", alt: "Silver gemstone bracelet on black" },
-      { url: "https://images.unsplash.com/photo-1626122509259-ea8e0a136ada?w=600&h=600&fit=crop&auto=format", alt: "Gold diamond ring bracelet" },
-      { url: "https://images.unsplash.com/photo-1689367436442-76c859315008?w=600&h=600&fit=crop&auto=format", alt: "Close up gold ring bracelet" },
-      { url: "https://images.unsplash.com/photo-1655707063513-a08dad26440e?w=600&h=600&fit=crop&auto=format", alt: "Gold ring on white surface" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=600&fit=crop&auto=format", alt: "Gold and silver beaded bracelet" },
-      { url: "https://images.unsplash.com/photo-1689367436629-1d288f1e23b6?w=600&h=600&fit=crop&auto=format", alt: "Gold bracelet close up" },
-      { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=600&h=600&fit=crop&auto=format", alt: "Gold and red beaded bracelet" },
-    ],
-  },
-  {
-    id: "bangles",
-    label: "Bangles",
-    labelHi: "चूड़ियाँ",
-    images: [
-      { url: "https://images.unsplash.com/photo-1728381031272-ba3f537feadd?w=600&h=600&fit=crop&auto=format", alt: "Gold bangles on velvet cushion" },
-      { url: "https://images.unsplash.com/photo-1611598935678-c88dca238fce?w=600&h=600&fit=crop&auto=format", alt: "Gold diamond studded bangles" },
-      { url: "https://images.unsplash.com/photo-1606293926249-ed22e446d476?w=600&h=600&fit=crop&auto=format", alt: "Gold and silver bangles on white" },
-      { url: "https://images.unsplash.com/photo-1679156272446-30738eb5c4e7?w=600&h=600&fit=crop&auto=format", alt: "Gold bangles on table" },
-      { url: "https://images.unsplash.com/photo-1653227908236-36813ab5c30a?w=600&h=600&fit=crop&auto=format", alt: "Gold bangle on cloth" },
-      { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=600&h=600&fit=crop&auto=format", alt: "Traditional gold beaded bangle" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=600&fit=crop&auto=format", alt: "Gold beaded traditional bangle" },
-      { url: "https://images.unsplash.com/photo-1612945578381-6481cdd73b0a?w=600&h=600&fit=crop&auto=format", alt: "Gold and red floral bangle" },
-    ],
-  },
-];
-
-// ── Subcomponents ───────────────────────────────────────────────────────────
-function RevealSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const { ref, visible } = useScrollReveal();
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const { ref, visible } = useReveal();
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`transition-all duration-1000 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"} ${className}`}
     >
       {children}
     </div>
   );
 }
 
-function GoldDivider() {
+// ── Ornamental divider ───────────────────────────────────────────────────────
+function Ornament({ light = false }: { light?: boolean }) {
+  const c = light ? "#c9a84c" : "#c9a84c";
   return (
-    <div className="flex items-center justify-center gap-3 my-3">
-      <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#c9a84c]" />
-      <div className="w-1.5 h-1.5 rotate-45 bg-[#c9a84c]" />
-      <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#c9a84c]" />
+    <div className="flex items-center justify-center gap-4 my-4">
+      <div className="flex-1 h-px" style={{ background: `linear-gradient(to right, transparent, ${c})` }} />
+      <svg width="22" height="22" viewBox="0 0 22 22">
+        <rect x="6" y="6" width="10" height="10" fill="none" stroke={c} strokeWidth="1" transform="rotate(45 11 11)" />
+        <rect x="9" y="9" width="4" height="4" fill={c} transform="rotate(45 11 11)" />
+      </svg>
+      <div className="flex-1 h-px" style={{ background: `linear-gradient(to left, transparent, ${c})` }} />
     </div>
   );
 }
 
-function ProductCard({ url, alt }: { url: string; alt: string }) {
+// ── Category data ────────────────────────────────────────────────────────────
+const CATEGORIES = [
+  {
+    id: "rings", label: "Rings", labelHi: "अंगूठियाँ", tagline: "Symbols of Forever",
+    cover: "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=800&h=1000&fit=crop&auto=format",
+    images: [
+      { url: "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=500&h=500&fit=crop&auto=format", alt: "Three gold studded rings" },
+      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop&auto=format", alt: "Silver diamond ring on black box" },
+      { url: "https://images.unsplash.com/photo-1607703829739-c05b7beddf60?w=500&h=500&fit=crop&auto=format", alt: "Diamond ring on black velvet" },
+      { url: "https://images.unsplash.com/photo-1613945407943-59cd755fd69e?w=500&h=500&fit=crop&auto=format", alt: "Diamond solitaire ring" },
+      { url: "https://images.unsplash.com/photo-1613945409199-1b5527d31fe8?w=500&h=500&fit=crop&auto=format", alt: "Solitaire on red velvet" },
+      { url: "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=500&h=500&fit=crop&auto=format", alt: "Gold diamond ring" },
+      { url: "https://images.unsplash.com/photo-1514612497953-05d1e5e171fa?w=500&h=500&fit=crop&auto=format", alt: "Clear gemstone statement ring" },
+      { url: "https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?w=500&h=500&fit=crop&auto=format", alt: "Heart pendant diamond" },
+    ],
+  },
+  {
+    id: "necklaces", label: "Necklaces", labelHi: "हार", tagline: "Grace Around Your Neck",
+    cover: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=800&h=1000&fit=crop&auto=format",
+    images: [
+      { url: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500&h=500&fit=crop&auto=format", alt: "Gold beaded necklace" },
+      { url: "https://images.unsplash.com/photo-1722410180687-b05b50922362?w=500&h=500&fit=crop&auto=format", alt: "Necklace on mannequin" },
+      { url: "https://images.unsplash.com/photo-1722410180644-5955f83ec8b1?w=500&h=500&fit=crop&auto=format", alt: "Elegant necklace on table" },
+      { url: "https://images.unsplash.com/photo-1611583027838-515a1087afdb?w=500&h=500&fit=crop&auto=format", alt: "Diamond pendant necklace" },
+      { url: "https://images.unsplash.com/photo-1601121141461-920cb1993441?w=500&h=500&fit=crop&auto=format", alt: "Gold necklace worn" },
+      { url: "https://images.unsplash.com/photo-1600862754152-80a263dd564f?w=500&h=500&fit=crop&auto=format", alt: "Gold red beaded necklace" },
+      { url: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing gold necklace" },
+      { url: "https://images.unsplash.com/photo-1705326454924-f6777522b030?w=500&h=500&fit=crop&auto=format", alt: "Mannequin with gold necklace" },
+    ],
+  },
+  {
+    id: "earrings", label: "Earrings", labelHi: "झुमके", tagline: "Frame Your Beauty",
+    cover: "https://images.unsplash.com/photo-1722410180651-efd51636f260?w=800&h=1000&fit=crop&auto=format",
+    images: [
+      { url: "https://images.unsplash.com/photo-1693212793204-bcea856c75fe?w=500&h=500&fit=crop&auto=format", alt: "Earrings on black cloth" },
+      { url: "https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?w=500&h=500&fit=crop&auto=format", alt: "Gold earrings on black" },
+      { url: "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=500&h=500&fit=crop&auto=format", alt: "Silver earring collection" },
+      { url: "https://images.unsplash.com/photo-1665159882377-385d68d2bdff?w=500&h=500&fit=crop&auto=format", alt: "Earring collection" },
+      { url: "https://images.unsplash.com/photo-1722410180651-efd51636f260?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing earrings" },
+      { url: "https://images.unsplash.com/photo-1674329042475-de1a95b4ca62?w=500&h=500&fit=crop&auto=format", alt: "Earrings on black case" },
+      { url: "https://images.unsplash.com/photo-1588444650733-d0767b753fc8?w=500&h=500&fit=crop&auto=format", alt: "Silver diamond earring" },
+      { url: "https://images.unsplash.com/photo-1588444650700-fd887f15a9e7?w=500&h=500&fit=crop&auto=format", alt: "Floral gold earrings" },
+    ],
+  },
+  {
+    id: "bracelets", label: "Bracelets", labelHi: "कंगन", tagline: "Worn With Confidence",
+    cover: "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?w=800&h=1000&fit=crop&auto=format",
+    images: [
+      { url: "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet worn" },
+      { url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop&auto=format", alt: "Silver gemstone bracelet" },
+      { url: "https://images.unsplash.com/photo-1626122509259-ea8e0a136ada?w=500&h=500&fit=crop&auto=format", alt: "Diamond bracelet" },
+      { url: "https://images.unsplash.com/photo-1689367436442-76c859315008?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet close up" },
+      { url: "https://images.unsplash.com/photo-1655707063513-a08dad26440e?w=500&h=500&fit=crop&auto=format", alt: "Gold on white surface" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop&auto=format", alt: "Beaded gold bracelet" },
+      { url: "https://images.unsplash.com/photo-1689367436629-1d288f1e23b6?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet detail" },
+      { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=500&h=500&fit=crop&auto=format", alt: "Traditional bracelet" },
+    ],
+  },
+  {
+    id: "bangles", label: "Bangles", labelHi: "चूड़ियाँ", tagline: "The Sound of Celebration",
+    cover: "https://images.unsplash.com/photo-1728381031272-ba3f537feadd?w=800&h=1000&fit=crop&auto=format",
+    images: [
+      { url: "https://images.unsplash.com/photo-1728381031272-ba3f537feadd?w=500&h=500&fit=crop&auto=format", alt: "Gold bangles on velvet" },
+      { url: "https://images.unsplash.com/photo-1611598935678-c88dca238fce?w=500&h=500&fit=crop&auto=format", alt: "Diamond studded bangles" },
+      { url: "https://images.unsplash.com/photo-1606293926249-ed22e446d476?w=500&h=500&fit=crop&auto=format", alt: "Gold silver bangles" },
+      { url: "https://images.unsplash.com/photo-1679156272446-30738eb5c4e7?w=500&h=500&fit=crop&auto=format", alt: "Gold bangles on table" },
+      { url: "https://images.unsplash.com/photo-1653227908236-36813ab5c30a?w=500&h=500&fit=crop&auto=format", alt: "Gold bangle on cloth" },
+      { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=500&h=500&fit=crop&auto=format", alt: "Traditional gold bangle" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop&auto=format", alt: "Beaded traditional bangle" },
+      { url: "https://images.unsplash.com/photo-1612945578381-6481cdd73b0a?w=500&h=500&fit=crop&auto=format", alt: "Gold floral bangle" },
+    ],
+  },
+];
+
+// ── Product card ─────────────────────────────────────────────────────────────
+function ProductCard({ url, alt, index }: { url: string; alt: string; index: number }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className="relative overflow-hidden rounded-sm cursor-pointer group bg-[#e8e4da]"
+      className="group relative overflow-hidden bg-[#0f1e38] cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      style={{ animationDelay: `${index * 60}ms` }}
     >
       <div className="aspect-square overflow-hidden">
         <img
           src={url}
           alt={alt}
-          className={`w-full h-full object-cover transition-transform duration-700 ${hovered ? "scale-110" : "scale-100"}`}
           loading="lazy"
+          className={`w-full h-full object-cover transition-transform duration-700 ${hovered ? "scale-115" : "scale-100"}`}
         />
+        <div className={`absolute inset-0 bg-gradient-to-t from-[#060e1f]/90 via-[#060e1f]/20 to-transparent transition-opacity duration-400 ${hovered ? "opacity-100" : "opacity-0"}`} />
       </div>
-      <div
-        className={`absolute inset-0 bg-[#0d1b3e]/60 flex items-end p-3 transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"}`}
-      >
-        <span className="text-[#c9a84c] font-['Lato'] text-xs tracking-widest uppercase">{alt}</span>
+      {/* Corner ornament */}
+      <div className={`absolute top-3 left-3 w-5 h-5 border-t border-l border-[#c9a84c] transition-all duration-300 ${hovered ? "opacity-100 scale-100" : "opacity-0 scale-75"}`} />
+      <div className={`absolute top-3 right-3 w-5 h-5 border-t border-r border-[#c9a84c] transition-all duration-300 ${hovered ? "opacity-100 scale-100" : "opacity-0 scale-75"}`} />
+      <div className={`absolute bottom-3 left-3 w-5 h-5 border-b border-l border-[#c9a84c] transition-all duration-300 ${hovered ? "opacity-100 scale-100" : "opacity-0 scale-75"}`} />
+      <div className={`absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#c9a84c] transition-all duration-300 ${hovered ? "opacity-100 scale-100" : "opacity-0 scale-75"}`} />
+      <div className={`absolute bottom-0 left-0 right-0 p-4 transition-all duration-400 ${hovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
+        <p className="text-[#c9a84c] text-[10px] tracking-[0.35em] uppercase font-['Lato']">{alt}</p>
       </div>
-      <div className="absolute top-2 right-2 w-6 h-6 border border-[#c9a84c]/50 rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
   );
 }
 
-// ── Main Component ──────────────────────────────────────────────────────────
+// ── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [activeCategory, setActiveCategory] = useState(0);
-  const [navScrolled, setNavScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
+  const [activeCat, setActiveCat] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setNavScrolled(window.scrollY > 60);
+    const t = setTimeout(() => setHeroLoaded(true), 200);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => { clearTimeout(t); window.removeEventListener("scroll", onScroll); };
   }, []);
 
-  const scrollTo = (id: string) => {
-    setMobileMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const nav = (id: string) => { setMobileOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
+
+  const cat = CATEGORIES[activeCat];
 
   return (
-    <div className="min-h-screen font-['Lato'] bg-[#f8f6f1] text-[#0d1b3e] overflow-x-hidden">
+    <div className="min-h-screen bg-[#060e1f] text-white font-['Lato'] overflow-x-hidden">
 
-      {/* ── Navbar ── */}
-      <nav
+      {/* ══ NAVBAR ═══════════════════════════════════════════════════════════ */}
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          navScrolled ? "bg-[#0d1b3e]/98 shadow-[0_2px_30px_rgba(0,0,0,0.4)] py-3" : "bg-transparent py-5"
+          scrolled ? "bg-[#060e1f]/96 backdrop-blur-md shadow-[0_1px_0_rgba(201,168,76,0.15)]" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex flex-col leading-tight">
-            <span className="font-['Cinzel'] text-[#c9a84c] text-xl tracking-[0.15em] font-semibold">ZEWEL</span>
-            <span className="font-['Lato'] text-white/70 text-[9px] tracking-[0.3em] uppercase">Studio</span>
+        {/* Top micro-bar */}
+        <div className={`border-b border-[#c9a84c]/10 transition-all duration-500 ${scrolled ? "h-0 overflow-hidden" : "h-auto"}`}>
+          <div className="max-w-7xl mx-auto px-8 flex items-center justify-between py-2">
+            <p className="text-[#c9a84c]/60 text-[10px] tracking-[0.35em] uppercase">Borivali, Mumbai · Open Daily</p>
+            <div className="flex items-center gap-5">
+              <a href="https://www.instagram.com/zewelstudio" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-[#c9a84c] transition-colors"><Instagram size={13} /></a>
+              <span className="text-white/20">|</span>
+              <a href="tel:09136193999" className="text-[#c9a84c]/60 hover:text-[#c9a84c] text-[10px] tracking-widest transition-colors">09136193999</a>
+            </div>
           </div>
+        </div>
 
-          <div className="hidden md:flex items-center gap-8">
-            {["Collections", "Services", "About", "Contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item.toLowerCase())}
-                className="text-white/80 hover:text-[#c9a84c] text-xs tracking-[0.2em] uppercase transition-colors duration-200 font-['Lato']"
-              >
-                {item}
+        {/* Main nav row */}
+        <div className="max-w-7xl mx-auto px-8 py-4">
+          <div className="grid grid-cols-3 items-center">
+            {/* Left nav links */}
+            <div className="hidden md:flex items-center gap-8">
+              {["Collections", "Services"].map(l => (
+                <button key={l} onClick={() => nav(l.toLowerCase())}
+                  className="text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase transition-colors duration-200">
+                  {l}
+                </button>
+              ))}
+            </div>
+
+            {/* Center: brand lockup */}
+            <div className="flex justify-center">
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                <BrandLockup size={scrolled ? "sm" : "md"} />
               </button>
-            ))}
-          </div>
+            </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="https://www.instagram.com/zewelstudio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/80 hover:text-[#c9a84c] transition-colors duration-200"
-              aria-label="Instagram"
-            >
-              <Instagram size={18} />
-            </a>
-            <a
-              href="tel:09136193999"
-              className="hidden md:flex items-center gap-2 border border-[#c9a84c]/60 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0d1b3e] px-4 py-1.5 text-xs tracking-widest uppercase transition-all duration-200"
-            >
-              <Phone size={12} /> Call Us
-            </a>
-            <button
-              className="md:hidden text-white"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Menu"
-            >
-              <div className="w-5 flex flex-col gap-1">
-                <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-1.5" : ""}`} />
-                <span className={`block h-px bg-white transition-all duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`} />
-                <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""}`} />
-              </div>
+            {/* Right nav links */}
+            <div className="hidden md:flex items-center justify-end gap-8">
+              {["About", "Contact"].map(l => (
+                <button key={l} onClick={() => nav(l.toLowerCase())}
+                  className="text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase transition-colors duration-200">
+                  {l}
+                </button>
+              ))}
+              <a href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!" target="_blank" rel="noopener noreferrer"
+                className="border border-[#c9a84c]/50 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#060e1f] px-5 py-2 text-[10px] tracking-[0.28em] uppercase transition-all duration-300">
+                Enquire
+              </a>
+            </div>
+
+            {/* Mobile hamburger */}
+            <button className="md:hidden justify-self-end flex flex-col gap-1.5 w-6" onClick={() => setMobileOpen(!mobileOpen)}>
+              <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2.5" : ""}`} />
+              <span className={`block h-px bg-white/50 transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
             </button>
           </div>
         </div>
 
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-[#0d1b3e] border-t border-[#c9a84c]/20 px-6 py-4 flex flex-col gap-4">
-            {["Collections", "Services", "About", "Contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item.toLowerCase())}
-                className="text-white/80 hover:text-[#c9a84c] text-xs tracking-[0.2em] uppercase text-left"
-              >
-                {item}
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="md:hidden bg-[#060e1f]/98 border-t border-[#c9a84c]/15 px-8 py-6 flex flex-col gap-5">
+            {["Collections", "Services", "About", "Contact"].map(l => (
+              <button key={l} onClick={() => nav(l.toLowerCase())} className="text-white/60 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase text-left transition-colors">
+                {l}
               </button>
             ))}
           </div>
         )}
-      </nav>
+      </header>
 
-      {/* ── Hero ── */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d1b3e]"
-      >
+      {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Layered background */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=1600&h=1000&fit=crop&auto=format"
-            alt="Luxury jewellery showcase"
-            className="w-full h-full object-cover opacity-20"
+            src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1800&h=1200&fit=crop&auto=format"
+            alt="Luxury diamond jewellery"
+            className="w-full h-full object-cover opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d1b3e]/80 via-[#0d1b3e]/60 to-[#0d1b3e]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#060e1f] via-[#0a1628]/80 to-[#060e1f]" />
+          {/* Radial gold glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(201,168,76,0.07)_0%,transparent_70%)]" />
         </div>
 
-        {/* Corner ornaments */}
-        <div className="absolute top-24 left-8 w-16 h-16 border-t border-l border-[#c9a84c]/40" />
-        <div className="absolute top-24 right-8 w-16 h-16 border-t border-r border-[#c9a84c]/40" />
-        <div className="absolute bottom-12 left-8 w-16 h-16 border-b border-l border-[#c9a84c]/40" />
-        <div className="absolute bottom-12 right-8 w-16 h-16 border-b border-r border-[#c9a84c]/40" />
+        {/* Fine grid lines overlay */}
+        <div className="absolute inset-0 opacity-[0.04]"
+          style={{ backgroundImage: "linear-gradient(#c9a84c 1px, transparent 1px), linear-gradient(90deg, #c9a84c 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
 
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <p className="font-['Lato'] text-[#c9a84c] text-xs tracking-[0.5em] uppercase mb-6 animate-[fadeInDown_1s_ease_both]">
-            ✦ Luxury Jewellery Store & Showroom ✦
-          </p>
-          <h1 className="font-['Cinzel'] text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-[0.08em] leading-none mb-2 animate-[fadeIn_1.2s_ease_both]">
+        {/* Decorative corner marks */}
+        {[["top-20 left-8", "tl"], ["top-20 right-8", "tr"], ["bottom-20 left-8", "bl"], ["bottom-20 right-8", "br"]].map(([pos, key]) => (
+          <div key={key} className={`absolute ${pos} w-20 h-20 pointer-events-none`}>
+            <div className={`absolute border-[#c9a84c]/30 ${key.includes("t") ? "top-0 border-t" : "bottom-0 border-b"} ${key.includes("l") ? "left-0 border-l" : "right-0 border-r"} w-full h-full`} />
+          </div>
+        ))}
+
+        {/* Content */}
+        <div className={`relative z-10 text-center px-6 max-w-5xl mx-auto transition-all duration-1500 ease-out ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          {/* Eyebrow */}
+          <div className="flex items-center justify-center gap-4 mb-10">
+            <div className="h-px w-14 bg-gradient-to-r from-transparent to-[#c9a84c]" />
+            <p className="text-[#c9a84c] text-[10px] tracking-[0.6em] uppercase">Est. Borivali · Mumbai</p>
+            <div className="h-px w-14 bg-gradient-to-l from-transparent to-[#c9a84c]" />
+          </div>
+
+          {/* Giant Logo */}
+          <div className="flex justify-center mb-8">
+            <DiamondLogo size={120} />
+          </div>
+
+          {/* Brand Name */}
+          <h1 className="font-['Cinzel'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.2em] font-bold text-white leading-none mb-3">
             ZEWEL
           </h1>
-          <p className="font-['Cinzel'] text-[#c9a84c] text-3xl sm:text-4xl md:text-5xl tracking-[0.25em] mb-2 animate-[fadeIn_1.4s_ease_both]">
+          <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl tracking-[0.5em] text-[#c9a84c] font-light mb-3">
             STUDIO
+          </h2>
+          <p className="font-['Playfair_Display'] text-white/40 text-lg italic mb-2">
+            ज्वेल स्टूडियो
           </p>
-          <p className="font-['Playfair_Display'] text-white/50 text-base italic mb-8 animate-[fadeIn_1.6s_ease_both]">
-            ज्वेल स्टूडियो — बोरीवली, मुंबई
+
+          <Ornament />
+
+          <p className="text-white/50 text-sm tracking-[0.25em] uppercase mb-12">
+            Luxury Jewellery Store & Showroom · ⭐ 5.0 (42 Reviews)
           </p>
-          <GoldDivider />
-          <p className="text-white/60 text-sm tracking-widest uppercase mt-6 mb-10 animate-[fadeIn_1.8s_ease_both]">
-            Borivali, Mumbai · Est. Women-Owned · ⭐ 5.0 (42 Reviews)
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-[fadeInUp_2s_ease_both]">
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => scrollTo("collections")}
-              className="bg-[#c9a84c] text-[#0d1b3e] px-10 py-3.5 text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0bf6a] transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,76,0.4)]"
+              onClick={() => nav("collections")}
+              className="group flex items-center gap-3 bg-[#c9a84c] text-[#060e1f] px-10 py-4 text-[11px] tracking-[0.35em] uppercase font-bold hover:bg-[#e0bf6a] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(201,168,76,0.35)]"
             >
               Explore Collections
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <a
               href="https://wa.me/919136193999"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white/30 text-white/80 hover:border-[#c9a84c] hover:text-[#c9a84c] px-10 py-3.5 text-xs tracking-[0.3em] uppercase transition-all duration-300"
+              target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-3 border border-white/20 text-white/70 hover:border-[#c9a84c] hover:text-[#c9a84c] px-10 py-4 text-[11px] tracking-[0.35em] uppercase transition-all duration-300"
             >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.522 5.845L0 24l6.335-1.502A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.747-.518-5.31-1.423l-.38-.225-3.762.891.928-3.672-.247-.389A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
               WhatsApp Us
             </a>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-white/40 text-[10px] tracking-widest uppercase">Scroll</span>
-          <div className="w-px h-10 bg-gradient-to-b from-[#c9a84c]/60 to-transparent" />
-        </div>
+        {/* Scroll cue */}
+        <button onClick={() => nav("collections")} className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 hover:text-[#c9a84c] transition-colors group">
+          <span className="text-[9px] tracking-[0.5em] uppercase">Discover</span>
+          <ChevronDown size={16} className="animate-bounce" />
+        </button>
       </section>
 
-      {/* ── Marquee ── */}
-      <div className="bg-[#c9a84c] overflow-hidden py-2.5">
-        <div className="flex animate-[marquee_20s_linear_infinite] whitespace-nowrap">
-          {Array(3).fill(null).map((_, i) => (
-            <span key={i} className="flex items-center gap-6 px-6 text-[#0d1b3e] text-xs tracking-[0.3em] uppercase font-bold">
-              <span>✦ Luxury Jewellery</span>
-              <span>✦ Borivali Mumbai</span>
-              <span>✦ Women-Owned</span>
-              <span>✦ LGBTQ+ Friendly</span>
-              <span>✦ 5.0 ★ Rating</span>
-              <span>✦ In-Store & Delivery</span>
-              <span>✦ Repair Services</span>
-              <span>✦ Free Parking</span>
+      {/* ══ MARQUEE ═══════════════════════════════════════════════════════════ */}
+      <div className="relative border-y border-[#c9a84c]/20 overflow-hidden py-3 bg-[#060e1f]">
+        <div className="flex animate-[marquee_28s_linear_infinite] whitespace-nowrap">
+          {Array(4).fill(null).map((_, i) => (
+            <span key={i} className="flex items-center gap-8 px-8 text-[11px] tracking-[0.4em] uppercase text-[#c9a84c]/70">
+              <span className="text-[#c9a84c]">◆</span> Luxury Jewellery
+              <span className="text-[#c9a84c]">◆</span> Borivali Mumbai
+              <span className="text-[#c9a84c]">◆</span> Women-Owned Atelier
+              <span className="text-[#c9a84c]">◆</span> LGBTQ+ Friendly
+              <span className="text-[#c9a84c]">◆</span> 5.0 ★ Rated
+              <span className="text-[#c9a84c]">◆</span> Bespoke Creations
+              <span className="text-[#c9a84c]">◆</span> Repair & Restoration
+              <span className="text-[#c9a84c]">◆</span> Free Parking
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── About ── */}
-      <section id="about" className="py-24 px-6 max-w-6xl mx-auto">
-        <RevealSection>
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-[#c9a84c] text-xs tracking-[0.4em] uppercase mb-4">Our Story</p>
-              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#0d1b3e] leading-tight mb-6">
-                Where Craftsmanship<br />
-                <em className="text-[#c9a84c]">Meets Elegance</em>
+      {/* ══ ABOUT / ATELIER ═══════════════════════════════════════════════════ */}
+      <section id="about" className="py-32 px-6">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          {/* Image side - asymmetric stack */}
+          <Reveal className="relative">
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1722410180687-b05b50922362?w=700&h=900&fit=crop&auto=format"
+                alt="Zewel Studio showroom"
+                className="w-full h-[560px] object-cover"
+              />
+              {/* Floating accent image */}
+              <div className="absolute -bottom-10 -right-6 w-44 h-44 border-4 border-[#060e1f]">
+                <img
+                  src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=300&h=300&fit=crop&auto=format"
+                  alt="Fine jewellery detail"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Stats overlay */}
+              <div className="absolute top-6 -left-6 bg-[#060e1f] border border-[#c9a84c]/25 px-6 py-5">
+                <p className="font-['Cinzel'] text-3xl text-[#c9a84c]">5.0</p>
+                <p className="text-white/50 text-[10px] tracking-widest uppercase mt-1">Rating · 42 Reviews</p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Text side */}
+          <div>
+            <Reveal>
+              <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-5">The Zewel Atelier</p>
+              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white leading-[1.15] mb-4">
+                Where Every Piece<br />
+                <em className="text-[#c9a84c]">Tells a Story</em>
               </h2>
-              <GoldDivider />
-              <p className="text-[#5a6070] leading-relaxed mt-6 mb-4">
-                Zewel Studio is Borivali&apos;s premier luxury jewellery showroom, proudly women-owned and committed to celebrating beauty in every form. We curate exquisite pieces — from timeless diamond solitaires to vibrant traditional bangles — for every milestone and every occasion.
+              <Ornament />
+              <p className="text-white/50 leading-relaxed mt-6 mb-4">
+                Zewel Studio is Borivali&apos;s finest luxury jewellery showroom — proudly women-owned and built on a belief that jewellery is more than adornment. It is memory, identity, and art.
               </p>
-              <p className="text-[#5a6070] leading-relaxed mb-8">
-                Whether you are searching for a bridal set, a gift, or simply a piece that speaks to your soul, our expert team guides you through a world of unmatched craftsmanship and personalised service.
+              <p className="text-white/50 leading-relaxed mb-8">
+                From diamond solitaires to heritage-inspired bangles, every piece in our curated collection is selected for its craftsmanship, provenance, and capacity to move the person who wears it. Our team of experts guides you through the selection with warmth, knowledge, and zero pressure.
               </p>
-              <div className="flex flex-wrap gap-6">
+            </Reveal>
+            <Reveal delay={150}>
+              <div className="grid grid-cols-3 gap-6 mb-10">
                 {[
-                  { icon: Star, label: "5.0 Rating", sub: "42 Reviews" },
-                  { icon: ShoppingBag, label: "Women-Owned", sub: "Est. Business" },
-                  { icon: MapPin, label: "Borivali", sub: "Mumbai, India" },
-                ].map(({ icon: Icon, label, sub }) => (
-                  <div key={label} className="flex items-center gap-3">
-                    <div className="w-10 h-10 border border-[#c9a84c]/40 flex items-center justify-center">
-                      <Icon size={16} className="text-[#c9a84c]" />
-                    </div>
-                    <div>
-                      <p className="text-[#0d1b3e] text-sm font-bold tracking-wide">{label}</p>
-                      <p className="text-[#5a6070] text-xs">{sub}</p>
-                    </div>
+                  { n: "5+", l: "Years of Craft" },
+                  { n: "42", l: "Five-Star Reviews" },
+                  { n: "500+", l: "Pieces Curated" },
+                ].map(({ n, l }) => (
+                  <div key={l} className="border-l border-[#c9a84c]/25 pl-5">
+                    <p className="font-['Cinzel'] text-2xl text-[#c9a84c]">{n}</p>
+                    <p className="text-white/40 text-[10px] tracking-wide uppercase mt-1">{l}</p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-full h-full border border-[#c9a84c]/20 rounded-sm" />
-              <img
-                src="https://images.unsplash.com/photo-1722410180687-b05b50922362?w=700&h=850&fit=crop&auto=format"
-                alt="Zewel Studio showroom display"
-                className="w-full h-[480px] object-cover rounded-sm"
-              />
-              <div className="absolute bottom-6 left-6 bg-[#0d1b3e]/90 backdrop-blur-sm px-5 py-3 border-l-2 border-[#c9a84c]">
-                <p className="text-[#c9a84c] text-xs tracking-widest uppercase">Visit Us</p>
-                <p className="text-white text-sm font-bold">Borivali, Mumbai</p>
-                <p className="text-white/60 text-xs">Open Daily · Free Parking</p>
+              <div className="flex flex-wrap gap-3">
+                {["Women-Owned", "LGBTQ+ Friendly", "Free Parking", "Free Wi-Fi"].map(tag => (
+                  <span key={tag} className="border border-[#c9a84c]/25 text-[#c9a84c]/70 text-[10px] tracking-[0.25em] uppercase px-4 py-2">
+                    {tag}
+                  </span>
+                ))}
               </div>
-            </div>
+            </Reveal>
           </div>
-        </RevealSection>
+        </div>
       </section>
 
-      {/* ── Collections ── */}
-      <section id="collections" className="py-24 bg-[#0d1b3e]">
+      {/* ══ COLLECTIONS ════════════════════════════════════════════════════════ */}
+      <section id="collections" className="py-24 bg-[#030912]">
         <div className="max-w-7xl mx-auto px-6">
-          <RevealSection>
+          <Reveal>
             <div className="text-center mb-16">
-              <p className="text-[#c9a84c] text-xs tracking-[0.4em] uppercase mb-4">Our Collections</p>
-              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-3">
-                Curated for <em className="text-[#c9a84c]">Every Occasion</em>
+              <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-5">Curated Collections</p>
+              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-4">
+                Jewellery for <em className="text-[#c9a84c]">Every Milestone</em>
               </h2>
-              <GoldDivider />
+              <Ornament />
             </div>
-          </RevealSection>
+          </Reveal>
 
-          {/* Category Tabs */}
-          <RevealSection>
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
-              {CATEGORIES.map((cat, idx) => (
+          {/* Tab strip */}
+          <Reveal delay={100}>
+            <div className="flex flex-wrap justify-center gap-0 mb-14 border border-[#c9a84c]/15">
+              {CATEGORIES.map((c, i) => (
                 <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(idx)}
-                  className={`px-6 py-2.5 text-xs tracking-[0.25em] uppercase transition-all duration-300 ${
-                    activeCategory === idx
-                      ? "bg-[#c9a84c] text-[#0d1b3e] font-bold"
-                      : "border border-white/20 text-white/60 hover:border-[#c9a84c]/60 hover:text-[#c9a84c]"
+                  key={c.id}
+                  onClick={() => setActiveCat(i)}
+                  className={`relative flex-1 min-w-[120px] py-4 px-6 text-center transition-all duration-300 ${
+                    activeCat === i
+                      ? "bg-[#c9a84c] text-[#060e1f]"
+                      : "text-white/40 hover:text-[#c9a84c] hover:bg-[#c9a84c]/5"
                   }`}
                 >
-                  {cat.label}
-                  <span className="block text-[9px] tracking-widest opacity-70 mt-0.5">{cat.labelHi}</span>
+                  <div className={`text-[11px] tracking-[0.25em] uppercase font-bold`}>{c.label}</div>
+                  <div className="text-[9px] tracking-wider opacity-70 mt-0.5">{c.labelHi}</div>
                 </button>
               ))}
             </div>
-          </RevealSection>
+          </Reveal>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {CATEGORIES[activeCategory].images.map((img, idx) => (
-              <RevealSection key={`${activeCategory}-${idx}`}>
-                <ProductCard url={img.url} alt={img.alt} />
-              </RevealSection>
+          {/* Active category hero strip */}
+          <Reveal delay={50}>
+            <div className="flex items-center justify-between mb-8 px-1">
+              <div>
+                <h3 className="font-['Playfair_Display'] text-2xl text-white">{cat.label}</h3>
+                <p className="text-[#c9a84c] text-sm italic mt-1">{cat.tagline}</p>
+              </div>
+              <a
+                href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!%20I%20am%20interested%20in%20your%20jewellery."
+                target="_blank" rel="noopener noreferrer"
+                className="hidden sm:flex items-center gap-2 border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#060e1f] px-6 py-2.5 text-[10px] tracking-[0.3em] uppercase transition-all duration-300"
+              >
+                Enquire <ArrowRight size={12} />
+              </a>
+            </div>
+          </Reveal>
+
+          {/* Image grid — editorial asymmetric: large + 7 */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            {/* First image — double height on first column */}
+            <div className="row-span-2 col-span-1">
+              <div className="h-full min-h-[400px] overflow-hidden group relative bg-[#0f1e38] cursor-pointer">
+                <img
+                  src={cat.images[0].url.replace("w=500&h=500", "w=500&h=1000")}
+                  alt={cat.images[0].alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060e1f]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                <div className="absolute inset-2 border border-[#c9a84c]/0 group-hover:border-[#c9a84c]/40 transition-all duration-400" />
+              </div>
+            </div>
+            {/* Remaining 7 */}
+            {cat.images.slice(1).map((img, i) => (
+              <ProductCard key={i} url={img.url} alt={img.alt} index={i} />
             ))}
           </div>
 
           <div className="text-center mt-12">
             <a
-              href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!%20I%20would%20like%20to%20enquire%20about%20your%20jewellery%20collections."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-[#c9a84c] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0d1b3e] px-10 py-3.5 text-xs tracking-[0.3em] uppercase transition-all duration-300"
+              href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!%20I%20would%20like%20to%20know%20more%20about%20your%20jewellery."
+              target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#060e1f] px-12 py-4 text-[11px] tracking-[0.35em] uppercase transition-all duration-400 hover:shadow-[0_0_40px_rgba(201,168,76,0.2)]"
             >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.522 5.845L0 24l6.335-1.502A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.747-.518-5.31-1.423l-.38-.225-3.762.891.928-3.672-.247-.389A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
               Enquire on WhatsApp
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── Services ── */}
-      <section id="services" className="py-24 px-6 max-w-6xl mx-auto">
-        <RevealSection>
-          <div className="text-center mb-16">
-            <p className="text-[#c9a84c] text-xs tracking-[0.4em] uppercase mb-4">What We Offer</p>
-            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#0d1b3e] mb-3">
-              Our <em className="text-[#c9a84c]">Services</em>
-            </h2>
-            <GoldDivider />
-          </div>
-        </RevealSection>
+      {/* ══ FULL-BLEED EDITORIAL FEATURE ══════════════════════════════════════ */}
+      <section className="relative h-[60vh] min-h-[400px] overflow-hidden flex items-center justify-center">
+        <img
+          src="https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=1800&h=900&fit=crop&auto=format"
+          alt="Luxury jewellery editorial"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060e1f]/90 via-[#060e1f]/50 to-transparent" />
+        <Reveal className="relative z-10 max-w-xl px-10 md:ml-24">
+          <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-4">The Zewel Promise</p>
+          <h3 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white leading-tight mb-6">
+            Crafted for<br /><em className="text-[#c9a84c]">Generations</em>
+          </h3>
+          <p className="text-white/50 leading-relaxed mb-8 max-w-sm">
+            Each piece carries the weight of intention — designed not for today alone, but to be treasured, passed down, and loved beyond a lifetime.
+          </p>
+          <button onClick={() => nav("contact")}
+            className="group flex items-center gap-3 text-[#c9a84c] text-[11px] tracking-[0.35em] uppercase border-b border-[#c9a84c]/30 pb-1 hover:border-[#c9a84c] transition-all duration-300">
+            Visit Our Showroom <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+        </Reveal>
+      </section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { icon: ShoppingBag, title: "In-Store Shopping", desc: "Browse our curated showroom in Borivali with expert assistance." },
-            { icon: Truck, title: "Home Delivery", desc: "Secure and insured delivery of your precious pieces to your doorstep." },
-            { icon: Wrench, title: "Repair Services", desc: "Expert restoration and repair for all types of fine jewellery." },
-            { icon: Package, title: "Installation", desc: "Professional jewellery setting and customisation services." },
-          ].map(({ icon: Icon, title, desc }) => (
-            <RevealSection key={title}>
-              <div className="border border-[#c9a84c]/20 p-8 hover:border-[#c9a84c]/60 hover:shadow-[0_0_30px_rgba(201,168,76,0.08)] transition-all duration-400 group text-center">
-                <div className="w-12 h-12 border border-[#c9a84c]/40 flex items-center justify-center mx-auto mb-5 group-hover:bg-[#c9a84c]/10 transition-colors duration-300">
-                  <Icon size={20} className="text-[#c9a84c]" />
+      {/* ══ SERVICES ══════════════════════════════════════════════════════════ */}
+      <section id="services" className="py-28 px-6">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-16">
+              <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-5">What We Offer</p>
+              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-4">
+                Our <em className="text-[#c9a84c]">Services</em>
+              </h2>
+              <Ornament />
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: ShoppingBag, n: "01", title: "In-Store Shopping", desc: "Browse our curated showroom with personal styling assistance from our experts." },
+              { icon: Truck, n: "02", title: "Home Delivery", desc: "Secure, insured delivery of your precious pieces — directly to your door." },
+              { icon: Wrench, n: "03", title: "Repair & Restoration", desc: "Expert jewellery repair, polishing, and restoration for all precious metals and stones." },
+              { icon: Package, n: "04", title: "Custom Setting", desc: "Professional stone setting, resizing, and bespoke customisation services." },
+            ].map(({ icon: Icon, n, title, desc }, i) => (
+              <Reveal key={title} delay={i * 80}>
+                <div className="group relative border border-[#c9a84c]/12 p-8 hover:border-[#c9a84c]/35 transition-all duration-500 hover:bg-[#c9a84c]/[0.03]">
+                  <p className="font-['Cinzel'] text-5xl text-[#c9a84c]/10 absolute top-5 right-6 group-hover:text-[#c9a84c]/20 transition-colors duration-500">{n}</p>
+                  <div className="w-12 h-12 border border-[#c9a84c]/25 flex items-center justify-center mb-6 group-hover:border-[#c9a84c]/60 group-hover:bg-[#c9a84c]/8 transition-all duration-400">
+                    <Icon size={18} className="text-[#c9a84c]" />
+                  </div>
+                  <h3 className="font-['Playfair_Display'] text-white text-xl mb-3">{title}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{desc}</p>
                 </div>
-                <h3 className="font-['Playfair_Display'] text-[#0d1b3e] text-lg mb-3">{title}</h3>
-                <p className="text-[#5a6070] text-sm leading-relaxed">{desc}</p>
-              </div>
-            </RevealSection>
-          ))}
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── Amenities ── */}
-      <section className="py-16 bg-[#0d1b3e] px-6">
-        <RevealSection>
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-[#c9a84c] text-xs tracking-[0.4em] uppercase mb-3">Why Choose Us</p>
-              <h2 className="font-['Playfair_Display'] text-3xl text-white">
-                A Showroom Built for <em className="text-[#c9a84c]">Comfort</em>
-              </h2>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* ══ AMENITIES STRIP ═══════════════════════════════════════════════════ */}
+      <section className="border-y border-[#c9a84c]/10 bg-[#030912] py-14 px-6">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-10">
               {[
-                { icon: Wifi, label: "Free Wi-Fi" },
-                { icon: Car, label: "Free Parking" },
-                { icon: CreditCard, label: "All Payments" },
-                { icon: Star, label: "LGBTQ+ Friendly" },
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-3 p-6 border border-white/10 hover:border-[#c9a84c]/40 transition-colors duration-300">
-                  <Icon size={24} className="text-[#c9a84c]" />
-                  <span className="text-white/80 text-xs tracking-widest uppercase text-center">{label}</span>
+                { icon: Wifi, l: "Free Wi-Fi" },
+                { icon: Car, l: "Free Parking" },
+                { icon: CreditCard, l: "All Payments" },
+                { icon: Star, l: "LGBTQ+ Friendly" },
+              ].map(({ icon: Icon, l }) => (
+                <div key={l} className="flex flex-col items-center gap-3 group">
+                  <div className="w-11 h-11 border border-[#c9a84c]/20 flex items-center justify-center group-hover:border-[#c9a84c]/50 group-hover:bg-[#c9a84c]/8 transition-all duration-300">
+                    <Icon size={17} className="text-[#c9a84c]" />
+                  </div>
+                  <span className="text-white/50 text-[10px] tracking-[0.3em] uppercase group-hover:text-white/70 transition-colors">{l}</span>
                 </div>
               ))}
             </div>
-
-            <div className="mt-10 grid grid-cols-3 md:grid-cols-6 gap-4">
-              {["Credit Cards", "Debit Cards", "Google Pay", "NFC Payments", "In-Store Pick-up", "Gender-Neutral Restrooms"].map((item) => (
-                <div key={item} className="text-center">
-                  <div className="w-1.5 h-1.5 bg-[#c9a84c] rotate-45 mx-auto mb-2" />
-                  <span className="text-white/50 text-[10px] tracking-wide uppercase">{item}</span>
-                </div>
+            <div className="border-t border-[#c9a84c]/8 pt-10 flex flex-wrap justify-center gap-x-10 gap-y-4">
+              {["Google Pay", "NFC Payments", "Credit & Debit Cards", "In-Store Pick-up", "Gender-Neutral Restrooms", "Walk-ins Welcome"].map(t => (
+                <span key={t} className="flex items-center gap-2 text-white/30 text-[10px] tracking-widest uppercase">
+                  <span className="w-1 h-1 bg-[#c9a84c] rotate-45 inline-block" />
+                  {t}
+                </span>
               ))}
             </div>
-          </div>
-        </RevealSection>
+          </Reveal>
+        </div>
       </section>
 
-      {/* ── Testimonial ── */}
-      <section className="py-24 px-6">
-        <RevealSection>
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="flex justify-center gap-1 mb-6">
-              {[1,2,3,4,5].map(i => <Star key={i} size={18} className="fill-[#c9a84c] text-[#c9a84c]" />)}
-            </div>
-            <blockquote className="font-['Playfair_Display'] text-2xl md:text-3xl text-[#0d1b3e] italic leading-relaxed mb-8">
-              &ldquo;Zewel Studio gave me the most beautiful bridal set I could have ever imagined. The staff was warm, patient, and truly passionate about jewellery.&rdquo;
-            </blockquote>
-            <GoldDivider />
-            <p className="text-[#c9a84c] text-xs tracking-[0.3em] uppercase mt-4">Priya S. — Verified Customer, Mumbai</p>
+      {/* ══ TESTIMONIAL ═══════════════════════════════════════════════════════ */}
+      <section className="py-28 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_50%,rgba(201,168,76,0.05)_0%,transparent_70%)]" />
+        <Reveal className="relative max-w-3xl mx-auto text-center">
+          <DiamondLogo size={36} className="mx-auto mb-8 opacity-50" />
+          <div className="flex justify-center gap-1 mb-8">
+            {[1,2,3,4,5].map(i => <Star key={i} size={16} className="fill-[#c9a84c] text-[#c9a84c]" />)}
           </div>
-        </RevealSection>
+          <blockquote className="font-['Playfair_Display'] text-2xl md:text-3xl text-white/80 italic leading-relaxed mb-8">
+            &ldquo;Zewel Studio gave me the most breathtaking bridal set I could have ever imagined. The team was warm, knowledgeable, and genuinely passionate. Worth every visit.&rdquo;
+          </blockquote>
+          <Ornament />
+          <p className="text-[#c9a84c]/60 text-[10px] tracking-[0.4em] uppercase mt-4">Priya S. — Verified Customer, Mumbai</p>
+        </Reveal>
       </section>
 
-      {/* ── Contact ── */}
-      <section id="contact" className="py-24 bg-[#0d1b3e] px-6">
-        <RevealSection>
-          <div className="max-w-6xl mx-auto">
+      {/* ══ CONTACT ═══════════════════════════════════════════════════════════ */}
+      <section id="contact" className="py-28 bg-[#030912] px-6">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
             <div className="text-center mb-16">
-              <p className="text-[#c9a84c] text-xs tracking-[0.4em] uppercase mb-4">Get In Touch</p>
-              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-3">
+              <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-5">Find Us</p>
+              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-4">
                 Visit <em className="text-[#c9a84c]">Zewel Studio</em>
               </h2>
-              <GoldDivider />
+              <Ornament />
             </div>
+          </Reveal>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="border border-white/10 p-8 hover:border-[#c9a84c]/40 transition-colors duration-300">
-                <MapPin size={20} className="text-[#c9a84c] mb-4" />
-                <h3 className="text-white font-['Playfair_Display'] text-xl mb-3">Location</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Borivali (West),<br />
-                  Mumbai, Maharashtra<br />
-                  <span className="text-[#c9a84c] mt-2 block">Free Parking Available</span>
-                </p>
-              </div>
-
-              <div className="border border-white/10 p-8 hover:border-[#c9a84c]/40 transition-colors duration-300">
-                <Clock size={20} className="text-[#c9a84c] mb-4" />
-                <h3 className="text-white font-['Playfair_Display'] text-xl mb-3">Hours</h3>
-                <div className="text-white/60 text-sm space-y-1">
-                  <p>Monday – Saturday: <span className="text-white">10 AM – 8 PM</span></p>
-                  <p>Sunday: <span className="text-white">11 AM – 7 PM</span></p>
-                  <p className="text-[#c9a84c] mt-2">Walk-ins Welcome</p>
-                </div>
-              </div>
-
-              <div className="border border-white/10 p-8 hover:border-[#c9a84c]/40 transition-colors duration-300">
-                <Phone size={20} className="text-[#c9a84c] mb-4" />
-                <h3 className="text-white font-['Playfair_Display'] text-xl mb-3">Contact</h3>
-                <div className="space-y-3">
-                  <a
-                    href="tel:09136193999"
-                    className="flex items-center gap-2 text-white/60 hover:text-[#c9a84c] text-sm transition-colors"
-                  >
-                    <Phone size={14} /> 09136193999
-                  </a>
-                  <a
-                    href="https://wa.me/919136193999"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-white/60 hover:text-[#c9a84c] text-sm transition-colors"
-                  >
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: MapPin, title: "Location",
+                body: <><p className="text-white/50 text-sm leading-relaxed">Borivali (West)<br />Mumbai, Maharashtra<br />India</p><p className="text-[#c9a84c] text-[10px] tracking-widest uppercase mt-3">Free On-Site Parking</p></>
+              },
+              {
+                icon: Clock, title: "Hours",
+                body: <div className="text-sm space-y-2"><p className="text-white/50">Mon – Sat <span className="text-white ml-2">10 AM – 8 PM</span></p><p className="text-white/50">Sunday <span className="text-white ml-2">11 AM – 7 PM</span></p><p className="text-[#c9a84c] text-[10px] tracking-widest uppercase mt-3">Walk-ins Always Welcome</p></div>
+              },
+              {
+                icon: Phone, title: "Connect",
+                body: <div className="space-y-3">
+                  <a href="tel:09136193999" className="flex items-center gap-3 text-white/50 hover:text-[#c9a84c] text-sm transition-colors"><Phone size={14}/> 09136193999</a>
+                  <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/50 hover:text-[#c9a84c] text-sm transition-colors">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.522 5.845L0 24l6.335-1.502A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.747-.518-5.31-1.423l-.38-.225-3.762.891.928-3.672-.247-.389A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                     WhatsApp
                   </a>
-                  <a
-                    href="https://www.instagram.com/zewelstudio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-white/60 hover:text-[#c9a84c] text-sm transition-colors"
-                  >
-                    <Instagram size={14} /> @zewelstudio
-                  </a>
+                  <a href="https://www.instagram.com/zewelstudio" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/50 hover:text-[#c9a84c] text-sm transition-colors"><Instagram size={14}/> @zewelstudio</a>
                 </div>
-              </div>
-            </div>
+              },
+            ].map(({ icon: Icon, title, body }, i) => (
+              <Reveal key={title} delay={i * 100}>
+                <div className="border border-[#c9a84c]/12 p-8 hover:border-[#c9a84c]/30 transition-colors duration-400 h-full">
+                  <Icon size={18} className="text-[#c9a84c] mb-5" />
+                  <h3 className="font-['Playfair_Display'] text-white text-xl mb-5">{title}</h3>
+                  {body}
+                </div>
+              </Reveal>
+            ))}
+          </div>
 
-            <div className="mt-12 text-center">
+          <Reveal delay={200}>
+            <div className="text-center mt-14">
               <a
                 href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!%20I%20would%20like%20to%20book%20an%20appointment."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#c9a84c] text-[#0d1b3e] px-12 py-4 text-xs tracking-[0.3em] uppercase font-bold hover:bg-[#e0bf6a] transition-all duration-300 hover:shadow-[0_0_40px_rgba(201,168,76,0.3)]"
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#c9a84c] text-[#060e1f] px-14 py-4.5 text-[11px] tracking-[0.4em] uppercase font-bold hover:bg-[#e0bf6a] transition-all duration-300 hover:shadow-[0_8px_50px_rgba(201,168,76,0.3)]"
               >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.522 5.845L0 24l6.335-1.502A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.747-.518-5.31-1.423l-.38-.225-3.762.891.928-3.672-.247-.389A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                 Book an Appointment
               </a>
             </div>
-          </div>
-        </RevealSection>
+          </Reveal>
+        </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="bg-[#060f22] py-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <p className="font-['Cinzel'] text-[#c9a84c] text-2xl tracking-[0.2em] font-semibold">ZEWEL STUDIO</p>
-              <p className="text-white/40 text-xs tracking-widest mt-1">ज्वेल स्टूडियो · Borivali, Mumbai</p>
-            </div>
+      {/* ══ FOOTER ════════════════════════════════════════════════════════════ */}
+      <footer className="bg-[#020810] py-14 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-10">
+            <BrandLockup size="md" />
             <div className="flex items-center gap-6">
-              <a href="tel:09136193999" className="text-white/50 hover:text-[#c9a84c] transition-colors">
-                <Phone size={16} />
-              </a>
-              <a href="https://www.instagram.com/zewelstudio" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#c9a84c] transition-colors">
-                <Instagram size={16} />
-              </a>
-              <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-[#c9a84c] transition-colors">
+              <a href="tel:09136193999" className="text-white/30 hover:text-[#c9a84c] transition-colors"><Phone size={16}/></a>
+              <a href="https://www.instagram.com/zewelstudio" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[#c9a84c] transition-colors"><Instagram size={16}/></a>
+              <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[#c9a84c] transition-colors">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.522 5.845L0 24l6.335-1.502A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.747-.518-5.31-1.423l-.38-.225-3.762.891.928-3.672-.247-.389A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
               </a>
             </div>
           </div>
-          <div className="border-t border-white/5 mt-8 pt-8 text-center">
-            <p className="text-white/30 text-xs tracking-widest">© 2025 Zewel Studio. All rights reserved. Borivali, Mumbai.</p>
+          <div className="border-t border-[#c9a84c]/8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-white/20 text-[10px] tracking-[0.3em]">© 2025 ZEWEL STUDIO · BORIVALI, MUMBAI</p>
+            <p className="text-white/20 text-[10px] tracking-[0.3em]">ज्वेल स्टूडियो · ALL RIGHTS RESERVED</p>
           </div>
         </div>
       </footer>
 
-      {/* ── Floating Buttons (bottom-left) ── */}
-      <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
-        {/* Call Button */}
+      {/* ══ FLOATING CONTACT BUTTONS — BOTTOM RIGHT ═══════════════════════════ */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        {/* Call */}
         <a
           href="tel:09136193999"
-          className="group flex items-center gap-0 hover:gap-3 overflow-hidden w-12 hover:w-32 bg-[#0d1b3e] border border-[#c9a84c]/60 text-[#c9a84c] rounded-full h-12 px-3.5 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(13,27,62,0.5)]"
           aria-label="Call Zewel Studio"
+          className="group flex items-center gap-0 hover:gap-3 overflow-hidden w-12 hover:w-36 h-12 bg-[#060e1f] border border-[#c9a84c]/50 text-[#c9a84c] rounded-full justify-end px-3.5 transition-all duration-400 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_4px_28px_rgba(201,168,76,0.25)] hover:border-[#c9a84c]"
         >
-          <Phone size={18} className="shrink-0" />
-          <span className="text-xs tracking-widest uppercase whitespace-nowrap overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-100">Call Us</span>
+          <span className="text-[10px] tracking-[0.25em] uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-150 ml-auto">Call Us</span>
+          <Phone size={17} className="shrink-0 ml-3 group-hover:ml-0" />
         </a>
-
-        {/* WhatsApp Button */}
+        {/* WhatsApp */}
         <a
-          href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!%20I%20am%20interested%20in%20your%20jewellery%20collection."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex items-center gap-0 hover:gap-3 overflow-hidden w-12 hover:w-36 bg-[#25D366] text-white rounded-full h-12 px-3.5 transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(37,211,102,0.5)]"
+          href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!%20I%20am%20interested%20in%20your%20jewellery."
+          target="_blank" rel="noopener noreferrer"
           aria-label="WhatsApp Zewel Studio"
+          className="group flex items-center gap-0 hover:gap-3 overflow-hidden w-12 hover:w-40 h-12 bg-[#25D366] text-white rounded-full justify-end px-3.5 transition-all duration-400 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_4px_28px_rgba(37,211,102,0.35)]"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+          <span className="text-[10px] tracking-[0.25em] uppercase whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-150 ml-auto">WhatsApp</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 ml-3 group-hover:ml-0">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.522 5.845L0 24l6.335-1.502A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.93 0-3.747-.518-5.31-1.423l-.38-.225-3.762.891.928-3.672-.247-.389A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
           </svg>
-          <span className="text-xs tracking-widest uppercase whitespace-nowrap overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-100">WhatsApp</span>
         </a>
       </div>
 
-      {/* ── Keyframes via style tag ── */}
+      {/* ══ STYLES ════════════════════════════════════════════════════════════ */}
       <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes fadeInDown {
-          from { opacity: 0; transform: translateY(-16px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
         @keyframes marquee {
           from { transform: translateX(0); }
-          to { transform: translateX(-33.333%); }
+          to { transform: translateX(-25%); }
         }
         html { scroll-behavior: smooth; }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #0d1b3e; }
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: #060e1f; }
         ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 2px; }
+        .scale-115 { transform: scale(1.15); }
       `}</style>
     </div>
   );
