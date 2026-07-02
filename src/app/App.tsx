@@ -25,6 +25,30 @@ import bracelet9 from "../imports/bracelet-9.jpg";
 import bracelet10 from "../imports/bracelet-10.jpg";
 import bracelet11 from "../imports/bracelet-11.jpg";
 import bracelet12 from "../imports/bracelet-12.jpg";
+import earring1 from "../imports/earring-1.jpg";
+import earring2 from "../imports/earring-2.jpg";
+import earring3 from "../imports/earring-3.jpg";
+import earring4 from "../imports/earring-4.jpg";
+import earring5 from "../imports/earring-5.jpg";
+import earring6 from "../imports/earring-6.jpg";
+import earring7 from "../imports/earring-7.jpg";
+import earring8 from "../imports/earring-8.jpg";
+import earring9 from "../imports/earring-9.jpg";
+import earring10 from "../imports/earring-10.jpg";
+import earring11 from "../imports/earring-11.jpg";
+import earring12 from "../imports/earring-12.jpg";
+import necklace1 from "../imports/necklace-1.jpg";
+import necklace2 from "../imports/necklace-2.jpg";
+import necklace3 from "../imports/necklace-3.jpg";
+import necklace4 from "../imports/necklace-4.jpg";
+import necklace5 from "../imports/necklace-5.jpg";
+import necklace6 from "../imports/necklace-6.jpg";
+import necklace7 from "../imports/necklace-7.jpg";
+import necklace8 from "../imports/necklace-8.jpg";
+import necklace9 from "../imports/necklace-9.jpg";
+import necklace10 from "../imports/necklace-10.jpg";
+import necklace11 from "../imports/necklace-11.jpg";
+import necklace12 from "../imports/necklace-12.jpg";
 import { Phone, Instagram, MapPin, Clock, Star, Wifi, Car, CreditCard, Wrench, Package, ShoppingBag, Truck, ChevronDown, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -123,36 +147,36 @@ const CATEGORIES = [
     id: "earrings", label: "Earrings", labelHi: "झुमके", tagline: "Frame Your Beauty",
     cover: "https://images.unsplash.com/photo-1722410180651-efd51636f260?w=800&h=1000&fit=crop&auto=format",
     images: [
-      { url: "https://images.unsplash.com/photo-1693212793204-bcea856c75fe?w=500&h=500&fit=crop&auto=format", alt: "Earrings on black cloth" },
-      { url: "https://images.unsplash.com/photo-1626784215021-2e39ccf971cd?w=500&h=500&fit=crop&auto=format", alt: "Gold earrings on black" },
-      { url: "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?w=500&h=500&fit=crop&auto=format", alt: "Silver earring collection" },
-      { url: "https://images.unsplash.com/photo-1665159882377-385d68d2bdff?w=500&h=500&fit=crop&auto=format", alt: "Earring collection" },
-      { url: "https://images.unsplash.com/photo-1722410180651-efd51636f260?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing earrings" },
-      { url: "https://images.unsplash.com/photo-1674329042475-de1a95b4ca62?w=500&h=500&fit=crop&auto=format", alt: "Earrings on black case" },
-      { url: "https://images.unsplash.com/photo-1588444650733-d0767b753fc8?w=500&h=500&fit=crop&auto=format", alt: "Silver diamond earring" },
-      { url: "https://images.unsplash.com/photo-1588444650700-fd887f15a9e7?w=500&h=500&fit=crop&auto=format", alt: "Floral gold earrings" },
-      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Diamond stud earrings" },
-      { url: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&h=500&fit=crop", alt: "Gold hoop earrings" },
-      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: earring1, alt: "Diamond drop earrings on velvet" },
+      { url: earring2, alt: "Dangling diamond earrings on velvet" },
+      { url: earring3, alt: "Floral diamond stud earrings on velvet" },
+      { url: earring4, alt: "Art deco diamond earrings on velvet" },
+      { url: earring5, alt: "Diamond chandelier earrings on velvet" },
+      { url: earring6, alt: "Heart shaped diamond dangle earrings" },
+      { url: earring7, alt: "Geometric dangle diamond earrings" },
+      { url: earring8, alt: "Geometric chandelier diamond earrings" },
+      { url: earring9, alt: "Baguette drop diamond earrings" },
+      { url: earring10, alt: "Hexagonal diamond drop earrings" },
+      { url: earring11, alt: "Ruby and diamond hoop earrings" },
+      { url: earring12, alt: "Diamond cascade waterfall earrings" },
     ],
   },
   {
     id: "necklaces", label: "Necklaces", labelHi: "हार", tagline: "Grace Around Your Neck",
     cover: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=800&h=1000&fit=crop&auto=format",
     images: [
-      { url: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500&h=500&fit=crop&auto=format", alt: "Gold beaded necklace" },
-      { url: "https://images.unsplash.com/photo-1722410180687-b05b50922362?w=500&h=500&fit=crop&auto=format", alt: "Necklace on mannequin" },
-      { url: "https://images.unsplash.com/photo-1722410180644-5955f83ec8b1?w=500&h=500&fit=crop&auto=format", alt: "Elegant necklace on table" },
-      { url: "https://images.unsplash.com/photo-1611583027838-515a1087afdb?w=500&h=500&fit=crop&auto=format", alt: "Diamond pendant necklace" },
-      { url: "https://images.unsplash.com/photo-1601121141461-920cb1993441?w=500&h=500&fit=crop&auto=format", alt: "Gold necklace worn" },
-      { url: "https://images.unsplash.com/photo-1600862754152-80a263dd564f?w=500&h=500&fit=crop&auto=format", alt: "Gold red beaded necklace" },
-      { url: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing gold necklace" },
-      { url: "https://images.unsplash.com/photo-1705326454924-f6777522b030?w=500&h=500&fit=crop&auto=format", alt: "Mannequin with gold necklace" },
-      { url: "https://images.unsplash.com/photo-1599643478524-fb5062a7edcb?w=500&h=500&fit=crop", alt: "Pearl and gold necklace" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Vintage style necklace" },
-      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: necklace1, alt: "Teardrop diamond necklace on velvet" },
+      { url: necklace2, alt: "Diamond cascade pendant on velvet" },
+      { url: necklace3, alt: "Diamond tennis necklace on velvet" },
+      { url: necklace4, alt: "Diamond collar necklace on velvet" },
+      { url: necklace5, alt: "Double layer diamond pendant necklace" },
+      { url: necklace6, alt: "Delicate diamond strand necklace" },
+      { url: necklace7, alt: "Clover diamond pendant necklace" },
+      { url: necklace8, alt: "Diamond riviere necklace on velvet" },
+      { url: necklace9, alt: "Diamond tennis necklace on blue velvet" },
+      { url: necklace10, alt: "Double strand diamond necklace on velvet" },
+      { url: necklace11, alt: "Y-drop diamond and sapphire necklace" },
+      { url: necklace12, alt: "Gold link diamond pendant necklace" },
     ],
   },
 ];
@@ -308,13 +332,15 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-8 py-4">
           <div className="grid grid-cols-3 items-center">
             {/* Left nav links */}
-            <div className="hidden md:flex items-center gap-8">
-              {["Collections", "Services"].map(l => (
-                <button key={l} onClick={() => nav(l.toLowerCase())}
-                  className="text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase transition-colors duration-200">
-                  {l}
-                </button>
-              ))}
+            <div className="flex items-center">
+              <div className="hidden md:flex items-center gap-8">
+                {["Collections", "Services"].map(l => (
+                  <button key={l} onClick={() => nav(l.toLowerCase())}
+                    className="text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase transition-colors duration-200">
+                    {l}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Center: brand lockup */}
@@ -325,25 +351,27 @@ export default function App() {
             </div>
 
             {/* Right nav links */}
-            <div className="hidden md:flex items-center justify-end gap-8">
-              {["About", "Contact"].map(l => (
-                <button key={l} onClick={() => nav(l.toLowerCase())}
-                  className="text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase transition-colors duration-200">
-                  {l}
-                </button>
-              ))}
-              <a href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!" target="_blank" rel="noopener noreferrer"
-                className="border border-[#c9a84c]/50 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#060e1f] px-5 py-2 text-[10px] tracking-[0.28em] uppercase transition-all duration-300">
-                Enquire
-              </a>
+            <div className="flex items-center justify-end">
+              <div className="hidden md:flex items-center justify-end gap-8">
+                {["About", "Contact"].map(l => (
+                  <button key={l} onClick={() => nav(l.toLowerCase())}
+                    className="text-white/50 hover:text-[#c9a84c] text-[11px] tracking-[0.28em] uppercase transition-colors duration-200">
+                    {l}
+                  </button>
+                ))}
+                <a href="https://wa.me/919136193999?text=Hi%20Zewel%20Studio!" target="_blank" rel="noopener noreferrer"
+                  className="border border-[#c9a84c]/50 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#060e1f] px-5 py-2 text-[10px] tracking-[0.28em] uppercase transition-all duration-300">
+                  Enquire
+                </a>
+              </div>
+              
+              {/* Mobile hamburger */}
+              <button className="md:hidden flex flex-col gap-1.5 w-6" onClick={() => setMobileOpen(!mobileOpen)}>
+                <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2.5" : ""}`} />
+                <span className={`block h-px bg-white/50 transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+                <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
+              </button>
             </div>
-
-            {/* Mobile hamburger */}
-            <button className="md:hidden justify-self-end flex flex-col gap-1.5 w-6" onClick={() => setMobileOpen(!mobileOpen)}>
-              <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2.5" : ""}`} />
-              <span className={`block h-px bg-white/50 transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-px bg-[#c9a84c] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
-            </button>
           </div>
         </div>
 
@@ -375,12 +403,7 @@ export default function App() {
 
         {/* Content */}
         <div className={`relative z-10 text-center px-6 max-w-5xl mx-auto transition-all duration-1500 ease-out ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          {/* Eyebrow */}
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <div className="h-px w-14 bg-gradient-to-r from-transparent to-[#c9a84c]" />
-            <p className="text-[#c9a84c] text-[10px] tracking-[0.6em] uppercase">Est. Borivali · Mumbai</p>
-            <div className="h-px w-14 bg-gradient-to-l from-transparent to-[#c9a84c]" />
-          </div>
+
 
           {/* Giant Logo Lockup */}
           <div className="flex justify-center mb-8">
