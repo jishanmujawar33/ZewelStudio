@@ -6,7 +6,30 @@ import team1 from "../imports/team-1.jpg";
 import team2 from "../imports/team-2.jpg";
 import team3 from "../imports/team-3.jpg";
 import team4 from "../imports/team-4.jpg";
+import model1 from "../imports/model-1.jpg";
+import model2 from "../imports/model-2.jpg";
+import model3 from "../imports/model-3.jpg";
+import model4 from "../imports/model-4.jpg";
+import model5 from "../imports/model-5.jpg";
+import model6 from "../imports/model-6.jpg";
+import model7 from "../imports/model-7.jpg";
+import bracelet1 from "../imports/bracelet-1.jpg";
+import bracelet2 from "../imports/bracelet-2.jpg";
+import bracelet3 from "../imports/bracelet-3.jpg";
+import bracelet4 from "../imports/bracelet-4.jpg";
+import bracelet5 from "../imports/bracelet-5.jpg";
+import bracelet6 from "../imports/bracelet-6.jpg";
+import bracelet7 from "../imports/bracelet-7.jpg";
+import bracelet8 from "../imports/bracelet-8.jpg";
+import bracelet9 from "../imports/bracelet-9.jpg";
+import bracelet10 from "../imports/bracelet-10.jpg";
+import bracelet11 from "../imports/bracelet-11.jpg";
+import bracelet12 from "../imports/bracelet-12.jpg";
 import { Phone, Instagram, MapPin, Clock, Star, Wifi, Car, CreditCard, Wrench, Package, ShoppingBag, Truck, ChevronDown, ArrowRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ── Logo SVG (PNG version) ───────────────────────────────────────────────────
 function DiamondLogo({ size = 48, animated = false, className = "" }: { size?: number; animated?: boolean; className?: string }) {
@@ -79,45 +102,21 @@ function Ornament({ light = false }: { light?: boolean }) {
 // ── Category data ────────────────────────────────────────────────────────────
 const CATEGORIES = [
   {
-    id: "rings", label: "Rings", labelHi: "अंगूठियाँ", tagline: "Symbols of Forever",
-    cover: "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=800&h=1000&fit=crop&auto=format",
+    id: "bracelets", label: "Bracelets", labelHi: "कंगन", tagline: "Worn With Confidence",
+    cover: "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?w=800&h=1000&fit=crop&auto=format",
     images: [
-      { url: "https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=500&h=500&fit=crop&auto=format", alt: "Three gold studded rings" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop&auto=format", alt: "Silver diamond ring on black box" },
-      { url: "https://images.unsplash.com/photo-1607703829739-c05b7beddf60?w=500&h=500&fit=crop&auto=format", alt: "Diamond ring on black velvet" },
-      { url: "https://images.unsplash.com/photo-1613945407943-59cd755fd69e?w=500&h=500&fit=crop&auto=format", alt: "Diamond solitaire ring" },
-      { url: "https://images.unsplash.com/photo-1613945409199-1b5527d31fe8?w=500&h=500&fit=crop&auto=format", alt: "Solitaire on red velvet" },
-      { url: "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=500&h=500&fit=crop&auto=format", alt: "Gold diamond ring" },
-      { url: "https://images.unsplash.com/photo-1514612497953-05d1e5e171fa?w=500&h=500&fit=crop&auto=format", alt: "Clear gemstone statement ring" },
-      { url: "https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?w=500&h=500&fit=crop&auto=format", alt: "Heart pendant diamond" },
-      { url: "https://images.unsplash.com/photo-1628834947963-c7f3945bd2f1?w=500&h=500&fit=crop", alt: "Elegant gold ring" },
-      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Silver engagement ring" },
-      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
-      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
-      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
-    ],
-  },
-  {
-    id: "necklaces", label: "Necklaces", labelHi: "हार", tagline: "Grace Around Your Neck",
-    cover: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=800&h=1000&fit=crop&auto=format",
-    images: [
-      { url: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500&h=500&fit=crop&auto=format", alt: "Gold beaded necklace" },
-      { url: "https://images.unsplash.com/photo-1722410180687-b05b50922362?w=500&h=500&fit=crop&auto=format", alt: "Necklace on mannequin" },
-      { url: "https://images.unsplash.com/photo-1722410180644-5955f83ec8b1?w=500&h=500&fit=crop&auto=format", alt: "Elegant necklace on table" },
-      { url: "https://images.unsplash.com/photo-1611583027838-515a1087afdb?w=500&h=500&fit=crop&auto=format", alt: "Diamond pendant necklace" },
-      { url: "https://images.unsplash.com/photo-1601121141461-920cb1993441?w=500&h=500&fit=crop&auto=format", alt: "Gold necklace worn" },
-      { url: "https://images.unsplash.com/photo-1600862754152-80a263dd564f?w=500&h=500&fit=crop&auto=format", alt: "Gold red beaded necklace" },
-      { url: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing gold necklace" },
-      { url: "https://images.unsplash.com/photo-1705326454924-f6777522b030?w=500&h=500&fit=crop&auto=format", alt: "Mannequin with gold necklace" },
-      { url: "https://images.unsplash.com/photo-1599643478524-fb5062a7edcb?w=500&h=500&fit=crop", alt: "Pearl and gold necklace" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Vintage style necklace" },
-      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
-      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
-      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
+      { url: bracelet1, alt: "Diamond bracelet on velvet" },
+      { url: bracelet2, alt: "Diamond and sapphire bracelet on velvet" },
+      { url: bracelet3, alt: "Diamond tennis bracelet on velvet" },
+      { url: bracelet4, alt: "Rose gold diamond bracelet on velvet" },
+      { url: bracelet5, alt: "Silver diamond bracelet on velvet" },
+      { url: bracelet6, alt: "Classic diamond tennis bracelet" },
+      { url: bracelet7, alt: "Baguette diamond bracelet" },
+      { url: bracelet8, alt: "Three-stone style diamond bracelet" },
+      { url: bracelet9, alt: "Eternity diamond bracelet on velvet" },
+      { url: bracelet10, alt: "Rose gold bezel set bracelet" },
+      { url: bracelet11, alt: "Hexagonal link diamond bracelet" },
+      { url: bracelet12, alt: "Classic diamond tennis bracelet" },
     ],
   },
   {
@@ -136,51 +135,24 @@ const CATEGORIES = [
       { url: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&h=500&fit=crop", alt: "Gold hoop earrings" },
       { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
       { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
-      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
-      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
   {
-    id: "bracelets", label: "Bracelets", labelHi: "कंगन", tagline: "Worn With Confidence",
-    cover: "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?w=800&h=1000&fit=crop&auto=format",
+    id: "necklaces", label: "Necklaces", labelHi: "हार", tagline: "Grace Around Your Neck",
+    cover: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=800&h=1000&fit=crop&auto=format",
     images: [
-      { url: "https://images.unsplash.com/photo-1633810543462-77c4a3b13f07?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet worn" },
-      { url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=500&h=500&fit=crop&auto=format", alt: "Silver gemstone bracelet" },
-      { url: "https://images.unsplash.com/photo-1626122509259-ea8e0a136ada?w=500&h=500&fit=crop&auto=format", alt: "Diamond bracelet" },
-      { url: "https://images.unsplash.com/photo-1689367436442-76c859315008?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet close up" },
-      { url: "https://images.unsplash.com/photo-1655707063513-a08dad26440e?w=500&h=500&fit=crop&auto=format", alt: "Gold on white surface" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop&auto=format", alt: "Beaded gold bracelet" },
-      { url: "https://images.unsplash.com/photo-1689367436629-1d288f1e23b6?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet detail" },
-      { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=500&h=500&fit=crop&auto=format", alt: "Traditional bracelet" },
-      { url: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=500&h=500&fit=crop", alt: "Chain link bracelet" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Charm bracelet" },
+      { url: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500&h=500&fit=crop&auto=format", alt: "Gold beaded necklace" },
+      { url: "https://images.unsplash.com/photo-1722410180687-b05b50922362?w=500&h=500&fit=crop&auto=format", alt: "Necklace on mannequin" },
+      { url: "https://images.unsplash.com/photo-1722410180644-5955f83ec8b1?w=500&h=500&fit=crop&auto=format", alt: "Elegant necklace on table" },
+      { url: "https://images.unsplash.com/photo-1611583027838-515a1087afdb?w=500&h=500&fit=crop&auto=format", alt: "Diamond pendant necklace" },
+      { url: "https://images.unsplash.com/photo-1601121141461-920cb1993441?w=500&h=500&fit=crop&auto=format", alt: "Gold necklace worn" },
+      { url: "https://images.unsplash.com/photo-1600862754152-80a263dd564f?w=500&h=500&fit=crop&auto=format", alt: "Gold red beaded necklace" },
+      { url: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing gold necklace" },
+      { url: "https://images.unsplash.com/photo-1705326454924-f6777522b030?w=500&h=500&fit=crop&auto=format", alt: "Mannequin with gold necklace" },
+      { url: "https://images.unsplash.com/photo-1599643478524-fb5062a7edcb?w=500&h=500&fit=crop", alt: "Pearl and gold necklace" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Vintage style necklace" },
       { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
       { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
-      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
-      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
-    ],
-  },
-  {
-    id: "bangles", label: "Bangles", labelHi: "चूड़ियाँ", tagline: "The Sound of Celebration",
-    cover: "https://images.unsplash.com/photo-1728381031272-ba3f537feadd?w=800&h=1000&fit=crop&auto=format",
-    images: [
-      { url: "https://images.unsplash.com/photo-1728381031272-ba3f537feadd?w=500&h=500&fit=crop&auto=format", alt: "Gold bangles on velvet" },
-      { url: "https://images.unsplash.com/photo-1611598935678-c88dca238fce?w=500&h=500&fit=crop&auto=format", alt: "Diamond studded bangles" },
-      { url: "https://images.unsplash.com/photo-1606293926249-ed22e446d476?w=500&h=500&fit=crop&auto=format", alt: "Gold silver bangles" },
-      { url: "https://images.unsplash.com/photo-1679156272446-30738eb5c4e7?w=500&h=500&fit=crop&auto=format", alt: "Gold bangles on table" },
-      { url: "https://images.unsplash.com/photo-1653227908236-36813ab5c30a?w=500&h=500&fit=crop&auto=format", alt: "Gold bangle on cloth" },
-      { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=500&h=500&fit=crop&auto=format", alt: "Traditional gold bangle" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop&auto=format", alt: "Beaded traditional bangle" },
-      { url: "https://images.unsplash.com/photo-1612945578381-6481cdd73b0a?w=500&h=500&fit=crop&auto=format", alt: "Gold floral bangle" },
-      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Stackable bangles" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Ornate gold bangle" },
-      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
-      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
-      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
-      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
-      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
 ];
@@ -243,6 +215,11 @@ export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [splashDone, setSplashDone] = useState(false);
+  const [showroomSlide, setShowroomSlide] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const editorialRef = useRef<HTMLElement>(null);
+  const editorialImgRef = useRef<HTMLImageElement>(null);
+  const showroomImages = [model1, model2, model3, model4, model6, model7];
 
   useEffect(() => {
     const t = setTimeout(() => setHeroLoaded(true), 200);
@@ -250,6 +227,55 @@ export default function App() {
     window.addEventListener("scroll", onScroll);
     return () => { clearTimeout(t); window.removeEventListener("scroll", onScroll); };
   }, []);
+
+  // GSAP ScrollTrigger parallax
+  useEffect(() => {
+    if (!splashDone) return;
+
+    // Hero parallax — background image moves slower
+    if (heroRef.current) {
+      const heroImg = heroRef.current.querySelector("img");
+      if (heroImg) {
+        gsap.to(heroImg, {
+          y: 120,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
+    }
+
+    // Editorial parallax — model2 image rises as you scroll
+    if (editorialRef.current && editorialImgRef.current) {
+      gsap.fromTo(editorialImgRef.current,
+        { y: 60 },
+        {
+          y: -60,
+          ease: "none",
+          scrollTrigger: {
+            trigger: editorialRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    }
+
+    return () => { ScrollTrigger.getAll().forEach(t => t.kill()); };
+  }, [splashDone]);
+
+  // Showroom auto-slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowroomSlide(prev => (prev + 1) % showroomImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [showroomImages.length]);
 
   const nav = (id: string) => { setMobileOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
 
@@ -334,29 +360,18 @@ export default function App() {
       </header>
 
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Layered background */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Layered background with model photo */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1800&h=1200&fit=crop&auto=format"
+            src={model2}
             alt="Luxury diamond jewellery"
-            className="w-full h-full object-cover opacity-25"
+            className="w-full h-full object-cover object-[50%_30%] opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#060e1f] via-[#0a1628]/80 to-[#060e1f]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060e1f]/90 via-[#060e1f]/40 to-[#060e1f]/90" />
           {/* Radial gold glow */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_60%,rgba(201,168,76,0.07)_0%,transparent_70%)]" />
         </div>
-
-        {/* Fine grid lines overlay */}
-        <div className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: "linear-gradient(#c9a84c 1px, transparent 1px), linear-gradient(90deg, #c9a84c 1px, transparent 1px)", backgroundSize: "80px 80px" }} />
-
-        {/* Decorative corner marks */}
-        {[["top-20 left-8", "tl"], ["top-20 right-8", "tr"], ["bottom-20 left-8", "bl"], ["bottom-20 right-8", "br"]].map(([pos, key]) => (
-          <div key={key} className={`absolute ${pos} w-20 h-20 pointer-events-none`}>
-            <div className={`absolute border-[#c9a84c]/30 ${key.includes("t") ? "top-0 border-t" : "bottom-0 border-b"} ${key.includes("l") ? "left-0 border-l" : "right-0 border-r"} w-full h-full`} />
-          </div>
-        ))}
 
         {/* Content */}
         <div className={`relative z-10 text-center px-6 max-w-5xl mx-auto transition-all duration-1500 ease-out ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
@@ -376,14 +391,14 @@ export default function App() {
             />
           </div>
 
-          <p className="font-['Playfair_Display'] text-white/40 text-lg italic mb-2 mt-4">
-            ज्वेल स्टूडियो
+          <p className="font-['Playfair_Display'] text-[#c9a84c] text-xl md:text-2xl italic mb-6 mt-8">
+            The Art of Fine Jewellery
           </p>
 
           <Ornament />
 
-          <p className="text-white/50 text-sm tracking-[0.25em] uppercase mb-12">
-            Luxury Jewellery Store & Showroom · ⭐ 5.0 (42 Reviews)
+          <p className="text-white/60 text-[10px] md:text-[11px] tracking-[0.5em] uppercase mb-12 mt-6">
+            Purveyors of Diamonds, Gold & Heritage Masterpieces
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -437,22 +452,22 @@ export default function App() {
           <Reveal className="relative">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1722410180687-b05b50922362?w=700&h=900&fit=crop&auto=format"
+                src={model7}
                 alt="Zewel Studio showroom"
                 className="w-full h-[560px] object-cover"
               />
               {/* Floating accent image */}
               <div className="absolute -bottom-10 -right-6 w-44 h-44 border-4 border-[#060e1f]">
                 <img
-                  src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=300&h=300&fit=crop&auto=format"
+                  src={model4}
                   alt="Fine jewellery detail"
                   className="w-full h-full object-cover"
                 />
               </div>
               {/* Stats overlay */}
               <div className="absolute top-6 -left-6 bg-[#060e1f] border border-[#c9a84c]/25 px-6 py-5">
-                <p className="font-['Cinzel'] text-3xl text-[#c9a84c]">5.0</p>
-                <p className="text-white/50 text-[10px] tracking-widest uppercase mt-1">Rating · 42 Reviews</p>
+                <p className="font-['Cinzel'] text-2xl text-[#c9a84c]">Heritage</p>
+                <p className="text-white/50 text-[10px] tracking-widest uppercase mt-1">Craftsmanship & Art</p>
               </div>
             </div>
           </Reveal>
@@ -537,6 +552,70 @@ export default function App() {
         </div>
       </section>
 
+
+      {/* ══ SHOWROOM GALLERY ════════════════════════════════════════════════════ */}
+      <section className="relative py-0 overflow-hidden bg-[#030912]">
+        {/* Section header */}
+        <div className="text-center pt-20 pb-12 px-6">
+          <Reveal>
+            <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-5">Our Space</p>
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-4">
+              The <em className="text-[#c9a84c]">Showroom</em>
+            </h2>
+            <Ornament />
+          </Reveal>
+        </div>
+
+        {/* Full-width slideshow */}
+        <div className="relative h-[70vh] min-h-[450px] max-h-[800px] overflow-hidden">
+          {showroomImages.map((img, i) => (
+            <div
+              key={i}
+              className={`absolute inset-0 transition-all duration-[1.5s] ease-in-out ${
+                showroomSlide === i ? "opacity-100 scale-100" : "opacity-0 scale-105"
+              }`}
+            >
+              <img
+                src={img}
+                alt={`Zewel Studio showroom ${i + 1}`}
+                className="w-full h-full object-cover object-[50%_25%]"
+              />
+              {/* Top fade */}
+              <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#030912] to-transparent" />
+              {/* Bottom fade */}
+              <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#030912] via-[#030912]/70 to-transparent" />
+              {/* Side vignette */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#030912_100%)] opacity-60" />
+            </div>
+          ))}
+
+          {/* Overlay content */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 p-8 md:p-16">
+            <div className="max-w-7xl mx-auto flex items-end justify-between">
+              <div>
+                <p className="text-white/40 text-[10px] tracking-[0.5em] uppercase mb-2">Experience Luxury</p>
+                <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl text-white">
+                  Visit Us in <em className="text-[#c9a84c]">Borivali</em>
+                </h3>
+              </div>
+
+              {/* Slide indicators */}
+              <div className="flex gap-2">
+                {showroomImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setShowroomSlide(i)}
+                    className={`w-8 h-[2px] transition-all duration-500 ${
+                      showroomSlide === i ? "bg-[#c9a84c] w-12" : "bg-white/20 hover:bg-white/40"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══ COLLECTIONS ════════════════════════════════════════════════════════ */}
       <section id="collections" className="py-24 bg-[#030912]">
         <div className="max-w-7xl mx-auto px-6">
@@ -589,22 +668,9 @@ export default function App() {
             </div>
           </Reveal>
 
-          {/* Image grid — editorial asymmetric: large + 7 */}
+          {/* Image grid — uniformly showing all items */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-            {/* First image — double height on first column */}
-            <div className="row-span-2 col-span-1">
-              <div className="h-full min-h-[400px] overflow-hidden group relative bg-[#0f1e38] cursor-pointer">
-                <img
-                  src={cat.images[0].url.replace("w=500&h=500", "w=500&h=1000")}
-                  alt={cat.images[0].alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060e1f]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                <div className="absolute inset-2 border border-[#c9a84c]/0 group-hover:border-[#c9a84c]/40 transition-all duration-400" />
-              </div>
-            </div>
-            {/* Remaining 7 */}
-            {cat.images.slice(1).map((img, i) => (
+            {cat.images.map((img, i) => (
               <ProductCard key={i} url={img.url} alt={img.alt} index={i} />
             ))}
           </div>
@@ -623,13 +689,17 @@ export default function App() {
       </section>
 
       {/* ══ FULL-BLEED EDITORIAL FEATURE ══════════════════════════════════════ */}
-      <section className="relative h-[60vh] min-h-[400px] overflow-hidden flex items-center justify-center">
+      <section ref={editorialRef} className="relative h-[85vh] min-h-[600px] md:h-screen md:min-h-[800px] overflow-hidden flex items-center justify-center">
         <img
-          src="https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=1800&h=900&fit=crop&auto=format"
+          ref={editorialImgRef}
+          src={model6}
           alt="Luxury jewellery editorial"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_20%] scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#060e1f]/90 via-[#060e1f]/50 to-transparent" />
+        {/* Gradient overlays for premium feel */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060e1f]/85 via-[#060e1f]/40 to-[#060e1f]/20" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#060e1f] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#060e1f] to-transparent" />
         <Reveal className="relative z-10 max-w-xl px-10 md:ml-24">
           <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-4">The Zewel Promise</p>
           <h3 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white leading-tight mb-6">
