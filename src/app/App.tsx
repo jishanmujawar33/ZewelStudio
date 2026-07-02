@@ -1,63 +1,36 @@
 import { useState, useEffect, useRef } from "react";
+import logoDiamond from "../imports/logo-diamond.png";
+import logoFull from "../imports/logo-full.png";
+import visitText from "../imports/visit-text.png";
+import team1 from "../imports/team-1.jpg";
+import team2 from "../imports/team-2.jpg";
+import team3 from "../imports/team-3.jpg";
+import team4 from "../imports/team-4.jpg";
 import { Phone, Instagram, MapPin, Clock, Star, Wifi, Car, CreditCard, Wrench, Package, ShoppingBag, Truck, ChevronDown, ArrowRight } from "lucide-react";
 
-// ── Logo SVG (replicating the diamond gem with Z lettermark) ─────────────────
-function DiamondLogo({ size = 48, className = "" }: { size?: number; className?: string }) {
+// ── Logo SVG (PNG version) ───────────────────────────────────────────────────
+function DiamondLogo({ size = 48, animated = false, className = "" }: { size?: number; animated?: boolean; className?: string }) {
   return (
-    <svg width={size} height={size * 1.1} viewBox="0 0 80 88" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-      <defs>
-        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#f5d060" />
-          <stop offset="40%" stopColor="#c9a84c" />
-          <stop offset="100%" stopColor="#8a6510" />
-        </linearGradient>
-        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#c9a84c" />
-          <stop offset="100%" stopColor="#5a3a00" />
-        </linearGradient>
-      </defs>
-      {/* Crown top */}
-      <polygon points="40,2 72,30 8,30" fill="url(#g1)" />
-      {/* Crown facet lines */}
-      <line x1="40" y1="2" x2="22" y2="30" stroke="#f0c840" strokeWidth="0.6" opacity="0.6" />
-      <line x1="40" y1="2" x2="58" y2="30" stroke="#f0c840" strokeWidth="0.6" opacity="0.6" />
-      {/* Z letterform in crown */}
-      <polyline points="18,11 62,11 18,27 62,27" stroke="#0d1b3e" strokeWidth="3.5" strokeLinejoin="round" strokeLinecap="round" fill="none" />
-      {/* Girdle (belt) */}
-      <rect x="8" y="28.5" width="64" height="3" fill="url(#g2)" />
-      {/* Pavilion */}
-      <polygon points="8,32 72,32 40,86" fill="url(#g2)" />
-      {/* Pavilion facet lines */}
-      <line x1="40" y1="86" x2="20" y2="48" stroke="#f0c840" strokeWidth="0.6" opacity="0.4" />
-      <line x1="40" y1="86" x2="60" y2="48" stroke="#f0c840" strokeWidth="0.6" opacity="0.4" />
-      <line x1="8" y1="32" x2="40" y2="56" stroke="#f0c840" strokeWidth="0.4" opacity="0.3" />
-      <line x1="72" y1="32" x2="40" y2="56" stroke="#f0c840" strokeWidth="0.4" opacity="0.3" />
-    </svg>
+    <img 
+      src={logoDiamond} 
+      alt="Zewel Studio Diamond" 
+      style={{ width: size, height: 'auto', objectFit: 'contain' }}
+      className={`\${className} \${animated ? 'animate-[pulse_2s_ease-in-out_infinite]' : ''}`} 
+    />
   );
 }
 
 // Full brand lockup: ZEWEL ◆ STUDIO
-function BrandLockup({ size = "md", inverted = false }: { size?: "sm" | "md" | "lg" | "xl"; inverted?: boolean }) {
-  const textColor = inverted ? "text-[#0d1b3e]" : "text-white";
-  const configs = {
-    sm: { gem: 28, text: "text-[11px]", sub: "text-[7px]", gap: "gap-2" },
-    md: { gem: 40, text: "text-[14px]", sub: "text-[8px]", gap: "gap-3" },
-    lg: { gem: 56, text: "text-[20px]", sub: "text-[10px]", gap: "gap-4" },
-    xl: { gem: 80, text: "text-[30px]", sub: "text-[13px]", gap: "gap-5" },
-  };
-  const c = configs[size];
+function BrandLockup({ size = "md", inverted = false, className = "" }: { size?: "sm" | "md" | "lg" | "xl"; inverted?: boolean; className?: string }) {
+  const configs = { sm: 60, md: 100, lg: 150, xl: 220 };
+  const h = configs[size];
   return (
-    <div className={`flex items-center ${c.gap}`}>
-      <div className="text-right">
-        <div className={`font-['Cinzel'] ${c.text} tracking-[0.35em] font-semibold ${textColor}`}>ZEWEL</div>
-        <div className={`font-['Lato'] ${c.sub} tracking-[0.5em] text-[#c9a84c] uppercase`}>Luxury</div>
-      </div>
-      <DiamondLogo size={c.gem} />
-      <div className="text-left">
-        <div className={`font-['Cinzel'] ${c.text} tracking-[0.35em] font-semibold ${textColor}`}>STUDIO</div>
-        <div className={`font-['Lato'] ${c.sub} tracking-[0.5em] text-[#c9a84c] uppercase`}>Mumbai</div>
-      </div>
-    </div>
+    <img 
+      src={logoFull} 
+      alt="Zewel Studio" 
+      style={{ height: h, objectFit: 'contain' }}
+      className={className}
+    />
   );
 }
 
@@ -117,6 +90,13 @@ const CATEGORIES = [
       { url: "https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=500&h=500&fit=crop&auto=format", alt: "Gold diamond ring" },
       { url: "https://images.unsplash.com/photo-1514612497953-05d1e5e171fa?w=500&h=500&fit=crop&auto=format", alt: "Clear gemstone statement ring" },
       { url: "https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?w=500&h=500&fit=crop&auto=format", alt: "Heart pendant diamond" },
+      { url: "https://images.unsplash.com/photo-1628834947963-c7f3945bd2f1?w=500&h=500&fit=crop", alt: "Elegant gold ring" },
+      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Silver engagement ring" },
+      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
+      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
+      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
   {
@@ -131,6 +111,13 @@ const CATEGORIES = [
       { url: "https://images.unsplash.com/photo-1600862754152-80a263dd564f?w=500&h=500&fit=crop&auto=format", alt: "Gold red beaded necklace" },
       { url: "https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?w=500&h=500&fit=crop&auto=format", alt: "Woman wearing gold necklace" },
       { url: "https://images.unsplash.com/photo-1705326454924-f6777522b030?w=500&h=500&fit=crop&auto=format", alt: "Mannequin with gold necklace" },
+      { url: "https://images.unsplash.com/photo-1599643478524-fb5062a7edcb?w=500&h=500&fit=crop", alt: "Pearl and gold necklace" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Vintage style necklace" },
+      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
+      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
+      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
   {
@@ -145,6 +132,13 @@ const CATEGORIES = [
       { url: "https://images.unsplash.com/photo-1674329042475-de1a95b4ca62?w=500&h=500&fit=crop&auto=format", alt: "Earrings on black case" },
       { url: "https://images.unsplash.com/photo-1588444650733-d0767b753fc8?w=500&h=500&fit=crop&auto=format", alt: "Silver diamond earring" },
       { url: "https://images.unsplash.com/photo-1588444650700-fd887f15a9e7?w=500&h=500&fit=crop&auto=format", alt: "Floral gold earrings" },
+      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Diamond stud earrings" },
+      { url: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&h=500&fit=crop", alt: "Gold hoop earrings" },
+      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
+      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
+      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
   {
@@ -159,6 +153,13 @@ const CATEGORIES = [
       { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop&auto=format", alt: "Beaded gold bracelet" },
       { url: "https://images.unsplash.com/photo-1689367436629-1d288f1e23b6?w=500&h=500&fit=crop&auto=format", alt: "Gold bracelet detail" },
       { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=500&h=500&fit=crop&auto=format", alt: "Traditional bracelet" },
+      { url: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?w=500&h=500&fit=crop", alt: "Chain link bracelet" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Charm bracelet" },
+      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
+      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
+      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
   {
@@ -173,6 +174,13 @@ const CATEGORIES = [
       { url: "https://images.unsplash.com/photo-1617191880362-aac615de3c26?w=500&h=500&fit=crop&auto=format", alt: "Traditional gold bangle" },
       { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop&auto=format", alt: "Beaded traditional bangle" },
       { url: "https://images.unsplash.com/photo-1612945578381-6481cdd73b0a?w=500&h=500&fit=crop&auto=format", alt: "Gold floral bangle" },
+      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Stackable bangles" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Ornate gold bangle" },
+      { url: "https://images.unsplash.com/photo-1599643477874-5c36ea60a5e7?w=500&h=500&fit=crop", alt: "Placeholder 11" },
+      { url: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&h=500&fit=crop", alt: "Placeholder 12" },
+      { url: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?w=500&h=500&fit=crop", alt: "Placeholder 13" },
+      { url: "https://images.unsplash.com/photo-1574634153921-27ce377728ce?w=500&h=500&fit=crop", alt: "Placeholder 14" },
+      { url: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=500&fit=crop", alt: "Placeholder 15" },
     ],
   },
 ];
@@ -208,12 +216,33 @@ function ProductCard({ url, alt, index }: { url: string; alt: string; index: num
   );
 }
 
+// ── Splash Screen ────────────────────────────────────────────────────────────
+function Splash({ onComplete }: { onComplete: () => void }) {
+  const [stage, setStage] = useState(0);
+  useEffect(() => {
+    const t1 = setTimeout(() => setStage(1), 100);
+    const t2 = setTimeout(() => setStage(2), 1000);
+    const t3 = setTimeout(() => setStage(3), 2600);
+    const t4 = setTimeout(onComplete, 3400);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
+  }, [onComplete]);
+
+  return (
+    <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#060e1f] transition-all duration-700 ${stage === 3 ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'}`}>
+      <div className={`transition-all duration-1000 ease-out ${stage >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
+        <DiamondLogo size={350} animated={stage >= 1 && stage < 3} />
+      </div>
+    </div>
+  );
+}
+
 // ── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
   const [activeCat, setActiveCat] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setHeroLoaded(true), 200);
@@ -227,7 +256,9 @@ export default function App() {
   const cat = CATEGORIES[activeCat];
 
   return (
-    <div className="min-h-screen bg-[#060e1f] text-white font-['Lato'] overflow-x-hidden">
+    <>
+      {!splashDone && <Splash onComplete={() => setSplashDone(true)} />}
+      <div className={`min-h-screen bg-[#060e1f] text-white font-['Lato'] overflow-x-hidden transition-opacity duration-1000 ${splashDone ? 'opacity-100' : 'opacity-0 h-screen overflow-hidden'}`}>
 
       {/* ══ NAVBAR ═══════════════════════════════════════════════════════════ */}
       <header
@@ -336,19 +367,16 @@ export default function App() {
             <div className="h-px w-14 bg-gradient-to-l from-transparent to-[#c9a84c]" />
           </div>
 
-          {/* Giant Logo */}
+          {/* Giant Logo Lockup */}
           <div className="flex justify-center mb-8">
-            <DiamondLogo size={120} />
+            <img 
+              src={logoFull} 
+              alt="Zewel Studio" 
+              className="w-full max-w-[600px] h-auto object-contain"
+            />
           </div>
 
-          {/* Brand Name */}
-          <h1 className="font-['Cinzel'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.2em] font-bold text-white leading-none mb-3">
-            ZEWEL
-          </h1>
-          <h2 className="font-['Cinzel'] text-2xl sm:text-3xl md:text-4xl tracking-[0.5em] text-[#c9a84c] font-light mb-3">
-            STUDIO
-          </h2>
-          <p className="font-['Playfair_Display'] text-white/40 text-lg italic mb-2">
+          <p className="font-['Playfair_Display'] text-white/40 text-lg italic mb-2 mt-4">
             ज्वेल स्टूडियो
           </p>
 
@@ -470,6 +498,45 @@ export default function App() {
         </div>
       </section>
 
+            {/* ══ TEAM SECTION ══════════════════════════════════════════════════════ */}
+      <section className="py-20 px-6 bg-[#030912] border-t border-[#c9a84c]/10">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-16">
+              <p className="text-[#c9a84c] text-[10px] tracking-[0.5em] uppercase mb-5">The Artisans</p>
+              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-4">
+                Meet Our <em className="text-[#c9a84c]">Experts</em>
+              </h2>
+              <Ornament />
+            </div>
+          </Reveal>
+          
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { name: "Monika Damani", img: team4 },
+              { name: "CA Rajkumar Damani", img: team3 },
+              { name: "Akash Dhami", img: team2 },
+              { name: "Avani Dhami", img: team1 }
+            ].map((person, i) => (
+              <Reveal key={person.name} delay={i * 100}>
+                <div className="group relative overflow-hidden bg-[#060e1f] border border-[#c9a84c]/10 hover:border-[#c9a84c]/40 transition-all duration-500">
+                  <div className="aspect-[3/4] overflow-hidden bg-[#0a1628]">
+                    <img 
+                      src={person.img} 
+                      alt={person.name} 
+                      className={`w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ${person.name === 'Akash Dhami' ? 'object-[50%_20%]' : ''}`} 
+                    />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#060e1f] via-[#060e1f]/90 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="font-['Playfair_Display'] text-xl text-white mb-1">{person.name}</h3>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══ COLLECTIONS ════════════════════════════════════════════════════════ */}
       <section id="collections" className="py-24 bg-[#030912]">
         <div className="max-w-7xl mx-auto px-6">
@@ -485,19 +552,21 @@ export default function App() {
 
           {/* Tab strip */}
           <Reveal delay={100}>
-            <div className="flex flex-wrap justify-center gap-0 mb-14 border border-[#c9a84c]/15">
+            <div className="flex overflow-x-auto hide-scrollbar gap-2 mb-14 px-2 snap-x snap-mandatory border-b border-[#c9a84c]/15">
               {CATEGORIES.map((c, i) => (
                 <button
                   key={c.id}
                   onClick={() => setActiveCat(i)}
-                  className={`relative flex-1 min-w-[120px] py-4 px-6 text-center transition-all duration-300 ${
+                  className={`relative min-w-max py-4 px-6 text-center transition-all duration-300 snap-center ${
                     activeCat === i
-                      ? "bg-[#c9a84c] text-[#060e1f]"
-                      : "text-white/40 hover:text-[#c9a84c] hover:bg-[#c9a84c]/5"
+                      ? "text-[#c9a84c]"
+                      : "text-white/40 hover:text-[#c9a84c]"
                   }`}
                 >
                   <div className={`text-[11px] tracking-[0.25em] uppercase font-bold`}>{c.label}</div>
                   <div className="text-[9px] tracking-wider opacity-70 mt-0.5">{c.labelHi}</div>
+                  {/* Active Indicator */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-[#c9a84c] transition-transform duration-300 ${activeCat === i ? 'scale-x-100' : 'scale-x-0'}`} />
                 </button>
               ))}
             </div>
@@ -569,7 +638,7 @@ export default function App() {
           <p className="text-white/50 leading-relaxed mb-8 max-w-sm">
             Each piece carries the weight of intention — designed not for today alone, but to be treasured, passed down, and loved beyond a lifetime.
           </p>
-          <button onClick={() => nav("contact")}
+                    <button onClick={() => nav("contact")}
             className="group flex items-center gap-3 text-[#c9a84c] text-[11px] tracking-[0.35em] uppercase border-b border-[#c9a84c]/30 pb-1 hover:border-[#c9a84c] transition-all duration-300">
             Visit Our Showroom <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
           </button>
@@ -774,8 +843,16 @@ export default function App() {
         ::-webkit-scrollbar { width: 3px; }
         ::-webkit-scrollbar-track { background: #060e1f; }
         ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 2px; }
-        .scale-115 { transform: scale(1.15); }
+                .scale-115 { transform: scale(1.15); }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 }
