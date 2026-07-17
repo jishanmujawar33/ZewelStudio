@@ -23,19 +23,7 @@ import certSgl from "../../imports/cert-sgl.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Gold-accent divider ─── */
-function GoldDivider() {
-  return (
-    <div className="flex items-center justify-center gap-4 my-4">
-      <div className="flex-1 h-px" style={{ background: `linear-gradient(to right, transparent, #c9a84c)` }} />
-      <svg width="22" height="22" viewBox="0 0 22 22">
-        <rect x="6" y="6" width="10" height="10" fill="none" stroke="#c9a84c" strokeWidth="1" transform="rotate(45 11 11)" />
-        <rect x="9" y="9" width="4" height="4" fill="#c9a84c" transform="rotate(45 11 11)" />
-      </svg>
-      <div className="flex-1 h-px" style={{ background: `linear-gradient(to left, transparent, #c9a84c)` }} />
-    </div>
-  );
-}
+
 
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -192,14 +180,7 @@ export default function HomePage() {
             />
           </div>
 
-          {/* Thin gold decorative line */}
-          <div className="flex items-center justify-center gap-4 mb-10">
-            <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#c9a84c]/60" />
-            <svg width="14" height="14" viewBox="0 0 14 14">
-              <rect x="3" y="3" width="8" height="8" fill="#c9a84c" transform="rotate(45 7 7)" opacity="0.8" />
-            </svg>
-            <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#c9a84c]/60" />
-          </div>
+
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -249,7 +230,6 @@ export default function HomePage() {
           <div className="gsap-reveal text-center mb-14">
             <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Our Commitment</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Our Promise</h2>
-            <GoldDivider />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -274,6 +254,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ GOOGLE REVIEWS (ELFSIGHT) ═════════════════════════════════════════ */}
+      <section className="py-16 px-6 bg-[#faf9f6] border-b border-[#e5e7eb]">
+        <div className="max-w-7xl mx-auto">
+          <div className="elfsight-app-6dad3e6d-fc3b-41ef-a5ce-78ed6b5fda66" data-elfsight-app-lazy></div>
+        </div>
+      </section>
 
       {/* ══ ABOUT PREVIEW ═══════════════════════════════════════════════════ */}
       <section ref={aboutRef} className="py-24 px-6 bg-white">
@@ -296,7 +282,6 @@ export default function HomePage() {
               <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] leading-[1.15] mb-4">
                 Where Every Piece<br />Tells a Story
               </h2>
-              <GoldDivider />
               <p className="text-[#4b5563] leading-relaxed mt-6 mb-4">
                 Zewel Studio is Borivali's finest luxury jewellery showroom — proudly women-owned and built on a belief that jewellery is more than adornment. It is memory, identity, and art.
               </p>
@@ -329,7 +314,6 @@ export default function HomePage() {
           <div className="gsap-reveal text-center mb-16">
             <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Curated Collections</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Explore Our Categories</h2>
-            <GoldDivider />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -375,7 +359,6 @@ export default function HomePage() {
           <div className="gsap-reveal text-center mb-16">
             <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Trusted & Verified</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Our Certifications</h2>
-            <GoldDivider />
             <p className="text-[#6b7280] text-sm mt-6 max-w-2xl mx-auto">
               Every piece at Zewel Studio is backed by industry-leading certifications, ensuring authenticity, purity, and trust.
             </p>
@@ -416,7 +399,7 @@ export default function HomePage() {
                   <img 
                     src={cert.img} 
                     alt={cert.name} 
-                    className="max-h-full max-w-full object-contain mix-blend-multiply grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" 
+                    className="max-h-full max-w-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500" 
                   />
                 </div>
                 <h3 className="font-['Playfair_Display'] text-lg text-[#1f2937] font-bold mb-1">{cert.name}</h3>
@@ -434,7 +417,6 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">The Artisans</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Meet Our Experts</h2>
-            <GoldDivider />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -459,7 +441,6 @@ export default function HomePage() {
           <div className="gsap-reveal text-center mb-16">
             <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">What We Offer</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Our Services</h2>
-            <GoldDivider />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -500,7 +481,6 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Get in Touch</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Visit Our Showroom</h2>
-            <GoldDivider />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">

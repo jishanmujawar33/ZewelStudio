@@ -5,18 +5,7 @@ import model4 from "../../imports/model-4.jpg";
 import model7 from "../../imports/model-7.jpg";
 import { ArrowRight, Star } from "lucide-react";
 
-function BlueDivider() {
-  return (
-    <div className="flex items-center justify-center gap-4 my-4">
-      <div className="flex-1 h-px" style={{ background: `linear-gradient(to right, transparent, #1a3a6b)` }} />
-      <svg width="22" height="22" viewBox="0 0 22 22">
-        <rect x="6" y="6" width="10" height="10" fill="none" stroke="#1a3a6b" strokeWidth="1" transform="rotate(45 11 11)" />
-        <rect x="9" y="9" width="4" height="4" fill="#1a3a6b" transform="rotate(45 11 11)" />
-      </svg>
-      <div className="flex-1 h-px" style={{ background: `linear-gradient(to left, transparent, #1a3a6b)` }} />
-    </div>
-  );
-}
+
 
 export default function AboutPage() {
   return (
@@ -31,7 +20,6 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-3xl pt-20">
           <p className="text-[#2563eb] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Our Heritage</p>
           <h1 className="font-['Playfair_Display'] text-5xl md:text-6xl text-[#1a3a6b] mb-4 font-bold">About Zewel Studio</h1>
-          <BlueDivider />
           <p className="text-[#4b5563] text-lg mt-6">A legacy of craftsmanship, trust, and unparalleled artistry in Borivali.</p>
         </div>
       </section>
@@ -42,7 +30,6 @@ export default function AboutPage() {
           <div>
             <p className="text-[#2563eb] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Our Journey</p>
             <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl text-[#1f2937] mb-2 font-bold">The Zewel Story</h2>
-            <BlueDivider />
             <p className="text-[#4b5563] leading-relaxed mb-6 text-lg mt-6">
               Founded with a passion for exquisite design and uncompromising quality, Zewel Studio has become a landmark for fine jewellery in Mumbai. As a proudly women-owned enterprise, we bring a unique perspective to every piece we create—understanding that jewellery is profoundly personal.
             </p>
@@ -85,7 +72,6 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <p className="text-[#2563eb] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">What We Stand For</p>
             <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl text-[#1f2937] mb-4 font-bold">Our Values</h2>
-            <BlueDivider />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -111,7 +97,6 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <p className="text-[#2563eb] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">The Visionaries</p>
             <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Meet Our Team</h2>
-            <BlueDivider />
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
