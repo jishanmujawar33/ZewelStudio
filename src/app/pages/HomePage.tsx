@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { ShoppingBag, Truck, Wrench, Package, Star, ArrowRight, ChevronDown, MapPin, Phone, Mail, Clock, Shield, Award, CheckCircle } from "lucide-react";
+import GoogleReviews from "../components/GoogleReviews";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TEAM_MEMBERS } from "../data/team";
@@ -254,10 +255,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ GOOGLE REVIEWS (ELFSIGHT) ═════════════════════════════════════════ */}
+      {/* ══ GOOGLE REVIEWS ═════════════════════════════════════════════════ */}
       <section className="py-16 px-6 bg-[#faf9f6] border-b border-[#e5e7eb]">
         <div className="max-w-7xl mx-auto">
-          <div className="elfsight-app-6dad3e6d-fc3b-41ef-a5ce-78ed6b5fda66" data-elfsight-app-lazy></div>
+          <div className="text-center mb-10">
+            <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">What Our Customers Say</p>
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Customer Reviews</h2>
+          </div>
+          <GoogleReviews />
         </div>
       </section>
 
