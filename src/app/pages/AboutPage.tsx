@@ -92,7 +92,7 @@ export default function AboutPage() {
             {[
               { title: "Craftsmanship", desc: "Every piece is crafted with meticulous attention to detail by master artisans." },
               { title: "Heritage", desc: "We honor traditional techniques while embracing contemporary design." },
-              { title: "Inclusivity", desc: "A welcoming, zero-pressure environment. Proudly LGBTQ+ friendly." },
+              { title: "Inclusivity", desc: "A welcoming, zero-pressure environment where everyone feels valued and celebrated." },
               { title: "Trust", desc: "Transparent pricing and ethically sourced materials you can rely on." },
             ].map(val => (
               <div key={val.title} className="bg-white p-8 border border-[#e5e7eb] text-center hover:shadow-lg transition-all duration-300">

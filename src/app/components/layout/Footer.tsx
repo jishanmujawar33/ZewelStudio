@@ -25,7 +25,7 @@ export default function Footer() {
             className="h-16 mb-4 object-contain"
             style={{ filter: "brightness(0) invert(1)" }} 
           />
-          <p className="font-['Playfair_Display'] text-[#93c5fd] text-lg italic">The Art of Fine Jewellery</p>
+          <p className="text-[#93c5fd] text-[10px] tracking-[0.4em] uppercase font-medium">Luxury Jewellery · Borivali, Mumbai</p>
         </div>
 
         {/* 4 Column Layout */}

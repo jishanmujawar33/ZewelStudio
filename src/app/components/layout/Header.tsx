@@ -72,7 +72,7 @@ export default function Header() {
                 <img 
                   src={logoFull} 
                   alt="Zewel Studio" 
-                  className="h-12 object-contain"
+                  className="h-16 object-contain"
                   style={{ filter: "brightness(0) invert(1)" }} 
                 />
               </Link>
