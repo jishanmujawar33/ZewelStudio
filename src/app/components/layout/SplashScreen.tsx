@@ -49,7 +49,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         ref={logoRef}
         src={logoDiamond}
         alt="Zewel Studio"
-        className="w-28 h-28 object-contain opacity-0"
+        className="w-40 h-40 md:w-48 md:h-48 object-contain opacity-0"
       />
     </div>
   );
