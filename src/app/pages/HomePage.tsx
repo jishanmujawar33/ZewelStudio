@@ -235,16 +235,16 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: "🏅", title: "SGL Certified", desc: "Every piece verified by certified gemological labs" },
-              { icon: "💎", title: "Exquisite Designs", desc: "Handcrafted with precision by master artisans" },
-              { icon: "🚚", title: "Free Secured Shipping", desc: "Insured delivery straight to your doorstep" },
-              { icon: "✨", title: "Free Annual Cleaning", desc: "Complimentary cleaning & polishing every year" },
-            ].map(({ icon, title, desc }, i) => (
+              { icon: <Shield size={32} className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500" />, title: "SGL Certified", desc: "Every piece verified by certified gemological labs" },
+              { icon: <Star size={32} className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500" />, title: "Exquisite Designs", desc: "Handcrafted with precision by master artisans" },
+              { icon: <Truck size={32} className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500" />, title: "Free Secured Shipping", desc: "Insured delivery straight to your doorstep" },
+              { icon: <Wrench size={32} className="text-[#c9a84c] group-hover:scale-110 transition-transform duration-500" />, title: "Free Annual Cleaning", desc: "Complimentary cleaning & polishing every year" },
+            ].map(({ icon, title, desc }) => (
               <div
                 key={title}
                 className="gsap-reveal text-center group"
               >
-                <div className="w-20 h-20 mx-auto mb-5 rounded-full border-2 border-[#c9a84c]/20 flex items-center justify-center text-3xl group-hover:border-[#c9a84c]/60 group-hover:bg-[#fdf8ef] transition-all duration-500">
+                <div className="w-20 h-20 mx-auto mb-5 rounded-full border border-[#c9a84c]/20 flex items-center justify-center bg-[#faf9f6] group-hover:border-[#c9a84c]/50 group-hover:bg-white shadow-sm hover:shadow-md transition-all duration-500">
                   {icon}
                 </div>
                 <h3 className="font-['Playfair_Display'] text-[#1f2937] text-sm uppercase tracking-widest font-bold mb-2">{title}</h3>
@@ -352,7 +352,7 @@ export default function HomePage() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
           <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Experience Luxury</p>
           <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-8">Visit Us in Borivali</h2>
-          <a href="#contact" className="bg-[#c9a84c] text-[#0a1224] px-10 py-3.5 text-[11px] uppercase tracking-[0.3em] font-bold shadow-lg hover:bg-[#dbb85c] transition-all duration-300">
+          <a href="https://www.google.com/maps/place/Zewel+Studio+%7C+Luxury+Jewellery+Store+%26+Showroom+In+Borivali+Mumbai/@19.2277884,72.8495666,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b114f00a4087:0x6835326fed6b1780!8m2!3d19.2277834!4d72.8521415!16s%2Fg%2F11zhphgpbp?entry=ttu" target="_blank" rel="noopener noreferrer" className="bg-[#c9a84c] text-[#0a1224] px-10 py-3.5 text-[11px] uppercase tracking-[0.3em] font-bold shadow-lg hover:bg-[#dbb85c] transition-all duration-300">
             Get Directions
           </a>
         </div>
@@ -500,7 +500,9 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="text-[#1f2937] font-semibold text-sm mb-1">Address</p>
-                    <p className="text-[#6b7280] text-sm">Borivali (West), Mumbai, Maharashtra, India</p>
+                    <a href="https://www.google.com/maps/place/Zewel+Studio+%7C+Luxury+Jewellery+Store+%26+Showroom+In+Borivali+Mumbai/@19.2277884,72.8495666,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b114f00a4087:0x6835326fed6b1780!8m2!3d19.2277834!4d72.8521415!16s%2Fg%2F11zhphgpbp?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-[#6b7280] text-sm hover:text-[#c9a84c] transition-colors block">
+                      Borivali (West), Mumbai, Maharashtra, India
+                    </a>
                   </div>
                 </div>
 
@@ -520,7 +522,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="text-[#1f2937] font-semibold text-sm mb-1">Email</p>
-                    <a href="mailto:info@zewelstudio.com" className="text-[#c9a84c] text-sm hover:underline">info@zewelstudio.com</a>
+                    <a href="mailto:contact@zewelstudio.com" className="text-[#c9a84c] text-sm hover:underline">contact@zewelstudio.com</a>
                   </div>
                 </div>
 

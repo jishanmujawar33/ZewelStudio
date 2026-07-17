@@ -103,7 +103,7 @@ export default function Header() {
                 </div>
               </div>
 
-              <a href="/#contact" className="hidden md:flex items-center justify-center text-white hover:text-[#c9a84c] transition-colors p-2" title="Store Locator">
+              <a href="https://www.google.com/maps/place/Zewel+Studio+%7C+Luxury+Jewellery+Store+%26+Showroom+In+Borivali+Mumbai/@19.2277884,72.8495666,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b114f00a4087:0x6835326fed6b1780!8m2!3d19.2277834!4d72.8521415!16s%2Fg%2F11zhphgpbp?entry=ttu" target="_blank" rel="noopener noreferrer" className="hidden md:flex items-center justify-center text-white hover:text-[#c9a84c] transition-colors p-2" title="Store Locator">
                 <MapPin size={20} />
               </a>
 

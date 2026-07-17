@@ -13,6 +13,7 @@ export default function App() {
 
   return (
     <>
+      <ScrollToTop />
       {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <div className={`min-h-screen bg-white text-[#1f2937] font-['Inter'] overflow-x-hidden selection:bg-[#1a3a6b] selection:text-white transition-opacity duration-700 ${splashDone ? 'opacity-100' : 'opacity-0 h-screen overflow-hidden'}`}>
         <Header />

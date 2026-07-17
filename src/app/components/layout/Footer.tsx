@@ -78,7 +78,9 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#93c5fd] shrink-0 mt-0.5" />
-                <span className="text-sm">Borivali (West),<br/>Mumbai, Maharashtra, India</span>
+                <a href="https://www.google.com/maps/place/Zewel+Studio+%7C+Luxury+Jewellery+Store+%26+Showroom+In+Borivali+Mumbai/@19.2277884,72.8495666,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b114f00a4087:0x6835326fed6b1780!8m2!3d19.2277834!4d72.8521415!16s%2Fg%2F11zhphgpbp?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors block">
+                  Borivali (West),<br/>Mumbai, Maharashtra, India
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-[#93c5fd] shrink-0" />
@@ -86,7 +88,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-[#93c5fd] shrink-0" />
-                <a href="mailto:info@zewelstudio.com" className="text-sm hover:text-white transition-colors">info@zewelstudio.com</a>
+                <a href="mailto:contact@zewelstudio.com" className="text-sm hover:text-white transition-colors">contact@zewelstudio.com</a>
               </li>
               <li className="flex items-start gap-3 pt-2">
                 <Clock size={16} className="text-[#93c5fd] shrink-0 mt-0.5" />

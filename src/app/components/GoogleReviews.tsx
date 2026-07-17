@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
-const GOOGLE_REVIEW_URL = "https://search.google.com/local/reviews?placeid=ChIJpSMYZfvI5zsRqL8j-9NEaac";
+const GOOGLE_REVIEW_URL = "https://share.google/NfeowWoMVKNhhJEZ3";
 const GOOGLE_MAPS_URL = "https://share.google/NfeowWoMVKNhhJEZ3";
 
 interface Review {
