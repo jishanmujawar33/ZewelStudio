@@ -477,7 +477,6 @@ export default function HomePage() {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/90 to-transparent pt-12">
                   <h3 className="font-['Playfair_Display'] text-xl text-[#1f2937] mb-1">{person.name}</h3>
-                  <p className="text-[#c9a84c] text-xs uppercase tracking-widest font-semibold">{person.role}</p>
                 </div>
               </div>
             ))}
