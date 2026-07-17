@@ -19,7 +19,7 @@ export default function AboutPage() {
         </div>
         <div className="relative z-10 max-w-3xl pt-20">
           <p className="text-[#2563eb] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Our Heritage</p>
-          <h1 className="font-['Playfair_Display'] text-5xl md:text-6xl text-[#1a3a6b] mb-4 font-bold">About Zewel Studio</h1>
+          <h1 className="font-['Playfair_Display'] text-5xl md:text-6xl text-[#163275] mb-4 font-bold">About Zewel Studio</h1>
           <p className="text-[#4b5563] text-lg mt-6">A legacy of craftsmanship, trust, and unparalleled artistry in Borivali.</p>
         </div>
       </section>
@@ -54,17 +54,17 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center mb-24">
             <div>
-              <p className="font-['Playfair_Display'] text-5xl text-[#1a3a6b] font-bold mb-2">5+</p>
+              <p className="font-['Playfair_Display'] text-5xl text-[#163275] font-bold mb-2">5+</p>
               <p className="text-[#6b7280] text-xs uppercase tracking-widest font-bold">Years of Excellence</p>
             </div>
             <div>
-              <p className="font-['Playfair_Display'] text-5xl text-[#1a3a6b] font-bold mb-2">42</p>
+              <p className="font-['Playfair_Display'] text-5xl text-[#163275] font-bold mb-2">42</p>
               <p className="text-[#6b7280] text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2">
                 Five-Star Reviews <Star size={12} className="fill-[#2563eb] text-[#2563eb]" />
               </p>
             </div>
             <div>
-              <p className="font-['Playfair_Display'] text-5xl text-[#1a3a6b] font-bold mb-2">500+</p>
+              <p className="font-['Playfair_Display'] text-5xl text-[#163275] font-bold mb-2">500+</p>
               <p className="text-[#6b7280] text-xs uppercase tracking-widest font-bold">Pieces Curated</p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
               { title: "Trust", desc: "Transparent pricing and ethically sourced materials you can rely on." },
             ].map(val => (
               <div key={val.title} className="bg-white p-8 border border-[#e5e7eb] text-center hover:shadow-lg transition-all duration-300">
-                <h3 className="font-['Playfair_Display'] text-xl text-[#1a3a6b] font-bold mb-3">{val.title}</h3>
+                <h3 className="font-['Playfair_Display'] text-xl text-[#163275] font-bold mb-3">{val.title}</h3>
                 <p className="text-[#6b7280] text-sm leading-relaxed">{val.desc}</p>
               </div>
             ))}
@@ -116,12 +116,12 @@ export default function AboutPage() {
       </section>
 
       {/* ══ CALL TO ACTION ════════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#1a3a6b] text-center">
+      <section className="py-24 px-6 bg-[#163275] text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-['Playfair_Display'] text-4xl text-white mb-6 font-bold">Experience Zewel Studio</h2>
           <p className="text-white/80 text-lg mb-10">We invite you to visit our showroom and discover the art of fine jewellery in person.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" className="bg-white text-[#1a3a6b] px-10 py-4 text-xs tracking-widest uppercase font-bold hover:bg-[#f0f4f8] transition-colors shadow-lg">
+            <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" className="bg-white text-[#163275] px-10 py-4 text-xs tracking-widest uppercase font-bold hover:bg-[#f0f4f8] transition-colors shadow-lg">
               Book an Appointment
             </a>
             <Link to="/category/mangalsutra" className="group flex items-center gap-3 text-white border-b-2 border-transparent hover:border-white px-2 py-3 text-xs tracking-widest uppercase font-bold transition-all">

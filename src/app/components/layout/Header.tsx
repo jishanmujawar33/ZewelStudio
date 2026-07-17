@@ -56,7 +56,7 @@ export default function Header() {
       </div>
 
       {/* Main header */}
-      <div className="bg-[#1a3a6b] border-b border-white/10">
+      <div className="bg-[#163275] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 h-20">
           <div className="grid grid-cols-3 items-center h-full">
             
@@ -108,7 +108,7 @@ export default function Header() {
               </a>
 
               <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" 
-                 className="hidden md:block bg-white text-[#1a3a6b] hover:bg-[#f0f4f8] px-5 py-2.5 text-[10px] tracking-widest uppercase font-bold transition-all shadow-sm">
+                 className="hidden md:block bg-white text-[#163275] hover:bg-[#f0f4f8] px-5 py-2.5 text-[10px] tracking-widest uppercase font-bold transition-all shadow-sm">
                 Enquire
               </a>
 
@@ -141,7 +141,7 @@ export default function Header() {
             </div>
             
             <div className="pt-6 mt-4 border-t border-[#e5e7eb]">
-              <a href="https://wa.me/919136193999" className="flex justify-center bg-[#1a3a6b] text-white py-3 text-xs uppercase tracking-widest font-bold rounded-sm">
+              <a href="https://wa.me/919136193999" className="flex justify-center bg-[#163275] text-white py-3 text-xs uppercase tracking-widest font-bold rounded-sm">
                 WhatsApp Us
               </a>
             </div>

@@ -42,14 +42,14 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     <div
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex items-center justify-center"
-      style={{ background: "#1a3a6b" }}
+      style={{ background: "#163275" }}
     >
       {/* Logo only */}
       <img
         ref={logoRef}
         src={logoDiamond}
         alt="Zewel Studio"
-        className="w-40 h-40 md:w-48 md:h-48 object-contain opacity-0"
+        className="w-[280px] h-[280px] md:w-[340px] md:h-[340px] object-contain opacity-0"
       />
     </div>
   );

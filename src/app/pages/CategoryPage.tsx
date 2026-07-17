@@ -38,7 +38,7 @@ export default function CategoryPage() {
       <div className="min-h-[60vh] flex flex-col items-center justify-center pt-20 text-center px-6">
         <h1 className="font-['Playfair_Display'] text-4xl text-[#1f2937] mb-4">Category Not Found</h1>
         <p className="text-[#6b7280] mb-8">The collection you are looking for does not exist or has been moved.</p>
-        <Link to="/" className="bg-[#1a3a6b] text-white px-8 py-3 text-xs uppercase tracking-widest font-bold">Return Home</Link>
+        <Link to="/" className="bg-[#163275] text-white px-8 py-3 text-xs uppercase tracking-widest font-bold">Return Home</Link>
       </div>
     );
   }
@@ -66,7 +66,7 @@ export default function CategoryPage() {
         </div>
         <div className="relative z-10 max-w-2xl">
           <p className="text-[#2563eb] text-[10px] tracking-[0.3em] uppercase font-bold mb-4">{category.tagline}</p>
-          <h1 className="font-['Playfair_Display'] text-5xl md:text-6xl text-[#1a3a6b] mb-4 font-bold">{category.name}</h1>
+          <h1 className="font-['Playfair_Display'] text-5xl md:text-6xl text-[#163275] mb-4 font-bold">{category.name}</h1>
           <p className="text-[#4b5563] leading-relaxed">{category.description}</p>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function CategoryPage() {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button 
               onClick={() => setActiveFilter("all")}
-              className={`px-6 py-2.5 text-[11px] tracking-widest uppercase font-bold transition-all border ${activeFilter === "all" ? "bg-[#1a3a6b] text-white border-[#1a3a6b]" : "bg-white text-[#4b5563] border-[#e5e7eb] hover:border-[#1a3a6b]"}`}
+              className={`px-6 py-2.5 text-[11px] tracking-widest uppercase font-bold transition-all border ${activeFilter === "all" ? "bg-[#163275] text-white border-[#163275]" : "bg-white text-[#4b5563] border-[#e5e7eb] hover:border-[#163275]"}`}
             >
               All Pieces
             </button>
@@ -85,7 +85,7 @@ export default function CategoryPage() {
               <button 
                 key={sub.id}
                 onClick={() => setActiveFilter(sub.id)}
-                className={`px-6 py-2.5 text-[11px] tracking-widest uppercase font-bold transition-all border ${activeFilter === sub.id ? "bg-[#1a3a6b] text-white border-[#1a3a6b]" : "bg-white text-[#4b5563] border-[#e5e7eb] hover:border-[#1a3a6b]"}`}
+                className={`px-6 py-2.5 text-[11px] tracking-widest uppercase font-bold transition-all border ${activeFilter === sub.id ? "bg-[#163275] text-white border-[#163275]" : "bg-white text-[#4b5563] border-[#e5e7eb] hover:border-[#163275]"}`}
               >
                 {sub.name}
               </button>
@@ -112,7 +112,7 @@ export default function CategoryPage() {
                     <a 
                       href={`https://wa.me/919136193999?text=Hi! I am interested in the ${img.alt} from the ${category.name} collection.`}
                       target="_blank" rel="noopener noreferrer"
-                      className="bg-white text-[#1a3a6b] px-4 py-2 text-[10px] font-bold uppercase tracking-widest shadow-sm hover:bg-[#f0f4f8]"
+                      className="bg-white text-[#163275] px-4 py-2 text-[10px] font-bold uppercase tracking-widest shadow-sm hover:bg-[#f0f4f8]"
                       onClick={(e) => e.stopPropagation()}
                     >
                       Enquire Now

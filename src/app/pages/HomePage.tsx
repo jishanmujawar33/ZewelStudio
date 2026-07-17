@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
-import { ShoppingBag, Truck, Wrench, Package, Star, ArrowRight, ChevronDown, MapPin, Phone, Mail, Clock, Shield, Award, CheckCircle } from "lucide-react";
+import { ShoppingBag, Truck, Wrench, Package, Star, ArrowRight, ChevronDown, MapPin, Phone, Mail, Clock, Shield, Award, CheckCircle, Instagram, Facebook } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -186,7 +186,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/about"
-              className="group flex items-center gap-3 bg-[#c9a84c] text-[#0a1224] px-12 py-4 text-[11px] tracking-[0.3em] uppercase font-bold hover:bg-[#dbb85c] transition-all duration-300 shadow-lg hover:shadow-[0_8px_40px_rgba(201,168,76,0.3)]"
+              className="group flex items-center gap-3 bg-[#c9a84c] text-[#163275] px-12 py-4 text-[11px] tracking-[0.3em] uppercase font-bold hover:bg-[#dbb85c] transition-all duration-300 shadow-lg hover:shadow-[0_8px_40px_rgba(201,168,76,0.3)]"
             >
               Explore Collections
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -210,7 +210,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ MARQUEE ═══════════════════════════════════════════════════════════ */}
-      <div className="bg-[#0a1224] py-4 border-y border-[#c9a84c]/15 overflow-hidden">
+      <div className="bg-[#163275] py-4 border-y border-[#c9a84c]/15 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {Array(4).fill(null).map((_, i) => (
             <span key={i} className="flex items-center gap-12 px-12 text-xs tracking-widest uppercase font-semibold text-white/50">
@@ -255,6 +255,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ DESIGNER JEWELLERY BANNER ════════════════════════════════════════ */}
+      <section className="py-20 px-6 bg-[#163275] text-white border-b border-[#c9a84c]/20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#c9a84c] opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#c9a84c] opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+        
+        <div className="max-w-6xl mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="gsap-reveal space-y-6 text-center lg:text-left">
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl lg:text-6xl text-[#c9a84c] font-bold leading-tight drop-shadow-sm">
+              Designer Jewellery
+            </h2>
+            <h3 className="text-2xl md:text-3xl font-light tracking-widest uppercase">
+              Lab Grown Diamonds
+            </h3>
+            <div className="inline-block mt-6 px-8 py-4 border border-[#c9a84c]/50 rounded-full bg-gradient-to-r from-[#c9a84c]/10 to-transparent backdrop-blur-sm">
+              <p className="text-[#c9a84c] font-bold text-lg md:text-xl tracking-wide">
+                Starting @ ₹13,000/- <span className="text-sm font-normal text-white/70">Per Carat*</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="gsap-reveal flex flex-col gap-5 bg-white/5 backdrop-blur-md p-8 md:p-10 border border-white/10 rounded-2xl shadow-2xl">
+            {[
+              "Assured Exchange & Buy Back",
+              "Installment Option Available",
+              "Exchange Old Gold",
+              "Make Your Own Customised Jewellery",
+              "Free Old Jewellery Cleaning Services"
+            ].map((feature, idx) => (
+              <div key={idx} className="flex items-center gap-4 group">
+                <div className="w-8 h-8 rounded-full border border-[#c9a84c]/30 flex items-center justify-center shrink-0 group-hover:bg-[#c9a84c] group-hover:border-[#c9a84c] transition-all duration-300">
+                  <ArrowRight size={14} className="text-[#c9a84c] group-hover:text-[#163275] transition-colors duration-300" />
+                </div>
+                <p className="text-sm md:text-base tracking-wider uppercase font-semibold text-white/80 group-hover:text-white transition-colors">
+                  {feature}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
       {/* ══ GOOGLE REVIEWS ═════════════════════════════════════════════════ */}
       <section className="py-16 px-6 bg-[#faf9f6] border-b border-[#e5e7eb]">
         <div className="max-w-7xl mx-auto">
@@ -293,7 +336,7 @@ export default function HomePage() {
               <p className="text-[#4b5563] leading-relaxed mb-8">
                 From diamond solitaires to heritage-inspired bangles, every piece in our curated collection is selected for its craftsmanship, provenance, and capacity to move the person who wears it.
               </p>
-              <Link to="/about" className="inline-block border-b-2 border-[#c9a84c] text-[#1a3a6b] font-bold text-xs uppercase tracking-widest pb-1 hover:text-[#c9a84c] transition-colors">
+              <Link to="/about" className="inline-block border-b-2 border-[#c9a84c] text-[#163275] font-bold text-xs uppercase tracking-widest pb-1 hover:text-[#c9a84c] transition-colors">
                 Read Our Story
               </Link>
             </div>
@@ -342,6 +385,8 @@ export default function HomePage() {
         </div>
       </section>
 
+
+
       {/* ══ SHOWROOM GALLERY ════════════════════════════════════════════════════ */}
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden bg-black">
         {showroomImages.map((img, i) => (
@@ -352,7 +397,7 @@ export default function HomePage() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
           <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">Experience Luxury</p>
           <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-white mb-8">Visit Us in Borivali</h2>
-          <a href="https://www.google.com/maps/place/Zewel+Studio+%7C+Luxury+Jewellery+Store+%26+Showroom+In+Borivali+Mumbai/@19.2277884,72.8495666,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b114f00a4087:0x6835326fed6b1780!8m2!3d19.2277834!4d72.8521415!16s%2Fg%2F11zhphgpbp?entry=ttu" target="_blank" rel="noopener noreferrer" className="bg-[#c9a84c] text-[#0a1224] px-10 py-3.5 text-[11px] uppercase tracking-[0.3em] font-bold shadow-lg hover:bg-[#dbb85c] transition-all duration-300">
+          <a href="https://www.google.com/maps/place/Zewel+Studio+%7C+Luxury+Jewellery+Store+%26+Showroom+In+Borivali+Mumbai/@19.2277884,72.8495666,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b114f00a4087:0x6835326fed6b1780!8m2!3d19.2277834!4d72.8521415!16s%2Fg%2F11zhphgpbp?entry=ttu" target="_blank" rel="noopener noreferrer" className="bg-[#c9a84c] text-[#163275] px-10 py-3.5 text-[11px] uppercase tracking-[0.3em] font-bold shadow-lg hover:bg-[#dbb85c] transition-all duration-300">
             Get Directions
           </a>
         </div>
@@ -480,6 +525,78 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ PREMIUM SOCIAL MEDIA INTEGRATION ═════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-white relative overflow-hidden border-b border-[#e5e7eb]">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#c9a84c]/5 to-transparent rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-gradient-to-tr from-[#163275]/5 to-transparent rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 gsap-reveal">
+            <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4 flex items-center justify-center gap-4">
+              <span className="w-12 h-px bg-[#c9a84c]/30"></span>
+              Join The Community
+              <span className="w-12 h-px bg-[#c9a84c]/30"></span>
+            </p>
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-6">Stay Connected</h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Instagram Luxury Card */}
+            <div className="gsap-reveal group relative bg-white border border-[#e5e7eb] p-10 md:p-14 shadow-lg hover:shadow-2xl transition-all duration-700 overflow-hidden">
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-yellow-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000 pointer-events-none"></div>
+              
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center text-white shadow-md transform group-hover:-translate-y-1 transition-transform duration-500">
+                    <Instagram size={28} />
+                  </div>
+                  <p className="text-[#1f2937] font-['Playfair_Display'] text-xl italic opacity-50">@zewelstudio</p>
+                </div>
+
+                <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl text-[#1f2937] font-bold mb-4">Curated Elegance</h3>
+                <p className="text-[#6b7280] text-sm md:text-base leading-relaxed mb-10 max-w-sm">
+                  Experience our latest handcrafted designs, behind-the-scenes artistry, and exclusive boutique moments directly on our Instagram.
+                </p>
+
+                <div className="mt-auto">
+                  <a href="https://www.instagram.com/zewelstudio?igsh=YmM4MWRudDcxYzk5" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-4 group/btn relative overflow-hidden bg-[#1f2937] text-white px-8 py-4 text-xs tracking-[0.2em] uppercase font-bold hover:bg-transparent hover:text-[#1f2937] border border-[#1f2937] transition-all duration-300">
+                    <span className="relative z-10">Follow on Instagram</span>
+                    <ArrowRight size={14} className="relative z-10 transform group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Facebook Luxury Card */}
+            <div className="gsap-reveal group relative bg-[#163275] border border-[#163275] p-10 md:p-14 shadow-lg hover:shadow-2xl transition-all duration-700 overflow-hidden text-white">
+              <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000 pointer-events-none"></div>
+              
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-[#1877F2] shadow-md transform group-hover:-translate-y-1 transition-transform duration-500">
+                    <Facebook size={28} />
+                  </div>
+                  <p className="font-['Playfair_Display'] text-xl italic opacity-50">Zewel Studio</p>
+                </div>
+
+                <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl font-bold mb-4">Community & Events</h3>
+                <p className="text-white/70 text-sm md:text-base leading-relaxed mb-10 max-w-sm">
+                  Join our Facebook family for VIP event invitations, exclusive offers, and expert advice on preserving your luxury pieces.
+                </p>
+
+                <div className="mt-auto">
+                  <a href="https://www.facebook.com/share/1BMeBJ881a/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-4 group/btn relative overflow-hidden bg-white text-[#163275] px-8 py-4 text-xs tracking-[0.2em] uppercase font-bold hover:bg-transparent hover:text-white border border-white transition-all duration-300">
+                    <span className="relative z-10">Join Facebook Page</span>
+                    <ArrowRight size={14} className="relative z-10 transform group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══ CONTACT & MAP ═════════════════════════════════════════════════════ */}
       <section id="contact" className="py-24 px-6 bg-[#faf9f6]">
         <div className="max-w-7xl mx-auto">
@@ -491,7 +608,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="bg-white p-10 border border-[#e5e7eb] shadow-sm h-full">
-              <h3 className="font-['Playfair_Display'] text-2xl text-[#1a3a6b] font-bold mb-8">Zewel Studio</h3>
+              <h3 className="font-['Playfair_Display'] text-2xl text-[#163275] font-bold mb-8">Zewel Studio</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
