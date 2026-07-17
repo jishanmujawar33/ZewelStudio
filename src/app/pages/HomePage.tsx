@@ -7,6 +7,7 @@ import { TEAM_MEMBERS } from "../data/team";
 import { CATEGORIES } from "../data/categories";
 import logoFull from "../../imports/logo-full.png";
 import logoDiamond from "../../imports/logo-diamond.png";
+import heroVideo from "../../imports/videoplayback.webm";
 
 // Images
 import model1 from "../../imports/model-1.jpg";
@@ -35,6 +36,7 @@ function GoldDivider() {
 export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const heroLogoRef = useRef<HTMLDivElement>(null);
   const promiseRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const collectionsRef = useRef<HTMLElement>(null);
@@ -59,6 +61,15 @@ export default function HomePage() {
             scrub: true,
           },
         });
+      }
+
+      // Hero logo entrance animation
+      if (heroLogoRef.current) {
+        gsap.fromTo(
+          heroLogoRef.current,
+          { scale: 0.8, opacity: 0, y: 30 },
+          { scale: 1, opacity: 1, y: 0, duration: 1.4, ease: "power3.out", delay: 0.3 }
+        );
       }
 
       // Hero content fade out on scroll
@@ -147,8 +158,14 @@ export default function HomePage() {
             playsInline
             className="w-full h-full object-cover scale-105"
             poster={model2}
+            onTimeUpdate={(e) => {
+              const video = e.currentTarget;
+              if (video.currentTime >= 7) {
+                video.currentTime = 0;
+              }
+            }}
           >
-            <source src="https://cdn.pixabay.com/video/2020/07/30/45349-445840777_large.mp4" type="video/mp4" />
+            <source src={heroVideo} type="video/webm" />
           </video>
           {/* Dark overlay with subtle gold tint */}
           <div className="absolute inset-0" style={{
@@ -162,11 +179,11 @@ export default function HomePage() {
 
         {/* Hero content */}
         <div className="hero-content relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <div className="flex justify-center mb-8">
+          <div ref={heroLogoRef} className="flex justify-center mb-8 opacity-0">
             <img
               src={logoFull}
               alt="Zewel Studio"
-              className="w-full max-w-[420px] h-auto object-contain"
+              className="w-full max-w-[460px] h-auto object-contain"
               style={{ filter: "brightness(0) invert(1)" }}
             />
           </div>
