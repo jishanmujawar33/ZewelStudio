@@ -16,6 +16,10 @@ import model3 from "../../imports/model-3.jpg";
 import model4 from "../../imports/model-4.jpg";
 import model6 from "../../imports/model-6.jpg";
 import model7 from "../../imports/model-7.jpg";
+import certBis from "../../imports/cert-bis.png";
+import certIgi from "../../imports/cert-igi.jpg";
+import certEgl from "../../imports/cert-egl.jpg";
+import certSgl from "../../imports/cert-sgl.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -270,30 +274,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ MEET OUR EXPERTS ══════════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-[#faf9f6] border-b border-[#e5e7eb]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">The Artisans</p>
-            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Meet Our Experts</h2>
-            <GoldDivider />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {TEAM_MEMBERS.map((person, i) => (
-              <div key={person.name} className="group relative overflow-hidden bg-white shadow-sm border border-[#e5e7eb] hover:shadow-xl hover:border-[#c9a84c]/30 transition-all duration-500">
-                <div className="aspect-[3/4] overflow-hidden bg-[#f0f4f8]">
-                  <img src={person.img} alt={person.name} className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${person.imgClass || ""}`} />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/90 to-transparent pt-12">
-                  <h3 className="font-['Playfair_Display'] text-xl text-[#1f2937] mb-1">{person.name}</h3>
-                  <p className="text-[#c9a84c] text-xs uppercase tracking-widest font-semibold">{person.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══ ABOUT PREVIEW ═══════════════════════════════════════════════════ */}
       <section ref={aboutRef} className="py-24 px-6 bg-white">
@@ -407,62 +387,66 @@ export default function HomePage() {
                 name: "SGL Certified",
                 full: "Solitaire Gemological Laboratories",
                 desc: "India's premier gem testing laboratory, certifying diamond quality and authenticity.",
-                icon: (
-                  <svg viewBox="0 0 64 64" className="w-12 h-12">
-                    <circle cx="32" cy="32" r="28" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                    <path d="M22 32l6 6 14-14" stroke="#c9a84c" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                    <text x="32" y="52" textAnchor="middle" fill="#c9a84c" fontSize="6" fontWeight="bold">SGL</text>
-                  </svg>
-                ),
+                img: certSgl,
               },
               {
                 name: "BIS Hallmark",
                 full: "Bureau of Indian Standards",
                 desc: "Government hallmarking guaranteeing purity of gold and precious metals.",
-                icon: (
-                  <svg viewBox="0 0 64 64" className="w-12 h-12">
-                    <rect x="10" y="14" width="44" height="36" rx="4" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                    <path d="M32 22v12M26 34h12" stroke="#c9a84c" strokeWidth="2.5" strokeLinecap="round" />
-                    <text x="32" y="52" textAnchor="middle" fill="#c9a84c" fontSize="6" fontWeight="bold">BIS</text>
-                  </svg>
-                ),
+                img: certBis,
               },
               {
                 name: "IGI Certified",
                 full: "International Gemological Institute",
                 desc: "World's largest independent gem certification and appraisal institute.",
-                icon: (
-                  <svg viewBox="0 0 64 64" className="w-12 h-12">
-                    <polygon points="32,6 58,24 50,54 14,54 6,24" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                    <circle cx="32" cy="32" r="8" fill="none" stroke="#c9a84c" strokeWidth="1.5" />
-                    <text x="32" y="52" textAnchor="middle" fill="#c9a84c" fontSize="6" fontWeight="bold">IGI</text>
-                  </svg>
-                ),
+                img: certIgi,
               },
               {
-                name: "GIA Standards",
-                full: "Gemological Institute of America",
-                desc: "The global authority in gemology, setting the standard for diamond grading.",
-                icon: (
-                  <svg viewBox="0 0 64 64" className="w-12 h-12">
-                    <path d="M16 22h32l-6 24H22z" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                    <path d="M16 22l8-10h16l8 10" fill="none" stroke="#c9a84c" strokeWidth="2" />
-                    <path d="M24 12l8 10 8-10M32 22l-10 24M32 22l10 24" stroke="#c9a84c" strokeWidth="1" opacity="0.5" />
-                    <text x="32" y="56" textAnchor="middle" fill="#c9a84c" fontSize="6" fontWeight="bold">GIA</text>
-                  </svg>
-                ),
+                name: "EGL Certified",
+                full: "European Gemological Laboratory",
+                desc: "Internationally recognized authority in diamond and gemstone grading.",
+                img: certEgl,
               },
             ].map((cert) => (
               <div
                 key={cert.name}
                 className="gsap-reveal group bg-[#faf9f6] border border-[#e5e7eb] hover:border-[#c9a84c]/40 p-8 text-center hover:shadow-lg transition-all duration-500"
               >
-                <div className="flex justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
-                  {cert.icon}
+                <div className="flex justify-center mb-6 h-20 items-center overflow-hidden">
+                  <img 
+                    src={cert.img} 
+                    alt={cert.name} 
+                    className="max-h-full max-w-full object-contain mix-blend-multiply grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110" 
+                  />
                 </div>
                 <h3 className="font-['Playfair_Display'] text-lg text-[#1f2937] font-bold mb-1">{cert.name}</h3>
                 <p className="text-[#c9a84c] text-[9px] tracking-[0.2em] uppercase font-semibold mb-3">{cert.full}</p>
                 <p className="text-[#6b7280] text-xs leading-relaxed">{cert.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ MEET OUR EXPERTS ══════════════════════════════════════════════════ */}
+      <section className="py-24 px-6 bg-[#faf9f6] border-b border-[#e5e7eb]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-4">The Artisans</p>
+            <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl text-[#1f2937] mb-4">Meet Our Experts</h2>
+            <GoldDivider />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {TEAM_MEMBERS.map((person, i) => (
+              <div key={person.name} className="group relative overflow-hidden bg-white shadow-sm border border-[#e5e7eb] hover:shadow-xl hover:border-[#c9a84c]/30 transition-all duration-500">
+                <div className="aspect-[3/4] overflow-hidden bg-[#f0f4f8]">
+                  <img src={person.img} alt={person.name} className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${person.imgClass || ""}`} />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/90 to-transparent pt-12">
+                  <h3 className="font-['Playfair_Display'] text-xl text-[#1f2937] mb-1">{person.name}</h3>
+                  <p className="text-[#c9a84c] text-xs uppercase tracking-widest font-semibold">{person.role}</p>
+                </div>
               </div>
             ))}
           </div>

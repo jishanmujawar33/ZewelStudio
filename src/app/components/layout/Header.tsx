@@ -103,6 +103,10 @@ export default function Header() {
                 </div>
               </div>
 
+              <a href="/#contact" className="hidden md:flex items-center justify-center text-white hover:text-[#c9a84c] transition-colors p-2" title="Store Locator">
+                <MapPin size={20} />
+              </a>
+
               <a href="https://wa.me/919136193999" target="_blank" rel="noopener noreferrer" 
                  className="hidden md:block bg-white text-[#1a3a6b] hover:bg-[#f0f4f8] px-5 py-2.5 text-[10px] tracking-widest uppercase font-bold transition-all shadow-sm">
                 Enquire
