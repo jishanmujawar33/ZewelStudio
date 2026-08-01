@@ -93,6 +93,40 @@ import handMangalsutra13 from "../../imports/Hand Mangalsutra/13.jpg";
 import handMangalsutra14 from "../../imports/Hand Mangalsutra/14.jpg";
 import handMangalsutra15 from "../../imports/Hand Mangalsutra/15.jpg";
 import handMangalsutra16 from "../../imports/Hand Mangalsutra/16.jpg";
+import ladiesRing1 from "../../imports/Ladies ring/1.jpg";
+import ladiesRing2 from "../../imports/Ladies ring/2.jpg";
+import ladiesRing3 from "../../imports/Ladies ring/3.jpg";
+import ladiesRing4 from "../../imports/Ladies ring/4.jpg";
+import ladiesRing5 from "../../imports/Ladies ring/5.jpg";
+import ladiesRing6 from "../../imports/Ladies ring/6.jpg";
+import ladiesRing7 from "../../imports/Ladies ring/7.jpg";
+import ladiesRing8 from "../../imports/Ladies ring/8.jpg";
+import ladiesRing9 from "../../imports/Ladies ring/9.jpg";
+import ladiesRing10 from "../../imports/Ladies ring/10.jpg";
+import ladiesRing11 from "../../imports/Ladies ring/11.jpg";
+import ladiesRing12 from "../../imports/Ladies ring/12.jpg";
+import ladiesRing13 from "../../imports/Ladies ring/13.jpg";
+import ladiesRing14 from "../../imports/Ladies ring/14.jpg";
+import ladiesRing15 from "../../imports/Ladies ring/15.jpg";
+import ladiesRing16 from "../../imports/Ladies ring/16.jpg";
+
+import mensBracelet1 from "../../imports/Mens Bracelet/1.jpg";
+import mensBracelet2 from "../../imports/Mens Bracelet/2.jpg";
+import mensBracelet3 from "../../imports/Mens Bracelet/3.jpg";
+import mensBracelet4 from "../../imports/Mens Bracelet/4.jpg";
+import mensBracelet5 from "../../imports/Mens Bracelet/5.jpg";
+import mensBracelet6 from "../../imports/Mens Bracelet/6.jpg";
+import mensBracelet7 from "../../imports/Mens Bracelet/7.jpg";
+import mensBracelet8 from "../../imports/Mens Bracelet/8.jpg";
+import mensBracelet9 from "../../imports/Mens Bracelet/9.jpg";
+import mensBracelet10 from "../../imports/Mens Bracelet/10.jpg";
+import mensBracelet11 from "../../imports/Mens Bracelet/11.jpg";
+import mensBracelet12 from "../../imports/Mens Bracelet/12.jpg";
+import mensBracelet13 from "../../imports/Mens Bracelet/13.jpg";
+import mensBracelet14 from "../../imports/Mens Bracelet/14.jpg";
+import mensBracelet15 from "../../imports/Mens Bracelet/15.jpg";
+import mensBracelet16 from "../../imports/Mens Bracelet/16.jpg";
+
 import model1 from "../../imports/model-1.jpg";
 import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
@@ -187,15 +221,22 @@ export const CATEGORIES: Category[] = [
       { id: "ladies-ring", name: "Ladies Ring" }
     ],
     images: [
-      { url: ringsCategory, alt: "Zewel Signature Rings", subcategory: "ladies-ring", description: "Multi-ring stack lifestyle look" },
-      { url: earring1, alt: "Diamond Solitaire Ring", subcategory: "ladies-ring" },
-      { url: earring2, alt: "Gold Cocktail Ring", subcategory: "ladies-ring" },
-      { url: earring3, alt: "Sapphire and Diamond Ring", subcategory: "ladies-ring" },
-      { url: earring4, alt: "Eternity Band", subcategory: "ladies-ring" },
-      { url: earring5, alt: "Vintage Style Ring", subcategory: "ladies-ring" },
-      { url: earring6, alt: "Modern Geometric Ring", subcategory: "ladies-ring" },
-      { url: earring7, alt: "Ruby Halo Ring", subcategory: "ladies-ring" },
-      { url: earring8, alt: "Three-Stone Diamond Ring", subcategory: "ladies-ring" },
+      { url: ladiesRing1, alt: "Emerald-Cut Diamond Halo Ring with Twisted Shank", subcategory: "ladies-ring", description: "Gold Wt 3.50gm, Diamond Wt 1.40cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing2, alt: "Marquise-Cut Diamond Ring with Halo", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing3, alt: "Round Brilliant Solitaire Diamond Ring", subcategory: "ladies-ring", description: "Gold Wt 1.00gm, Diamond Wt 1.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing4, alt: "Cushion-Cut Emerald Ring with Diamond Halo", subcategory: "ladies-ring", description: "Gold Wt 3.00gm, Diamond Wt 0.45cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing5, alt: "Pear-Shaped Diamond Double Halo Ring", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 2.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing6, alt: "Radiant-Cut Diamond Halo Ring", subcategory: "ladies-ring", description: "Gold Wt 5.00gm, Diamond Wt 1.80cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing7, alt: "Oval Morganite Vintage Style Diamond Ring", subcategory: "ladies-ring", description: "Gold Wt 5.00gm, Diamond Wt 3.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing8, alt: "Oval Pink Tourmaline Ring with Two-Tone Band", subcategory: "ladies-ring", description: "Gold Wt 6.00gm, Diamond Wt 3.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing9, alt: "Green Sapphire Three-Stone Baguette Ring", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 3.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing10, alt: "Emerald-Cut Diamond and Ruby Three-Stone Ring", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 3.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing11, alt: "Multi Pear-Shape Diamond Statement Ring", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 4.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing12, alt: "Pear-Shaped Blue Sapphire Asymmetrical Ring", subcategory: "ladies-ring", description: "Gold Wt 3.50gm, Diamond Wt 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing13, alt: "Round Diamond Halo Ring with Split Band", subcategory: "ladies-ring", description: "Gold Wt 3.00gm, Diamond Wt 1.40cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing14, alt: "Emerald-Cut Yellow Diamond Halo Ring", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 3.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing15, alt: "Pink Rectangular Diamond Floral Cluster Ring", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 3.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: ladiesRing16, alt: "Rose Gold Textured Band with Single Diamond", subcategory: "ladies-ring", description: "Gold Wt 4.00gm, Diamond Wt 0.22cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
     ]
   },
   {
@@ -210,14 +251,26 @@ export const CATEGORIES: Category[] = [
       { id: "gents-ring", name: "Gents Ring" }
     ],
     images: [
-      { url: bracelet1, alt: "Classic Gents Bracelet", subcategory: "gents-bracelets" },
-      { url: bracelet2, alt: "Bold Gold Bracelet", subcategory: "gents-bracelets" },
       { url: bracelet3, alt: "Diamond Signet Ring", subcategory: "gents-ring" },
       { url: bracelet4, alt: "Modern Gents Ring", subcategory: "gents-ring" },
-      { url: bracelet5, alt: "Link Bracelet", subcategory: "gents-bracelets" },
       { url: bracelet6, alt: "Platinum Gents Ring", subcategory: "gents-ring" },
-      { url: bracelet7, alt: "Two-Tone Bracelet", subcategory: "gents-bracelets" },
       { url: bracelet8, alt: "Classic Band Ring", subcategory: "gents-ring" },
+      { url: mensBracelet1, alt: "Rose Gold Diamond Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 26.00gm, Diamond Wt 2.73cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet2, alt: "Rose Gold Greek Key Diamond Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 39.00gm, Diamond Wt 1.63cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet3, alt: "Rose Gold Diamond Square Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 46.00gm, Diamond Wt 4.80cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet4, alt: "Rose Gold Diamond Geometric Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 27.00gm, Diamond Wt 2.86cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet5, alt: "Rose Gold Greek Key Thick Diamond Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 20.00gm, Diamond Wt 5.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet6, alt: "Rose Gold Diamond Chevron Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 31.00gm, Diamond Wt 6.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet7, alt: "Yellow Gold Diamond Three-Row Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 37.00gm, Diamond Wt 1.36cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet8, alt: "Rose Gold Diamond and Black Onyx Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 27.00gm, Diamond Wt 2.39cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet9, alt: "Black Rubber and Rose Gold Diamond Medusa Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 22.00gm, Diamond Wt 2.75cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet10, alt: "Rose Gold Multi-Row Diamond Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 25.00gm, Diamond Wt 6.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet11, alt: "Rose Gold Diamond Cuban Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 41.00gm, Diamond Wt 7.77cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet12, alt: "Yellow Gold Diamond Om Symbol Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 19.00gm, Diamond Wt 0.51cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet13, alt: "Rose Gold Diamond Cross-Pattern Mesh Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 51.00gm, Diamond Wt 5.04cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet14, alt: "Rose Gold Hexagon Link Diamond Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 9.84gm, Diamond Wt 0.40cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet15, alt: "Rose Gold Diamond Interlocking Mesh Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 59.00gm, Diamond Wt 5.64cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: mensBracelet16, alt: "Yellow Gold Diamond Tennis Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 19.00gm, Diamond Wt 2.78cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
     ]
   },
   {
