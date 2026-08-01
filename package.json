@@ -1,0 +1,8 @@
+{
+  "name": "zewelstudio-root",
+  "private": true,
+  "scripts": {
+    "install": "cd ZewelStudio && npm install",
+    "build": "cd ZewelStudio && npm run build"
+  }
+}
