@@ -219,6 +219,14 @@ import newStud14 from "../../imports/studs/14.jpg";
 import newStud15 from "../../imports/studs/15.jpg";
 import newStud16 from "../../imports/studs/16.jpg";
 
+import suiDhaga1 from "../../imports/sui dhaga/1.jpg";
+import suiDhaga2 from "../../imports/sui dhaga/2.jpg";
+import suiDhaga3 from "../../imports/sui dhaga/3.jpg";
+import suiDhaga4 from "../../imports/sui dhaga/4.jpg";
+import suiDhaga5 from "../../imports/sui dhaga/5.jpg";
+import suiDhaga6 from "../../imports/sui dhaga/6.jpg";
+import suiDhaga7 from "../../imports/sui dhaga/7.jpg";
+
 import model1 from "../../imports/model-1.jpg";
 import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
@@ -484,12 +492,13 @@ export const CATEGORIES: Category[] = [
       { id: "sui-dhaga", name: "Sui-Dhaga Earring" }
     ],
     images: [
-      { url: earring2, alt: "Gold Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring4, alt: "Diamond Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring6, alt: "Floral Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring8, alt: "Modern Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring10, alt: "Traditional Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring12, alt: "Elegant Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
+      { url: suiDhaga1, alt: "Elegant Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: suiDhaga2, alt: "Classic Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: suiDhaga3, alt: "Modern Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: suiDhaga4, alt: "Premium Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: suiDhaga5, alt: "Luxury Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: suiDhaga6, alt: "Floral Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: suiDhaga7, alt: "Geometric Sui Dhaga", subcategory: "sui-dhaga", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: newStud1, alt: "Diamond Stud Earrings", subcategory: "studs", description: "Gold Wt: 3gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: newStud2, alt: "Classic Diamond Studs", subcategory: "studs", description: "Gold Wt: 6gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: newStud3, alt: "Elegant Diamond Studs", subcategory: "studs", description: "Gold Wt: 3gm | Diamond Wt: 1.80cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
