@@ -244,6 +244,23 @@ import flexi14 from "../../imports/flexi/14.jpg";
 import flexi15 from "../../imports/flexi/15.jpg";
 import flexi16 from "../../imports/flexi/16.jpg";
 
+import tennis1 from "../../imports/tennis/1.jpg";
+import tennis2 from "../../imports/tennis/2.jpg";
+import tennis3 from "../../imports/tennis/3.jpg";
+import tennis4 from "../../imports/tennis/4.jpg";
+import tennis5 from "../../imports/tennis/5.jpg";
+import tennis6 from "../../imports/tennis/6.jpg";
+import tennis7 from "../../imports/tennis/7.jpg";
+import tennis8 from "../../imports/tennis/8.jpg";
+import tennis9 from "../../imports/tennis/9.jpg";
+import tennis10 from "../../imports/tennis/10.jpg";
+import tennis11 from "../../imports/tennis/11.jpg";
+import tennis12 from "../../imports/tennis/12.jpg";
+import tennis13 from "../../imports/tennis/13.jpg";
+import tennis14 from "../../imports/tennis/14.jpg";
+import tennis15 from "../../imports/tennis/15.jpg";
+import tennis16 from "../../imports/tennis/16.jpg";
+
 import model1 from "../../imports/model-1.jpg";
 import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
@@ -550,8 +567,22 @@ export const CATEGORIES: Category[] = [
     images: [
 
 
-      { url: bracelet5, alt: "Sapphire Tennis Bracelet", subcategory: "tennis-bracelets" },
-      { url: bracelet9, alt: "Ruby Tennis Bracelet", subcategory: "tennis-bracelets" },
+      { url: tennis1, alt: "Diamond Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 10.00gm | Diamond Wt: 8.63cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis2, alt: "Classic Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 9.00gm | Diamond Wt: 5.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis3, alt: "Elegant Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 10.00gm | Diamond Wt: 9.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis4, alt: "Luxury Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 11.00gm | Diamond Wt: 4.06cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis5, alt: "Stunning Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 10.00gm | Diamond Wt: 4.24cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis6, alt: "Modern Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 11.00gm | Diamond Wt: 2.89cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis7, alt: "Graceful Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 8.00gm | Diamond Wt: 7.38cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis8, alt: "Grand Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 10.00gm | Diamond Wt: 1.47cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis9, alt: "Premium Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 40.00gm | Diamond Wt: 21.42cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis10, alt: "Chic Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 22.00gm | Diamond Wt: 4.70cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis11, alt: "Delicate Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 13.00gm | Diamond Wt: 11.89cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis12, alt: "Statement Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 9.00gm | Diamond Wt: 1.68cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis13, alt: "Radiant Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 13.00gm | Diamond Wt: 10.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis14, alt: "Ornate Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 9.00gm | Diamond Wt: 3.52cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis15, alt: "Brilliant Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 10.00gm | Diamond Wt: 4.57cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: tennis16, alt: "Timeless Tennis Bracelet", subcategory: "tennis-bracelets", description: "Gold Wt: 19.00gm | Diamond Wt: 4.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
 
       { url: flexi1, alt: "Diamond Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 7.00gm | Diamond Wt: 1.40cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: flexi2, alt: "Classic Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 7.00gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },

@@ -101,8 +101,11 @@ export default function Header() {
               </div>
             </div>
 
+            {/* Mobile Spacer (for grid centering) */}
+            <div className="md:hidden"></div>
+
             {/* Center Logo */}
-            <div className="flex justify-center col-span-2 md:col-span-1 justify-self-start md:justify-self-center">
+            <div className="flex justify-center justify-self-center col-span-1">
               <Link to="/">
                 <img 
                   src={logoFull} 
