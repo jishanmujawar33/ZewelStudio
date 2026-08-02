@@ -57,8 +57,8 @@ export default function Header() {
 
       {/* Main header */}
       <div className="bg-[#163275] border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 h-20">
-          <div className="grid grid-cols-3 items-center h-full">
+        <div className="max-w-7xl mx-auto px-6 h-20 relative">
+          <div className="flex justify-between md:grid md:grid-cols-3 items-center h-full">
             
             {/* Left Nav */}
             <div className="hidden md:flex items-center gap-8">
@@ -101,22 +101,19 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Mobile Spacer (for grid centering) */}
-            <div className="md:hidden"></div>
-
             {/* Center Logo */}
-            <div className="flex justify-center justify-self-center col-span-1">
-              <Link to="/">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 flex justify-center md:justify-self-center z-10 w-48 md:w-auto">
+              <Link to="/" className="w-full flex justify-center">
                 <img 
                   src={logoFull} 
                   alt="Zewel Studio" 
-                  className="h-20 md:h-24 object-contain transition-all duration-300"
+                  className="h-16 md:h-24 object-contain transition-all duration-300"
                 />
               </Link>
             </div>
 
             {/* Right Nav */}
-            <div className="flex items-center justify-end gap-6">
+            <div className="flex items-center justify-end gap-6 ml-auto md:ml-0">
               <a 
                 href="/#contact" 
                 onClick={(e) => {
