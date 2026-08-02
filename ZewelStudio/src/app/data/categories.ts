@@ -185,6 +185,40 @@ import mensBracelet14 from "../../imports/Mens Bracelet/14.jpg";
 import mensBracelet15 from "../../imports/Mens Bracelet/15.jpg";
 import mensBracelet16 from "../../imports/Mens Bracelet/16.jpg";
 
+import bangle1 from "../../imports/bangles/1.jpg";
+import bangle2 from "../../imports/bangles/2.jpg";
+import bangle3 from "../../imports/bangles/3.jpg";
+import bangle4 from "../../imports/bangles/4.jpg";
+import bangle5 from "../../imports/bangles/5.jpg";
+import bangle6 from "../../imports/bangles/6.jpg";
+import bangle7 from "../../imports/bangles/7.jpg";
+import bangle8 from "../../imports/bangles/8.jpg";
+import bangle9 from "../../imports/bangles/9.jpg";
+import bangle10 from "../../imports/bangles/10.jpg";
+import bangle11 from "../../imports/bangles/11.jpg";
+import bangle12 from "../../imports/bangles/12.jpg";
+import bangle13 from "../../imports/bangles/13.jpg";
+import bangle14 from "../../imports/bangles/14.jpg";
+import bangle15 from "../../imports/bangles/15.jpg";
+import bangle16 from "../../imports/bangles/16.jpg";
+
+import newStud1 from "../../imports/studs/1.jpg";
+import newStud2 from "../../imports/studs/2.jpg";
+import newStud3 from "../../imports/studs/3.jpg";
+import newStud4 from "../../imports/studs/4.jpg";
+import newStud5 from "../../imports/studs/5.jpg";
+import newStud6 from "../../imports/studs/6.jpg";
+import newStud7 from "../../imports/studs/7.jpg";
+import newStud8 from "../../imports/studs/8.jpg";
+import newStud9 from "../../imports/studs/9.jpg";
+import newStud10 from "../../imports/studs/10.jpg";
+import newStud11 from "../../imports/studs/11.jpg";
+import newStud12 from "../../imports/studs/12.jpg";
+import newStud13 from "../../imports/studs/13.jpg";
+import newStud14 from "../../imports/studs/14.jpg";
+import newStud15 from "../../imports/studs/15.jpg";
+import newStud16 from "../../imports/studs/16.jpg";
+
 import model1 from "../../imports/model-1.jpg";
 import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
@@ -450,18 +484,28 @@ export const CATEGORIES: Category[] = [
       { id: "sui-dhaga", name: "Sui-Dhaga Earring" }
     ],
     images: [
-      { url: earring1, alt: "Diamond Studs", subcategory: "studs" },
       { url: earring2, alt: "Gold Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring3, alt: "Pearl Studs", subcategory: "studs" },
       { url: earring4, alt: "Diamond Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring5, alt: "Gemstone Studs", subcategory: "studs" },
       { url: earring6, alt: "Floral Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring7, alt: "Cluster Diamond Studs", subcategory: "studs" },
       { url: earring8, alt: "Modern Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring9, alt: "Rose Gold Studs", subcategory: "studs" },
       { url: earring10, alt: "Traditional Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
-      { url: earring11, alt: "Halo Diamond Studs", subcategory: "studs" },
       { url: earring12, alt: "Elegant Sui-Dhaga Earrings", subcategory: "sui-dhaga" },
+      { url: newStud1, alt: "Diamond Stud Earrings", subcategory: "studs", description: "Gold Wt: 3gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud2, alt: "Classic Diamond Studs", subcategory: "studs", description: "Gold Wt: 6gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud3, alt: "Elegant Diamond Studs", subcategory: "studs", description: "Gold Wt: 3gm | Diamond Wt: 1.80cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud4, alt: "Luxury Diamond Studs", subcategory: "studs", description: "Gold Wt: 5gm | Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud5, alt: "Stunning Diamond Studs", subcategory: "studs", description: "Gold Wt: 8gm | Diamond Wt: 4.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud6, alt: "Modern Diamond Studs", subcategory: "studs", description: "Gold Wt: 3gm | Diamond Wt: 5.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud7, alt: "Graceful Diamond Studs", subcategory: "studs", description: "Gold Wt: 5gm | Diamond Wt: 4.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud8, alt: "Grand Diamond Studs", subcategory: "studs", description: "Gold Wt: 10gm | Diamond Wt: 4.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud9, alt: "Premium Diamond Studs", subcategory: "studs", description: "Gold Wt: 10gm | Diamond Wt: 4.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud10, alt: "Chic Diamond Studs", subcategory: "studs", description: "Gold Wt: 3gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud11, alt: "Delicate Diamond Studs", subcategory: "studs", description: "Gold Wt: 10gm | Diamond Wt: 6.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud12, alt: "Statement Diamond Studs", subcategory: "studs", description: "Gold Wt: 5gm | Diamond Wt: 3.60cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud13, alt: "Radiant Diamond Studs", subcategory: "studs", description: "Gold Wt: 15gm | Diamond Wt: 14.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud14, alt: "Ornate Diamond Studs", subcategory: "studs", description: "Gold Wt: 10gm | Diamond Wt: 3.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud15, alt: "Brilliant Diamond Studs", subcategory: "studs", description: "Gold Wt: 20gm | Diamond Wt: 10.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newStud16, alt: "Timeless Diamond Studs", subcategory: "studs", description: "Gold Wt: 1.50gm | Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
     ]
   },
   {
@@ -472,24 +516,36 @@ export const CATEGORIES: Category[] = [
     description: "Adorn your wrists with our stunning collection of bangles, tennis bracelets, and flexi bracelets.",
     heroImage: model5,
     subcategories: [
-      { id: "womens-bracelets", name: "Womens Bracelets" },
+
       { id: "bangles", name: "Bangles" },
       { id: "flexi-bracelets", name: "Flexi Bracelets" },
       { id: "tennis-bracelets", name: "Tennis Bracelets" }
     ],
     images: [
-      { url: bracelet1, alt: "Diamond Tennis Bracelet", subcategory: "tennis-bracelets" },
-      { url: bracelet2, alt: "Gold Bangle", subcategory: "bangles" },
-      { url: bracelet3, alt: "Elegant Flexi Bracelet", subcategory: "flexi-bracelets" },
-      { url: bracelet4, alt: "Modern Womens Bracelet", subcategory: "womens-bracelets" },
+
+
       { url: bracelet5, alt: "Sapphire Tennis Bracelet", subcategory: "tennis-bracelets" },
-      { url: bracelet6, alt: "Diamond Bangle", subcategory: "bangles" },
       { url: bracelet7, alt: "Rose Gold Flexi Bracelet", subcategory: "flexi-bracelets" },
-      { url: bracelet8, alt: "Classic Womens Bracelet", subcategory: "womens-bracelets" },
+
       { url: bracelet9, alt: "Ruby Tennis Bracelet", subcategory: "tennis-bracelets" },
-      { url: bracelet10, alt: "Traditional Bangle", subcategory: "bangles" },
       { url: bracelet11, alt: "Gemstone Flexi Bracelet", subcategory: "flexi-bracelets" },
-      { url: bracelet12, alt: "Charm Bracelet", subcategory: "womens-bracelets" },
+
+      { url: bangle1, alt: "Exquisite Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 30gm | Diamond Wt: 36.00cts (0.50pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle2, alt: "Classic Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 20gm | Diamond Wt: 16.00cts (0.10pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle3, alt: "Elegant Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 30gm | Diamond Wt: 20.80cts (0.20pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle4, alt: "Luxury Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 25gm | Diamond Wt: 33.60cts (0.30pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle5, alt: "Stunning Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 40gm | Diamond Wt: 19.20cts (0.20pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle6, alt: "Modern Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 30gm | Diamond Wt: 19.20cts (0.15pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle7, alt: "Graceful Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 25gm | Diamond Wt: 24.00cts (0.15pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle8, alt: "Grand Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 40gm | Diamond Wt: 26.40cts (0.30pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle9, alt: "Premium Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 30gm | Diamond Wt: 26.40cts (0.30pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle10, alt: "Chic Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 25gm | Diamond Wt: 11.60cts (0.10pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle11, alt: "Delicate Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 20gm | Diamond Wt: 11.20cts (0.10pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle12, alt: "Statement Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 40gm | Diamond Wt: 40.00cts (1.00pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle13, alt: "Radiant Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 40gm | Diamond Wt: 40.00cts (1.00pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle14, alt: "Ornate Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 50gm | Diamond Wt: 12.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle15, alt: "Brilliant Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 40gm | Diamond Wt: 25.00cts (0.10pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: bangle16, alt: "Timeless Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 25gm | Diamond Wt: 20.40cts (0.15pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
     ]
   }
 ];
