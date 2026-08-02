@@ -139,9 +139,33 @@ export default function CategoryPage() {
 
       {/* Next Category Navigation */}
       {(() => {
-        const currentIndex = CATEGORIES.findIndex(c => c.slug === slug);
-        const nextCategory = CATEGORIES[(currentIndex + 1) % CATEGORIES.length];
-        if (!nextCategory) return null;
+        if (!category) return null;
+        
+        let isNextSubcategory = false;
+        let nextTitle = "";
+        let nextDesc = "";
+        let nextLabel = "";
+        let nextLink = "";
+        let nextSubId = "";
+
+        const currentSubIdx = category.subcategories.findIndex(s => s.id === activeFilter);
+        if (currentSubIdx >= 0 && currentSubIdx < category.subcategories.length - 1) {
+            isNextSubcategory = true;
+            const nextSub = category.subcategories[currentSubIdx + 1];
+            nextTitle = nextSub.name;
+            nextDesc = `Discover our exquisite ${nextSub.name} collection — elegance at your fingertips`;
+            nextLabel = `Explore ${nextSub.name}`;
+            nextSubId = nextSub.id;
+        } else {
+            const currentIndex = CATEGORIES.findIndex(c => c.slug === slug);
+            const nextCategory = CATEGORIES[(currentIndex + 1) % CATEGORIES.length];
+            if (!nextCategory) return null;
+            nextTitle = nextCategory.name;
+            nextDesc = `Discover our exquisite ${nextCategory.name} collection — ${nextCategory.tagline?.toLowerCase() || nextCategory.description?.slice(0, 60)}`;
+            nextLabel = `Explore ${nextCategory.name}`;
+            nextLink = `/category/${nextCategory.slug}`;
+        }
+
         return (
           <div className="border-t border-[#e5e7eb] bg-gradient-to-b from-white to-[#faf9f6]">
             <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
@@ -149,15 +173,28 @@ export default function CategoryPage() {
                 <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-3">Continue Exploring</p>
                 <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl text-[#163275] font-bold mb-4">Next Collection</h3>
                 <p className="text-[#6b7280] text-sm mb-8 max-w-md">
-                  Discover our exquisite {nextCategory.name} collection — {nextCategory.tagline?.toLowerCase() || nextCategory.description?.slice(0, 60)}
+                  {nextDesc}
                 </p>
-                <Link
-                  to={`/category/${nextCategory.slug}`}
-                  className="group inline-flex items-center gap-3 bg-[#163275] text-white px-10 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-[#1e4494] transition-all duration-300 shadow-md hover:shadow-xl"
-                >
-                  Explore {nextCategory.name}
-                  <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
-                </Link>
+                {isNextSubcategory ? (
+                  <button
+                    onClick={() => {
+                      setActiveFilter(nextSubId);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="group inline-flex items-center gap-3 bg-[#163275] text-white px-10 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-[#1e4494] transition-all duration-300 shadow-md hover:shadow-xl"
+                  >
+                    {nextLabel}
+                    <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </button>
+                ) : (
+                  <Link
+                    to={nextLink}
+                    className="group inline-flex items-center gap-3 bg-[#163275] text-white px-10 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-[#1e4494] transition-all duration-300 shadow-md hover:shadow-xl"
+                  >
+                    {nextLabel}
+                    <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -165,39 +202,62 @@ export default function CategoryPage() {
       })()}
 
       {/* Lightbox Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-sm" 
-          onClick={() => setSelectedImage(null)}
-        >
-          <button 
-            className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2 bg-white/10 hover:bg-white/20 rounded-full"
+      {selectedImage && (() => {
+        const currentIdx = filteredImages.findIndex(img => img.url === selectedImage.url);
+        const hasNext = currentIdx >= 0 && currentIdx < filteredImages.length - 1;
+        const hasPrev = currentIdx > 0;
+        
+        return (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 sm:p-8 backdrop-blur-sm" 
             onClick={() => setSelectedImage(null)}
           >
-            <X size={24} />
-          </button>
-          
-          <div 
-            className="relative w-full max-w-5xl h-full flex flex-col items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative w-full max-h-[75vh] flex justify-center">
-              <img 
-                src={selectedImage.url} 
-                alt={selectedImage.alt}
-                className="max-w-full max-h-[75vh] object-contain"
-              />
-            </div>
+            <button 
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/50 hover:text-white transition-colors p-2 bg-white/10 hover:bg-white/20 rounded-full z-50"
+              onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+            >
+              <X size={24} />
+            </button>
             
-            <div className="mt-8 text-center text-white">
-              <h3 className="font-['Playfair_Display'] text-2xl sm:text-3xl mb-3 text-[#c9a84c]">{selectedImage.alt}</h3>
-              {selectedImage.description && (
-                <p className="text-white/80 text-xs sm:text-sm tracking-widest uppercase font-medium">{selectedImage.description}</p>
-              )}
+            {hasPrev && (
+              <button 
+                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-3 bg-white/10 hover:bg-white/20 rounded-full z-50"
+                onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[currentIdx - 1]); }}
+              >
+                <ArrowRight size={24} className="rotate-180" />
+              </button>
+            )}
+
+            {hasNext && (
+              <button 
+                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-3 bg-white/10 hover:bg-white/20 rounded-full z-50"
+                onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[currentIdx + 1]); }}
+              >
+                <ArrowRight size={24} />
+              </button>
+            )}
+
+            <div 
+              className="relative w-full max-w-5xl flex flex-col items-center justify-center pointer-events-none"
+            >
+              <div className="relative w-full max-h-[75vh] flex justify-center pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+                <img 
+                  src={selectedImage.url} 
+                  alt={selectedImage.alt}
+                  className="max-w-full max-h-[75vh] object-contain"
+                />
+              </div>
+              
+              <div className="mt-6 text-center text-white pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+                <h3 className="font-['Playfair_Display'] text-xl sm:text-3xl mb-2 text-[#c9a84c]">{selectedImage.alt}</h3>
+                {selectedImage.description && (
+                  <p className="text-white/80 text-[10px] sm:text-sm tracking-widest uppercase font-medium">{selectedImage.description}</p>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }

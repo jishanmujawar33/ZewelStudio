@@ -227,6 +227,23 @@ import suiDhaga5 from "../../imports/sui dhaga/5.jpg";
 import suiDhaga6 from "../../imports/sui dhaga/6.jpg";
 import suiDhaga7 from "../../imports/sui dhaga/7.jpg";
 
+import flexi1 from "../../imports/flexi/1.jpg";
+import flexi2 from "../../imports/flexi/2.jpg";
+import flexi3 from "../../imports/flexi/3.jpg";
+import flexi4 from "../../imports/flexi/4.jpg";
+import flexi5 from "../../imports/flexi/5.jpg";
+import flexi6 from "../../imports/flexi/6.jpg";
+import flexi7 from "../../imports/flexi/7.jpg";
+import flexi8 from "../../imports/flexi/8.jpg";
+import flexi9 from "../../imports/flexi/9.jpg";
+import flexi10 from "../../imports/flexi/10.jpg";
+import flexi11 from "../../imports/flexi/11.jpg";
+import flexi12 from "../../imports/flexi/12.jpg";
+import flexi13 from "../../imports/flexi/13.jpg";
+import flexi14 from "../../imports/flexi/14.jpg";
+import flexi15 from "../../imports/flexi/15.jpg";
+import flexi16 from "../../imports/flexi/16.jpg";
+
 import model1 from "../../imports/model-1.jpg";
 import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
@@ -534,10 +551,24 @@ export const CATEGORIES: Category[] = [
 
 
       { url: bracelet5, alt: "Sapphire Tennis Bracelet", subcategory: "tennis-bracelets" },
-      { url: bracelet7, alt: "Rose Gold Flexi Bracelet", subcategory: "flexi-bracelets" },
-
       { url: bracelet9, alt: "Ruby Tennis Bracelet", subcategory: "tennis-bracelets" },
-      { url: bracelet11, alt: "Gemstone Flexi Bracelet", subcategory: "flexi-bracelets" },
+
+      { url: flexi1, alt: "Diamond Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 7.00gm | Diamond Wt: 1.40cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi2, alt: "Classic Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 7.00gm | Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi3, alt: "Elegant Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 11.00gm | Diamond Wt: 3.12cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi4, alt: "Luxury Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 13.00gm | Diamond Wt: 3.68cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi5, alt: "Stunning Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 13.00gm | Diamond Wt: 2.61cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi6, alt: "Modern Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 5.00gm | Diamond Wt: 1.34cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi7, alt: "Graceful Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 5.00gm | Diamond Wt: 0.59cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi8, alt: "Grand Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 12.00gm | Diamond Wt: 7.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi9, alt: "Premium Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 6.00gm | Diamond Wt: 3.67cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi10, alt: "Chic Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 19.00gm | Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi11, alt: "Delicate Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 11.00gm | Diamond Wt: 4.31cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi12, alt: "Statement Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 7.00gm | Diamond Wt: 5.70cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi13, alt: "Radiant Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 6.00gm | Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi14, alt: "Ornate Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 13.00gm | Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi15, alt: "Brilliant Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 15.00gm | Diamond Wt: 3.29cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: flexi16, alt: "Timeless Flexi Bracelet", subcategory: "flexi-bracelets", description: "Gold Wt: 14.00gm | Diamond Wt: 12.21cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
 
       { url: bangle1, alt: "Exquisite Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 30gm | Diamond Wt: 36.00cts (0.50pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: bangle2, alt: "Classic Diamond Bangle", subcategory: "bangles", description: "Gold Wt: 20gm | Diamond Wt: 16.00cts (0.10pts)", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
