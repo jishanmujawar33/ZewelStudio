@@ -17,6 +17,7 @@ import {
   RefreshCw,
   Wrench,
   Palette,
+  CalendarDays,
 } from "lucide-react";
 import GoogleReviews from "../components/GoogleReviews";
 import gsap from "gsap";
@@ -519,6 +520,94 @@ export default function HomePage() {
                 </a>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          DIAMOND GROWING PLAN
+          ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#fdf0e8] via-[#fce8dc] to-[#f8ddd0] border-b border-[#e8c9b8]">
+        {/* Subtle shimmer overlay */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
+        
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-center">
+            
+            {/* Left — Ring Image + Info */}
+            <div className="flex items-center gap-6">
+              <div className="shrink-0">
+                <img 
+                  src={earring1} 
+                  alt="Diamond Growing Plan Ring" 
+                  className="w-28 h-28 md:w-36 md:h-36 object-contain mix-blend-multiply drop-shadow-lg"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <CalendarDays size={16} className="text-[#8b4513]" />
+                  <p className="text-[#8b4513] text-[10px] tracking-[0.25em] font-bold uppercase">Monthly Installment Plan</p>
+                </div>
+                <h2 className="font-['Playfair_Display'] text-2xl md:text-3xl lg:text-4xl text-[#1f2937] font-bold leading-tight">
+                  Diamond Growing Plan
+                </h2>
+                <p className="text-[#8b4513] text-xs md:text-sm font-semibold mt-1 tracking-wide uppercase">
+                  Save Today. Shine Tomorrow.
+                </p>
+              </div>
+            </div>
+
+            {/* Right — Plan Math */}
+            <div className="flex flex-col items-center lg:items-end">
+              <div className="flex items-center gap-3 md:gap-5">
+                {/* PAY */}
+                <div className="text-center">
+                  <p className="text-[#8b4513] text-[9px] tracking-[0.2em] uppercase font-bold mb-1">Pay</p>
+                  <span className="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-[#1f2937]">10</span>
+                </div>
+                
+                <span className="text-[#c9a84c] text-3xl md:text-4xl font-light mt-4">+</span>
+                
+                {/* BONUS */}
+                <div className="text-center">
+                  <p className="text-[#8b4513] text-[9px] tracking-[0.2em] uppercase font-bold mb-1">Bonus</p>
+                  <span className="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-[#c9a84c]">1</span>
+                </div>
+                
+                <span className="text-[#c9a84c] text-3xl md:text-4xl font-light mt-4">=</span>
+                
+                {/* YOU GET */}
+                <div className="text-center">
+                  <p className="text-[#8b4513] text-[9px] tracking-[0.2em] uppercase font-bold mb-1">You Get</p>
+                  <span className="font-['Playfair_Display'] text-5xl md:text-7xl font-bold text-[#163275]">11.5</span>
+                  <span className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold text-[#163275]">!</span>
+                </div>
+              </div>
+
+              {/* Tag */}
+              <div className="mt-4 bg-[#8b4513] text-white px-6 py-1.5 text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold">
+                15% Extra Value
+              </div>
+
+              {/* CTA */}
+              <a
+                href="https://wa.me/919136193999?text=Hi! I am interested in the Diamond Growing Plan."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 group inline-flex items-center gap-3 bg-[#163275] text-white px-8 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-[#1e4494] transition-all duration-300 shadow-md hover:shadow-xl"
+              >
+                Enquire About Plan
+                <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+              </a>
+            </div>
+          </div>
+
+          {/* Bottom Description */}
+          <div className="mt-10 pt-8 border-t border-[#d4a88a]/30 text-center">
+            <p className="text-[#6b5547] text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
+              Pay for <strong>10 months</strong> and receive the value of <strong>11.5 months</strong> — that's a <strong>15% bonus</strong> on your investment.
+              Start your diamond journey today with our flexible monthly installment plan.
+            </p>
           </div>
         </div>
       </section>

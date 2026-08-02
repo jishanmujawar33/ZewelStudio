@@ -28,18 +28,8 @@ import earring11 from "../../imports/earring-11.jpg";
 import earring12 from "../../imports/earring-12.jpg";
 
 // Necklaces
-import necklace1 from "../../imports/necklace-1.jpg";
-import necklace2 from "../../imports/necklace-2.jpg";
-import necklace3 from "../../imports/necklace-3.jpg";
-import necklace4 from "../../imports/necklace-4.jpg";
-import necklace5 from "../../imports/necklace-5.jpg";
-import necklace6 from "../../imports/necklace-6.jpg";
-import necklace7 from "../../imports/necklace-7.jpg";
-import necklace8 from "../../imports/necklace-8.jpg";
-import necklace9 from "../../imports/necklace-9.jpg";
-import necklace10 from "../../imports/necklace-10.jpg";
-import necklace11 from "../../imports/necklace-11.jpg";
-import necklace12 from "../../imports/necklace-12.jpg";
+
+
 import stationNecklace1 from "../../imports/station-necklace-1.jpg";
 import stationNecklace2 from "../../imports/station-necklace-2.jpg";
 import stationNecklace3 from "../../imports/station-necklace-3.jpg";
@@ -56,6 +46,57 @@ import stationNecklace13 from "../../imports/station-necklace-13.jpg";
 import stationNecklace14 from "../../imports/station-necklace-14.jpg";
 import stationNecklace15 from "../../imports/station-necklace-15.jpg";
 import stationNecklace16 from "../../imports/station-necklace-16.jpg";
+
+import newNecklace1 from "../../imports/neclace/1.jpg";
+import newNecklace2 from "../../imports/neclace/2.jpg";
+import newNecklace3 from "../../imports/neclace/3.jpg";
+import newNecklace4 from "../../imports/neclace/4.jpg";
+import newNecklace5 from "../../imports/neclace/5.jpg";
+import newNecklace6 from "../../imports/neclace/6.jpg";
+import newNecklace7 from "../../imports/neclace/7.jpg";
+import newNecklace8 from "../../imports/neclace/8.jpg";
+import newNecklace9 from "../../imports/neclace/9.jpg";
+import newNecklace10 from "../../imports/neclace/10.jpg";
+import newNecklace11 from "../../imports/neclace/11.jpg";
+import newNecklace12 from "../../imports/neclace/12.jpg";
+import newNecklace13 from "../../imports/neclace/13.jpg";
+import newNecklace14 from "../../imports/neclace/14.jpg";
+import newNecklace15 from "../../imports/neclace/15.jpg";
+import newNecklace16 from "../../imports/neclace/16.jpg";
+
+import necklaceSet1 from "../../imports/neclace set/1.jpg";
+import necklaceSet2 from "../../imports/neclace set/2.jpg";
+import necklaceSet3 from "../../imports/neclace set/3.jpg";
+import necklaceSet4 from "../../imports/neclace set/4.jpg";
+import necklaceSet5 from "../../imports/neclace set/5.jpg";
+import necklaceSet6 from "../../imports/neclace set/6.jpg";
+import necklaceSet7 from "../../imports/neclace set/7.jpg";
+import necklaceSet8 from "../../imports/neclace set/8.jpg";
+import necklaceSet9 from "../../imports/neclace set/9.jpg";
+import necklaceSet10 from "../../imports/neclace set/10.jpg";
+import necklaceSet11 from "../../imports/neclace set/11.jpg";
+import necklaceSet12 from "../../imports/neclace set/12.jpg";
+import necklaceSet13 from "../../imports/neclace set/13.jpg";
+import necklaceSet14 from "../../imports/neclace set/14.jpg";
+import necklaceSet15 from "../../imports/neclace set/15.jpg";
+import necklaceSet16 from "../../imports/neclace set/16.jpg";
+
+import pendant1 from "../../imports/pendant/1.jpg";
+import pendant2 from "../../imports/pendant/2.jpg";
+import pendant3 from "../../imports/pendant/3.jpg";
+import pendant4 from "../../imports/pendant/4.jpg";
+import pendant5 from "../../imports/pendant/5.jpg";
+import pendant6 from "../../imports/pendant/6.jpg";
+import pendant7 from "../../imports/pendant/7.jpg";
+import pendant8 from "../../imports/pendant/8.jpg";
+import pendant9 from "../../imports/pendant/9.jpg";
+import pendant10 from "../../imports/pendant/10.jpg";
+import pendant11 from "../../imports/pendant/11.jpg";
+import pendant12 from "../../imports/pendant/12.jpg";
+import pendant13 from "../../imports/pendant/13.jpg";
+import pendant14 from "../../imports/pendant/14.jpg";
+import pendant15 from "../../imports/pendant/15.jpg";
+import pendant16 from "../../imports/pendant/16.jpg";
 
 
 // Mangalsutras
@@ -109,6 +150,23 @@ import ladiesRing13 from "../../imports/Ladies ring/13.jpg";
 import ladiesRing14 from "../../imports/Ladies ring/14.jpg";
 import ladiesRing15 from "../../imports/Ladies ring/15.jpg";
 import ladiesRing16 from "../../imports/Ladies ring/16.jpg";
+
+import gentsRing1 from "../../imports/Gents ring/1.jpg";
+import gentsRing2 from "../../imports/Gents ring/2.jpg";
+import gentsRing3 from "../../imports/Gents ring/3.jpg";
+import gentsRing4 from "../../imports/Gents ring/4.jpg";
+import gentsRing5 from "../../imports/Gents ring/5.jpg";
+import gentsRing6 from "../../imports/Gents ring/6.jpg";
+import gentsRing7 from "../../imports/Gents ring/7.jpg";
+import gentsRing8 from "../../imports/Gents ring/8.jpg";
+import gentsRing9 from "../../imports/Gents ring/9.jpg";
+import gentsRing10 from "../../imports/Gents ring/10.jpg";
+import gentsRing11 from "../../imports/Gents ring/11.jpg";
+import gentsRing12 from "../../imports/Gents ring/12.jpg";
+import gentsRing13 from "../../imports/Gents ring/13.jpg";
+import gentsRing14 from "../../imports/Gents ring/14.jpg";
+import gentsRing15 from "../../imports/Gents ring/15.jpg";
+import gentsRing16 from "../../imports/Gents ring/16.jpg";
 
 import mensBracelet1 from "../../imports/Mens Bracelet/1.jpg";
 import mensBracelet2 from "../../imports/Mens Bracelet/2.jpg";
@@ -251,10 +309,22 @@ export const CATEGORIES: Category[] = [
       { id: "gents-ring", name: "Gents Ring" }
     ],
     images: [
-      { url: bracelet3, alt: "Diamond Signet Ring", subcategory: "gents-ring" },
-      { url: bracelet4, alt: "Modern Gents Ring", subcategory: "gents-ring" },
-      { url: bracelet6, alt: "Platinum Gents Ring", subcategory: "gents-ring" },
-      { url: bracelet8, alt: "Classic Band Ring", subcategory: "gents-ring" },
+      { url: gentsRing1, alt: "Two-Tone Rectangular Bezel Diamond Ring", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing2, alt: "White Gold Round Diamond Tension Ring", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing3, alt: "Gold Five-Stone Channel Set Diamond Band", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing4, alt: "White Gold Solitaire Diamond Ring", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing5, alt: "Gold Statement Ring with Round Diamond and Pavé Accents", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing6, alt: "Two-Tone Halo Diamond Ring with Intricate Band", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing7, alt: "White Gold Round Diamond Ring with Side Diamonds", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing8, alt: "Gold Diamond Ring with Square Bezel and Pavé Band", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing9, alt: "Rose Gold Solitaire Diamond Ring", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing10, alt: "Rose Gold Square Halo Diamond Statement Ring", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing11, alt: "White Gold Three-Stone Flush Set Diamond Band", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing12, alt: "White Gold Multi-Row Pavé Diamond Band", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing13, alt: "Rose Gold Square Diamond Cluster Ring with Cutout Band", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing14, alt: "White Gold Round Diamond Ring with Baguette Accents", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing15, alt: "Yellow Gold Rectangular Pavé Diamond Ring", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: gentsRing16, alt: "Gold Cushion Blue Sapphire Ring with Diamond Halo", subcategory: "gents-ring", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: mensBracelet1, alt: "Rose Gold Diamond Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 26.00gm, Diamond Wt 2.73cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: mensBracelet2, alt: "Rose Gold Greek Key Diamond Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 39.00gm, Diamond Wt 1.63cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: mensBracelet3, alt: "Rose Gold Diamond Square Link Bracelet", subcategory: "gents-bracelets", description: "Gold Wt 46.00gm, Diamond Wt 4.80cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
@@ -286,7 +356,23 @@ export const CATEGORIES: Category[] = [
       { id: "station-necklace", name: "Station Necklace" }
     ],
     images: [
-      { url: necklaceCategory, alt: "Zewel Signature Necklace Set", subcategory: "necklace-set", description: "Grand diamond set with matching earrings" },
+
+      { url: necklaceSet1, alt: "Rose Gold Square Halo Diamond Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet2, alt: "Two-Tone Floral Diamond & Sapphire Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet3, alt: "Rose Gold Ruby & Diamond Halo Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet4, alt: "White Gold Emerald-Cut Diamond Drop Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet5, alt: "Comprehensive White Gold Pear Diamond Jewelry Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet6, alt: "Rose Gold Floral Collar & Oval Sapphire Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet7, alt: "Yellow Gold Pear Emerald & Diamond Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet8, alt: "Two-Tone Emerald Drop Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet9, alt: "Two-Tone Emerald Teardrop Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet10, alt: "Yellow Gold Pear Diamond Y-Drop Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet11, alt: "Comprehensive Yellow Gold Double Layer Diamond Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet12, alt: "Three-Layer Gold & Emerald Clover Necklace Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet13, alt: "Cushion-Cut Blue Sapphire Diamond Collar Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet14, alt: "Comprehensive White Gold Step-Cut Diamond Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet15, alt: "White Gold Leaf Motif Diamond Collar Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: necklaceSet16, alt: "Comprehensive White Gold Double-Layer Diamond Set", subcategory: "necklace-set", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: stationNecklace1, alt: "Delicate Floral Station Necklace", subcategory: "station-necklace", description: "Gold wt : 5.90gm, Diamond wt : 0.75cts", className: "scale-[1.35] group-hover:scale-[1.45] mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: stationNecklace2, alt: "Charm Medley Station Necklace", subcategory: "station-necklace", description: "Gold wt : 8.417gm, Diamond wt : 0.78cts", className: "scale-[1.35] group-hover:scale-[1.45] mix-blend-multiply contrast-[1.12] brightness-[1.06]" },
       { url: stationNecklace3, alt: "Geometric Twin Station Necklace", subcategory: "station-necklace", description: "Gold wt : 8.300gm, Diamond wt : 1.29cts", className: "scale-[1.0] group-hover:scale-[1.1] mix-blend-multiply contrast-[1.12] brightness-[1.06]" },
@@ -303,18 +389,22 @@ export const CATEGORIES: Category[] = [
       { url: stationNecklace14, alt: "Linear Spike Diamond Station Chain", subcategory: "station-necklace", description: "Gold wt : 7.420gm, Diamond wt : 0.89cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: stationNecklace15, alt: "Curved Bar Layered Station Necklace", subcategory: "station-necklace", description: "Gold wt : 8.100gm, Diamond wt : 1.05cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
       { url: stationNecklace16, alt: "Cascading Fringe Station Necklace", subcategory: "station-necklace", description: "Gold wt : 6.950gm, Diamond wt : 0.78cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
-      { url: necklace1, alt: "Diamond Station Necklace", subcategory: "necklace" },
-      { url: necklace2, alt: "Gold Necklace Set", subcategory: "necklace-set" },
-      { url: necklace3, alt: "Classic Diamond Necklace", subcategory: "necklace" },
-      { url: necklace4, alt: "Elegant Necklace Set", subcategory: "necklace-set" },
-      { url: necklace5, alt: "Modern Station Necklace", subcategory: "necklace" },
-      { url: necklace6, alt: "Pendant Necklace", subcategory: "necklace" },
-      { url: necklace7, alt: "Bridal Necklace Set", subcategory: "necklace-set" },
-      { url: necklace8, alt: "Minimalist Station Necklace", subcategory: "necklace" },
-      { url: necklace9, alt: "Statement Necklace", subcategory: "necklace" },
-      { url: necklace10, alt: "Pearl and Diamond Set", subcategory: "necklace-set" },
-      { url: necklace11, alt: "Layered Necklace", subcategory: "necklace" },
-      { url: necklace12, alt: "Gemstone Station Necklace", subcategory: "necklace" },
+      { url: newNecklace1, alt: "Y-Drop Diamond Necklace", subcategory: "necklace", description: "Gold Wt: 20.00gm – Diamond Wt: 25.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace2, alt: "Grand Teardrop Diamond Necklace", subcategory: "necklace", description: "Gold Wt: 20.00gm – Diamond Wt: 10.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace3, alt: "Rose Gold Hexagonal Cluster Necklace", subcategory: "necklace", description: "Gold Wt: 15.00gm – Diamond Wt: 8.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace4, alt: "White Gold Delicate Cluster Pendant Necklace", subcategory: "necklace", description: "Gold Wt: 1.00gm – Diamond Wt: 0.80cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace5, alt: "Sapphire & Diamond Floral Drop Necklace", subcategory: "necklace", description: "Gold Wt: 50.00gm – Diamond Wt: 28.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace6, alt: "White Gold Sapphire Drop Y-Necklace", subcategory: "necklace", description: "Gold Wt: 35.00gm – Diamond Wt: 20.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace7, alt: "Layered Floral Sapphire and Ruby Drop Necklace", subcategory: "necklace", description: "Gold Wt: 55.00gm – Diamond Wt: 20.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace8, alt: "Rose Gold Leaf Diamond & Sapphire V-Necklace", subcategory: "necklace", description: "Gold Wt: 35.00gm – Diamond Wt: 35.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace9, alt: "Yellow Gold Swirl Motif Diamond Collar Necklace", subcategory: "necklace", description: "Gold Wt: 35.00gm – Diamond Wt: 8.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace10, alt: "Rose Gold Emerald-Cut Diamond Chandelier Necklace", subcategory: "necklace", description: "Gold Wt: 25.00gm – Diamond Wt: 20.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace11, alt: "Multi-Strand Blue Sapphire Choker with Diamond Clasp", subcategory: "necklace", description: "Gold Wt: 17.00gm – Diamond Wt: 3.85cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace12, alt: "Rose Gold Tubular Collar Necklace with Diamond Pendants", subcategory: "necklace", description: "Gold Wt: 35.00gm – Diamond Wt: 28.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace13, alt: "Yellow Gold Floral Chandelier Diamond Necklace", subcategory: "necklace", description: "Gold Wt: 28.00gm – Diamond Wt: 15.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace14, alt: "Rose Gold Floral Chandelier Diamond Necklace", subcategory: "necklace", description: "Gold Wt: 30.00gm – Diamond Wt: 17.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace15, alt: "Yellow Gold Starburst Chandelier Diamond Necklace", subcategory: "necklace", description: "Gold Wt: 65.00gm – Diamond Wt: 50.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: newNecklace16, alt: "Elaborate Diamond Starburst Cascade Necklace", subcategory: "necklace", description: "Gold Wt: 45.00gm – Diamond Wt: 25.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
     ]
   },
   {
@@ -330,18 +420,22 @@ export const CATEGORIES: Category[] = [
       { id: "alphabet-pendants", name: "Alphabet Pendants" }
     ],
     images: [
-      { url: earring1, alt: "Diamond Pendant Set", subcategory: "pendant-set" },
-      { url: earring2, alt: "Gold Pendant Set", subcategory: "pendant-set" },
-      { url: earring3, alt: "Classic Diamond Pendant", subcategory: "pendant" },
-      { url: earring4, alt: "Alphabet 'A' Pendant", subcategory: "alphabet-pendants" },
-      { url: earring5, alt: "Gemstone Pendant", subcategory: "pendant" },
-      { url: earring6, alt: "Alphabet 'S' Pendant", subcategory: "alphabet-pendants" },
-      { url: earring7, alt: "Floral Pendant Set", subcategory: "pendant-set" },
-      { url: earring8, alt: "Alphabet 'M' Pendant", subcategory: "alphabet-pendants" },
-      { url: necklace9, alt: "Heart Pendant", subcategory: "pendant" },
-      { url: necklace10, alt: "Alphabet 'R' Pendant", subcategory: "alphabet-pendants" },
-      { url: necklace11, alt: "Modern Pendant Set", subcategory: "pendant-set" },
-      { url: necklace12, alt: "Vintage Style Pendant", subcategory: "pendant" },
+      { url: pendant1, alt: "Rose Gold Elongated Oval Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 4.00gm - Diamond Wt: 1.30cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant2, alt: "Rose Gold Asymmetric Stacked Baguette Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 4.00gm - Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant3, alt: "Rose Gold Spiral Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 4.00gm - Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant4, alt: "Rose Gold Linear Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 3.00gm - Diamond Wt: 1.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant5, alt: "Rose Gold Hexagonal Floral Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 3.00gm - Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant6, alt: "Rose Gold Art Deco Fan Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 6.00gm - Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant7, alt: "Two-Tone Open Teardrop Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 3.50gm - Diamond Wt: 1.20cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant8, alt: "Rose Gold Geometric Diamond Pendant with Pear Drop", subcategory: "pendant", description: "Gold Wt: 3.50gm - Diamond Wt: 1.50cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant9, alt: "Yellow Gold Intricate Lace Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 8.00gm - Diamond Wt: 3.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant10, alt: "White Gold Wavy Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 2.50gm - Diamond Wt: 1.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant11, alt: "Rose Gold Classic Round Diamond Halo Pendant", subcategory: "pendant", description: "Gold Wt: 2.50gm - Diamond Wt: 0.60cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant12, alt: "Rose Gold Geometric Diamond Pendant with Pear Drop", subcategory: "pendant", description: "Gold Wt: 3.50gm - Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant13, alt: "White Gold Oval Geometric Openwork Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 6.00gm - Diamond Wt: 2.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant14, alt: "Rose Gold Linear Diamond Pendant with Pear Drops", subcategory: "pendant", description: "Gold Wt: 3.00gm - Diamond Wt: 1.30cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant15, alt: "White Gold Celtic Knot Diamond Pendant", subcategory: "pendant", description: "Gold Wt: 4.00gm - Diamond Wt: 1.00cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
+      { url: pendant16, alt: "Two-Tone Floral Diamond Pendant with Pear Drop", subcategory: "pendant", description: "Gold Wt: 4.00gm - Diamond Wt: 1.10cts", className: "mix-blend-multiply contrast-[1.08] brightness-[1.04]" },
     ]
   },
   {

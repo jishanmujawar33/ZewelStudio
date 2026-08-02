@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router";
 import { useState, useRef, useEffect } from "react";
-import { getCategoryBySlug, CategoryImage } from "../data/categories";
-import { X, ZoomIn } from "lucide-react";
+import { getCategoryBySlug, CategoryImage, CATEGORIES } from "../data/categories";
+import { X, ZoomIn, ArrowRight } from "lucide-react";
 
 function useReveal(threshold = 0.08) {
   const ref = useRef<HTMLDivElement>(null);
@@ -136,6 +136,33 @@ export default function CategoryPage() {
           </div>
         )}
       </div>
+
+      {/* Next Category Navigation */}
+      {(() => {
+        const currentIndex = CATEGORIES.findIndex(c => c.slug === slug);
+        const nextCategory = CATEGORIES[(currentIndex + 1) % CATEGORIES.length];
+        if (!nextCategory) return null;
+        return (
+          <div className="border-t border-[#e5e7eb] bg-gradient-to-b from-white to-[#faf9f6]">
+            <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+              <div className="flex flex-col items-center text-center">
+                <p className="text-[#c9a84c] text-[10px] tracking-[0.3em] font-bold uppercase mb-3">Continue Exploring</p>
+                <h3 className="font-['Playfair_Display'] text-3xl md:text-4xl text-[#163275] font-bold mb-4">Next Collection</h3>
+                <p className="text-[#6b7280] text-sm mb-8 max-w-md">
+                  Discover our exquisite {nextCategory.name} collection — {nextCategory.tagline?.toLowerCase() || nextCategory.description?.slice(0, 60)}
+                </p>
+                <Link
+                  to={`/category/${nextCategory.slug}`}
+                  className="group inline-flex items-center gap-3 bg-[#163275] text-white px-10 py-4 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-[#1e4494] transition-all duration-300 shadow-md hover:shadow-xl"
+                >
+                  Explore {nextCategory.name}
+                  <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Lightbox Modal */}
       {selectedImage && (
