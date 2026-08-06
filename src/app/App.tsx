@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import CategoryPage from './pages/CategoryPage';
 import CollectionsPage from './pages/CollectionsPage';
+import DiamondPlanPage from './pages/DiamondPlanPage';
 import FloatingContact from './components/layout/FloatingContact';
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/collections" element={<CollectionsPage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
+            <Route path="/diamond-plan" element={<DiamondPlanPage />} />
             <Route path="*" element={
               <div className="min-h-[60vh] flex flex-col items-center justify-center pt-32 text-center px-6">
                 <h1 className="font-['Playfair_Display'] text-5xl text-[#1f2937] mb-4">Page Not Found</h1>

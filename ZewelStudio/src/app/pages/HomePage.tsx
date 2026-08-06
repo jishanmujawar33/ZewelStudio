@@ -70,16 +70,24 @@ const HOME_CATEGORIES = [
   { name: "Bridal Collection", tagline: "For your most special day", image: model2, slug: "mangalsutra" },
 ];
 
-const FEATURED_PRODUCTS = [
-  { name: "Diamond Drop Earrings", category: "Earrings", image: earring1, slug: "earrings" },
-  { name: "Statement Necklace", category: "Necklaces", image: necklace3, slug: "necklace" },
-  { name: "Elegant Studs", category: "Earrings", image: earring5, slug: "earrings" },
-  { name: "Tennis Bracelet", category: "Bracelets", image: bracelet1, slug: "bangles-bracelets" },
-  { name: "Halo Earrings", category: "Earrings", image: earring3, slug: "earrings" },
-  { name: "Layered Necklace", category: "Necklaces", image: necklace5, slug: "necklace" },
-  { name: "Chandelier Earrings", category: "Earrings", image: earring7, slug: "earrings" },
-  { name: "Pendant Necklace", category: "Necklaces", image: necklace2, slug: "necklace" },
-];
+// Pick featured products directly from collection categories
+import { CATEGORIES } from "../data/categories";
+
+const FEATURED_PRODUCTS = (() => {
+  const picks: { name: string; category: string; image: string; slug: string }[] = [];
+  const slugOrder = ["mangalsutra", "ladies-ring", "earrings", "necklace", "bangles-bracelets", "mens-collection"];
+  for (const slug of slugOrder) {
+    const cat = CATEGORIES.find(c => c.slug === slug);
+    if (cat && cat.images.length > 0) {
+      // Pick first 2 images from each category for variety
+      const items = cat.images.slice(0, 2);
+      for (const item of items) {
+        picks.push({ name: item.alt, category: cat.name, image: item.url, slug: cat.slug });
+      }
+    }
+  }
+  return picks;
+})();
 
 const WHY_CHOOSE = [
   { icon: ShieldCheck, title: "Certified Jewellery", desc: "Every piece certified for authenticity & quality." },
@@ -397,7 +405,7 @@ export default function HomePage() {
           <div className="gsap-reveal flex items-center justify-between mb-10">
             <p className="text-[#1f2937] text-[11px] tracking-[0.3em] font-bold uppercase">Handpicked For You</p>
             <Link
-              to="/category/necklace"
+              to="/collections"
               className="hidden sm:flex items-center gap-2 text-[#1f2937] text-[11px] tracking-[0.2em] font-bold uppercase hover:text-[#c9a84c] transition-colors group"
             >
               View All Products
@@ -420,9 +428,10 @@ export default function HomePage() {
               ref={carouselRef}
               className="flex gap-5 overflow-x-auto scroll-smooth hide-scrollbar px-2 py-2"
             >
-              {FEATURED_PRODUCTS.map((product) => (
-                <div
-                  key={product.name}
+              {FEATURED_PRODUCTS.map((product, idx) => (
+                <Link
+                  to={`/category/${product.slug}`}
+                  key={`${product.name}-${idx}`}
                   className="flex-shrink-0 w-[180px] md:w-[200px] bg-white border border-[#ebebeb] group cursor-pointer hover:shadow-xl transition-all duration-400 hover:border-[#c9a84c]/30"
                 >
                   <div className="aspect-square overflow-hidden bg-[#f8f8f8] relative">
@@ -435,12 +444,12 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-[#c9a84c]/0 group-hover:bg-[#c9a84c]/5 transition-colors duration-400" />
                   </div>
                   <div className="p-4 text-center border-t border-[#f0f0f0]">
-                    <h4 className="text-[#1f2937] text-[13px] font-medium mb-1 leading-tight">
+                    <h4 className="text-[#1f2937] text-[12px] font-medium mb-1 leading-tight line-clamp-2">
                       {product.name}
                     </h4>
                     <p className="text-[#9b9b9b] text-[10px] uppercase tracking-widest font-semibold">{product.category}</p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 
@@ -456,7 +465,7 @@ export default function HomePage() {
           {/* Mobile CTA */}
           <div className="sm:hidden mt-8 text-center">
             <Link
-              to="/category/necklace"
+              to="/collections"
               className="inline-flex items-center gap-2 text-[#1f2937] text-[11px] tracking-[0.2em] font-bold uppercase hover:text-[#c9a84c] transition-colors group"
             >
               View All Products
@@ -629,7 +638,7 @@ export default function HomePage() {
               An exclusive curation of our finest creations — crafted with exceptional diamonds and artistic precision.
             </p>
             <Link
-              to="/category/necklace"
+              to="/collections"
               className="inline-flex items-center gap-3 text-[#1f2937] font-bold text-[11px] uppercase tracking-[0.25em] group w-fit"
             >
               Explore Signature Collection

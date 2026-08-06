@@ -72,13 +72,15 @@ const HOME_CATEGORIES = [
 ];
 
 // Handpicked indices from each category to feature on the homepage
+// Picks one standout product per subcategory for maximum variety
 const FEATURED_PICK_INDICES: Record<string, number[]> = {
-  "ladies-ring": [0, 4],
-  "necklace": [1, 10],
-  "pendant": [2, 5],
-  "earrings": [0, 3],
-  "bangles-bracelets": [1, 6],
-  "mens-collection": [2],
+  "earrings": [0, 7],          // Sui Dhaga + Stud
+  "necklace": [0, 16, 32],     // Necklace Set + Station Necklace + Necklace
+  "bangles-bracelets": [0, 16, 32], // Tennis + Flexi + Bangle
+  "ladies-ring": [0, 4],       // Two distinct ladies rings
+  "pendant": [0, 5],           // Two distinct pendants
+  "mangalsutra": [0, 16],      // Mangalsutra + Hand Mangalsutra
+  "mens-collection": [0, 16],  // Gents Ring + Mens Bracelet
 };
 
 const WHY_CHOOSE = [
@@ -412,7 +414,7 @@ export default function HomePage() {
           <div className="gsap-reveal flex items-center justify-between mb-10">
             <p className="text-[#1f2937] text-[11px] tracking-[0.3em] font-bold uppercase">Handpicked For You</p>
             <Link
-              to="/category/necklace"
+              to="/collections"
               className="hidden sm:flex items-center gap-2 text-[#1f2937] text-[11px] tracking-[0.2em] font-bold uppercase hover:text-[#c9a84c] transition-colors group"
             >
               View All Products
@@ -439,9 +441,9 @@ export default function HomePage() {
                 <Link
                   key={product.name}
                   to={`/category/${product.slug}`}
-                  className="flex-shrink-0 w-[180px] md:w-[200px] bg-white border border-[#ebebeb] group cursor-pointer hover:shadow-xl transition-all duration-400 hover:border-[#c9a84c]/30"
+                  className="flex-shrink-0 w-[200px] md:w-[220px] bg-white border border-[#ebebeb] group cursor-pointer hover:shadow-xl transition-all duration-400 hover:border-[#c9a84c]/30"
                 >
-                  <div className="aspect-square overflow-hidden bg-[#f8f8f8] relative">
+                  <div className="aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#f8f6f3] via-[#f0ede8] to-[#e8e4de] relative">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -451,10 +453,10 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-[#c9a84c]/0 group-hover:bg-[#c9a84c]/5 transition-colors duration-400" />
                   </div>
                   <div className="p-4 text-center border-t border-[#f0f0f0]">
-                    <h4 className="text-[#1f2937] text-[13px] font-medium mb-1.5 leading-tight">
+                    <h4 className="text-[#1f2937] font-['Playfair_Display'] text-[14px] font-semibold mb-1.5 leading-tight line-clamp-2">
                       {product.name}
                     </h4>
-                    <p className="text-[#c9a84c] text-[10px] tracking-[0.15em] uppercase font-semibold mt-1">
+                    <p className="text-[#c9a84c] text-[10px] tracking-[0.2em] uppercase font-bold mt-1">
                       {product.category}
                     </p>
                   </div>
@@ -474,7 +476,7 @@ export default function HomePage() {
           {/* Mobile CTA */}
           <div className="sm:hidden mt-8 text-center">
             <Link
-              to="/category/necklace"
+              to="/collections"
               className="inline-flex items-center gap-2 text-[#1f2937] text-[11px] tracking-[0.2em] font-bold uppercase hover:text-[#c9a84c] transition-colors group"
             >
               View All Products
@@ -545,192 +547,110 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════════════════
           ZEWEL STUDIO — THE 10+1 DIAMOND GROWING PLAN
           ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-b border-[#c9a84c]/20">
-        {/* ── Background Layers ── */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1528] via-[#132249] to-[#0e1a35]" />
-        {/* Subtle radial glow behind content */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 55%)" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 60%, rgba(22,50,117,0.3) 0%, transparent 50%)" }} />
+      <section className="relative overflow-hidden">
+        {/* ── Main Hero Banner ── */}
+        <div className="bg-gradient-to-br from-[#fdf5ee] via-[#f9ede0] to-[#f5e6d8]">
+          <div className="max-w-7xl mx-auto px-6 py-14 md:py-20">
+            <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16 items-center">
 
-        {/* ── Floating Sparkle Particles ── */}
-        {[
-          { top: "8%", left: "5%", size: 3, delay: 0, dur: 3 },
-          { top: "15%", left: "88%", size: 4, delay: 1.2, dur: 4 },
-          { top: "70%", left: "10%", size: 2, delay: 0.5, dur: 3.5 },
-          { top: "25%", left: "72%", size: 5, delay: 2, dur: 5 },
-          { top: "80%", left: "85%", size: 3, delay: 0.8, dur: 3 },
-          { top: "50%", left: "3%", size: 2, delay: 1.5, dur: 4 },
-          { top: "12%", left: "45%", size: 3, delay: 2.5, dur: 3.5 },
-          { top: "90%", left: "40%", size: 2, delay: 0.3, dur: 4.5 },
-          { top: "35%", left: "95%", size: 4, delay: 1.8, dur: 3 },
-          { top: "60%", left: "55%", size: 2, delay: 3, dur: 5 },
-        ].map((p, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-white/60 animate-pulse pointer-events-none"
-            style={{
-              top: p.top,
-              left: p.left,
-              width: p.size,
-              height: p.size,
-              animationDelay: `${p.delay}s`,
-              animationDuration: `${p.dur}s`,
-            }}
-          />
-        ))}
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-24 lg:py-28">
-          <div className="grid lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-16 items-center">
-
-            {/* ══ LEFT — Headline Block ══ */}
-            <div>
-              <p className="text-white/50 text-[11px] md:text-xs tracking-[0.35em] uppercase font-semibold mb-5">
-                Zewel Studio Presents:
-              </p>
-              <h2 className="font-['Playfair_Display'] text-4xl md:text-5xl lg:text-[3.5rem] text-white font-bold leading-[1.1] mb-6">
-                The <span className="text-[#c9a84c]">10+1</span> Diamond{"\n"}
-                <br />Growing Plan.
-              </h2>
-              <p className="text-[#c9a84c] text-sm md:text-base lg:text-lg font-bold tracking-[0.08em] uppercase leading-relaxed mb-8">
-                Grow Your Diamond,
-                <br />
-                We Pay The 11th Month.
-              </p>
-              {/* Gold divider */}
-              <div className="w-16 h-[2px] bg-gradient-to-r from-[#c9a84c] to-[#c9a84c]/20 mb-8" />
-              {/* CTA */}
-              <a
-                href="https://wa.me/919136193999?text=Hi! I am interested in the Zewel Studio Diamond Growing Plan."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#c9a84c] to-[#dbb85c] text-[#0a1224] px-8 md:px-10 py-4 text-[11px] md:text-xs uppercase tracking-[0.25em] font-bold hover:shadow-[0_8px_40px_rgba(201,168,76,0.35)] transition-all duration-500"
-              >
-                Start Growing Today
-                <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-300" />
-              </a>
-            </div>
-
-            {/* ══ RIGHT — Visual Flow: 3 Columns ══ */}
-            <div className="grid grid-cols-3 gap-4 md:gap-6">
-
-              {/* ── Column 1: Pay 10 Monthly Installments ── */}
-              <div className="flex flex-col items-center text-center">
-                {/* 10 Diamond Icons Grid (2 rows of 5) */}
-                <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 md:p-6 mb-4 w-full backdrop-blur-sm hover:border-[#c9a84c]/20 transition-all duration-500">
-                  <div className="grid grid-cols-5 gap-1.5 md:gap-2 mb-4 max-w-[140px] mx-auto">
-                    {Array(10).fill(null).map((_, i) => (
-                      <div key={i} className="flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" className="w-5 h-5 md:w-6 md:h-6 text-[#c9a84c] drop-shadow-[0_0_3px_rgba(201,168,76,0.4)]" fill="currentColor">
-                          <path d="M12 2L4 10l8 12 8-12z" />
-                          <path d="M4 10h16L12 2z" opacity="0.6" />
-                        </svg>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-white font-bold text-[10px] md:text-xs tracking-[0.15em] uppercase leading-tight">
-                    Pay 10 Monthly
-                    <br />Installments
-                  </p>
-                  <p className="text-white/30 text-[9px] md:text-[10px] tracking-wider mt-2 italic">Secure your investment</p>
+              {/* ══ LEFT — Image + Title ══ */}
+              <div className="flex flex-col sm:flex-row lg:flex-col items-center sm:items-start lg:items-start gap-6">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden shadow-lg flex-shrink-0 bg-white">
+                  <img
+                    src={model3}
+                    alt="Zewel Studio Diamond Growing Plan"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-
-                {/* Plus connector */}
-                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center bg-[#c9a84c]/10 my-2 md:my-0">
-                  <span className="text-[#c9a84c] text-xl font-bold">+</span>
+                <div className="text-center sm:text-left">
+                  <p className="text-[#8b7355] text-[10px] md:text-[11px] tracking-[0.25em] font-bold uppercase mb-3 flex items-center justify-center sm:justify-start gap-2">
+                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-[#c9a84c]" fill="currentColor">
+                      <path d="M12 2L4 10l8 12 8-12z" />
+                      <path d="M4 10h16L12 2z" opacity="0.6" />
+                    </svg>
+                    Monthly Installment Plan
+                  </p>
+                  <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl lg:text-[2.8rem] text-[#1f2937] font-bold leading-[1.15] mb-3">
+                    Diamond Growing
+                    <br />Plan
+                  </h2>
+                  <p className="text-[#c9a84c] text-xs md:text-sm tracking-[0.2em] uppercase font-bold">
+                    Save Today. Shine Tomorrow.
+                  </p>
                 </div>
               </div>
 
-              {/* ── Column 2: Receive 11th as Gift ── */}
-              <div className="flex flex-col items-center text-center">
-                <div className="bg-gradient-to-b from-[#c9a84c]/15 to-[#c9a84c]/[0.03] border border-[#c9a84c]/25 rounded-xl p-4 md:p-6 mb-4 w-full backdrop-blur-sm relative overflow-hidden hover:border-[#c9a84c]/50 transition-all duration-500 group">
-                  {/* Glow */}
-                  <div className="absolute -inset-2 bg-[#c9a84c]/5 rounded-xl blur-2xl -z-10 group-hover:bg-[#c9a84c]/10 transition-all" />
-                  {/* Large golden diamond with 11 */}
-                  <div className="relative mx-auto mb-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
-                    <svg viewBox="0 0 80 80" className="absolute inset-0 w-full h-full" fill="none">
-                      <path d="M40 5L10 35l30 40 30-40z" fill="url(#goldGrad)" />
-                      <path d="M10 35h60L40 5z" fill="url(#goldGrad2)" />
-                      <defs>
-                        <linearGradient id="goldGrad" x1="40" y1="5" x2="40" y2="75" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#e8d48b" />
-                          <stop offset="1" stopColor="#c9a84c" />
-                        </linearGradient>
-                        <linearGradient id="goldGrad2" x1="10" y1="20" x2="70" y2="20" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#dbb85c" />
-                          <stop offset="0.5" stopColor="#f0e0a0" />
-                          <stop offset="1" stopColor="#c9a84c" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span className="relative font-['Playfair_Display'] text-2xl md:text-3xl font-bold text-[#0a1224] mt-2">11</span>
+              {/* ══ RIGHT — 10 + 1 = 11 Equation ══ */}
+              <div className="flex flex-col items-center">
+                {/* Equation */}
+                <div className="flex items-end justify-center gap-3 md:gap-6 mb-6">
+                  {/* PAY */}
+                  <div className="text-center">
+                    <p className="text-[#8b7355] text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-semibold mb-2">Pay</p>
+                    <span className="font-['Playfair_Display'] text-6xl md:text-7xl lg:text-8xl font-bold text-[#163275] leading-none">10</span>
                   </div>
-                  <p className="text-[#c9a84c] font-bold text-[10px] md:text-xs tracking-[0.15em] uppercase leading-tight">
-                    Receive 11th
-                    <br />Installment as a Gift
-                  </p>
-                  <p className="text-[#c9a84c]/40 text-[9px] md:text-[10px] tracking-wider mt-2 italic">From Zewel Studio</p>
-                </div>
 
-                {/* Equals connector */}
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 my-2 md:my-0">
-                  <span className="text-white/50 text-xl font-bold">=</span>
-                </div>
-              </div>
+                  {/* Plus */}
+                  <span className="text-[#8b7355] text-3xl md:text-4xl font-light mb-2 md:mb-3">+</span>
 
-              {/* ── Column 3: Total Redemption ── */}
-              <div className="flex flex-col items-center text-center">
-                <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 md:p-6 mb-4 w-full backdrop-blur-sm hover:border-[#c9a84c]/20 transition-all duration-500 relative overflow-hidden group">
-                  {/* Growth chart visualization */}
-                  <div className="relative mx-auto mb-4 w-full max-w-[140px] h-20 md:h-24 flex items-end justify-between gap-[3px] md:gap-1 px-1">
-                    {[20, 28, 35, 40, 48, 55, 62, 70, 78, 88, 100].map((h, i) => (
-                      <div
-                        key={i}
-                        className={`flex-1 rounded-t-sm transition-all duration-700 ${
-                          i === 10
-                            ? "bg-gradient-to-t from-[#c9a84c] to-[#e8d48b] shadow-[0_0_8px_rgba(201,168,76,0.4)]"
-                            : i >= 8
-                            ? "bg-gradient-to-t from-[#c9a84c]/60 to-[#c9a84c]/30"
-                            : "bg-gradient-to-t from-white/20 to-white/10"
-                        }`}
-                        style={{ height: `${h}%` }}
-                      />
-                    ))}
-                    {/* Upward arrow overlay */}
-                    <svg className="absolute -top-1 -right-1 w-6 h-6 text-[#c9a84c] drop-shadow-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M7 17L17 7M17 7H7M17 7v10" />
-                    </svg>
+                  {/* BONUS */}
+                  <div className="text-center">
+                    <p className="text-[#8b7355] text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-semibold mb-2">Bonus</p>
+                    <span className="font-['Playfair_Display'] text-6xl md:text-7xl lg:text-8xl font-bold text-[#c9a84c] leading-none">1</span>
                   </div>
-                  <p className="text-white font-bold text-[10px] md:text-xs tracking-[0.15em] uppercase leading-tight">
-                    Total Redemption
-                    <br />After 11 Months
-                  </p>
-                  <p className="text-white/30 text-[9px] md:text-[10px] tracking-wider mt-2 italic">Your diamond journey</p>
+
+                  {/* Equals */}
+                  <span className="text-[#8b7355] text-3xl md:text-4xl font-light mb-2 md:mb-3">=</span>
+
+                  {/* YOU GET */}
+                  <div className="text-center">
+                    <p className="text-[#8b7355] text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-semibold mb-2">You Get</p>
+                    <span className="font-['Playfair_Display'] text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-[#163275] leading-none tracking-tight">11</span>
+                    <span className="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-[#163275] leading-none">!</span>
+                  </div>
                 </div>
 
-                {/* Diamond icon accent */}
-                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/20 flex items-center justify-center bg-[#c9a84c]/5 my-2 md:my-0">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#c9a84c]" fill="currentColor">
-                    <path d="M12 2L4 10l8 12 8-12z" />
-                    <path d="M4 10h16L12 2z" opacity="0.6" />
-                  </svg>
+                {/* Badge */}
+                <div className="bg-[#c9a84c] text-white px-5 py-2 text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold mb-6">
+                  10% Extra Value
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-center gap-3">
+                  <Link
+                    to="/diamond-plan"
+                    className="group flex items-center justify-center gap-2 bg-[#163275] text-white px-8 py-3.5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-bold hover:bg-[#1e4494] transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Learn More
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <a
+                    href="https://wa.me/919136193999?text=Hi! I am interested in the Zewel Studio Diamond Growing Plan."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 border-2 border-[#163275] text-[#163275] px-8 py-3.5 text-[10px] md:text-[11px] tracking-[0.25em] uppercase font-bold hover:bg-[#163275] hover:text-white transition-all duration-300"
+                  >
+                    Enquire Now
+                    <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
 
             </div>
           </div>
+        </div>
 
-          {/* ── Bottom: T&C + Trust Line ── */}
-          <div className="mt-12 md:mt-16 pt-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/20 text-[10px] tracking-[0.15em] italic">
-              *Terms & Conditions Apply.
+        {/* ── Bottom Description Bar ── */}
+        <div className="bg-white border-y border-[#e5e7eb]">
+          <div className="max-w-4xl mx-auto px-6 py-6 text-center">
+            <p className="text-[#5c5647] text-sm md:text-[15px] leading-relaxed">
+              Pay for <span className="font-bold text-[#1f2937]">10 months</span> and receive the value of{" "}
+              <span className="font-bold text-[#1f2937]">11 months</span> — that's a{" "}
+              <span className="font-bold text-[#c9a84c]">10% bonus</span> on your investment.
             </p>
-            <div className="flex items-center gap-6">
-              <span className="text-white/20 text-[10px] tracking-[0.15em] uppercase">No Hidden Charges</span>
-              <span className="text-white/10">·</span>
-              <span className="text-white/20 text-[10px] tracking-[0.15em] uppercase">Flexible Amounts</span>
-              <span className="text-white/10">·</span>
-              <span className="text-white/20 text-[10px] tracking-[0.15em] uppercase">Visit Us In-Store</span>
-            </div>
+            <p className="text-[#9b9b9b] text-xs md:text-sm mt-1.5">
+              Start your diamond journey today with our flexible monthly installment plan.
+            </p>
           </div>
         </div>
       </section>
