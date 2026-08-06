@@ -71,14 +71,14 @@ const HOME_CATEGORIES = [
 ];
 
 const FEATURED_PRODUCTS = [
-  { name: "Luminous Solitaire Ring", price: "₹ 28,900", image: earring1 },
-  { name: "Eternal Halo Earrings", price: "₹ 34,900", image: earring3 },
-  { name: "Dew Drop Pendant", price: "₹ 22,900", image: necklace6 },
-  { name: "Radiant Charm Ring", price: "₹ 31,900", image: earring5 },
-  { name: "Twilight Studs", price: "₹ 19,900", image: earring11 },
-  { name: "Classic Tennis Bracelet", price: "₹ 45,900", image: bracelet1 },
-  { name: "Celestial Drop Earrings", price: "₹ 26,500", image: earring7 },
-  { name: "Heritage Necklace", price: "₹ 52,900", image: necklace5 },
+  { name: "Diamond Drop Earrings", category: "Earrings", image: earring1, slug: "earrings" },
+  { name: "Statement Necklace", category: "Necklaces", image: necklace3, slug: "necklace" },
+  { name: "Elegant Studs", category: "Earrings", image: earring5, slug: "earrings" },
+  { name: "Tennis Bracelet", category: "Bracelets", image: bracelet1, slug: "bangles-bracelets" },
+  { name: "Halo Earrings", category: "Earrings", image: earring3, slug: "earrings" },
+  { name: "Layered Necklace", category: "Necklaces", image: necklace5, slug: "necklace" },
+  { name: "Chandelier Earrings", category: "Earrings", image: earring7, slug: "earrings" },
+  { name: "Pendant Necklace", category: "Necklaces", image: necklace2, slug: "necklace" },
 ];
 
 const WHY_CHOOSE = [
@@ -435,10 +435,10 @@ export default function HomePage() {
                     <div className="absolute inset-0 bg-[#c9a84c]/0 group-hover:bg-[#c9a84c]/5 transition-colors duration-400" />
                   </div>
                   <div className="p-4 text-center border-t border-[#f0f0f0]">
-                    <h4 className="text-[#1f2937] text-[13px] font-medium mb-1.5 leading-tight">
+                    <h4 className="text-[#1f2937] text-[13px] font-medium mb-1 leading-tight">
                       {product.name}
                     </h4>
-                    <p className="text-[#1f2937] font-bold text-sm">{product.price}</p>
+                    <p className="text-[#9b9b9b] text-[10px] uppercase tracking-widest font-semibold">{product.category}</p>
                   </div>
                 </div>
               ))}
