@@ -106,8 +106,7 @@ export default function AboutPage() {
                   <img src={person.img} alt={person.name} className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${person.imgClass || ""}`} />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/95 to-transparent pt-20">
-                  <h3 className="font-['Playfair_Display'] text-xl text-[#1f2937] mb-1">{person.name}</h3>
-                  <p className="text-[#6b7280] text-xs uppercase tracking-widest font-semibold mb-3">{person.role}</p>
+                  <h3 className="font-['Playfair_Display'] text-xl text-[#1f2937] mb-2">{person.name}</h3>
                   <p className="text-[#4b5563] text-xs leading-relaxed">{person.bio}</p>
                 </div>
               </div>
