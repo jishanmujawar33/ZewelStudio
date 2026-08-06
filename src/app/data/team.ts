@@ -2,7 +2,7 @@ import team1 from "../../imports/team-1.jpg";
 import team2 from "../../imports/team-2.jpg";
 import team3 from "../../imports/team-3.jpg";
 import team4 from "../../imports/team-4.jpg";
-import team5 from "../../imports/team-5.jpg";
+import team5 from "../../imports/avani.jpg";
 
 export const TEAM_MEMBERS = [
   { 
