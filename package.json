@@ -86,12 +86,5 @@
     "overrides": {
       "vite": "6.3.5"
     }
-=======
-  "name": "zewelstudio-root",
-  "private": true,
-  "scripts": {
-    "install": "cd ZewelStudio && npm install",
-    "build": "cd ZewelStudio && npm run build"
->>>>>>> a4bebfd1a6d6c8a3efcc8b8aad519262d8edde9c
   }
 }
