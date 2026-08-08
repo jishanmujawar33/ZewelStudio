@@ -266,6 +266,7 @@ import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
 import model4 from "../../imports/model-4.jpg";
 import mensCollectionCover from "../../imports/mens-collection-cover.jpg";
+import pendantCover from "../../imports/pendant-cover.jpg";
 import model5 from "../../imports/model-5.jpg";
 import model6 from "../../imports/model-6.jpg";
 import model7 from "../../imports/model-7.jpg";
@@ -490,7 +491,7 @@ export const CATEGORIES: Category[] = [
     labelHi: "लटकन",
     tagline: "Close to Your Heart",
     description: "Beautifully crafted pendants, including sets and alphabet designs, perfect for everyday elegance or meaningful gifts.",
-    heroImage: model6,
+    heroImage: pendantCover,
     subcategories: [
       { id: "pendant-set", name: "Pendant Set" },
       { id: "pendant", name: "Pendant" },
