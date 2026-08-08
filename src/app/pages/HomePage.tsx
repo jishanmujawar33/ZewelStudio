@@ -313,8 +313,8 @@ export default function HomePage() {
                 <span className="text-[#c9a84c]">◆</span> Luxury Jewellery
                 <span className="text-[#c9a84c]">◆</span> Certified Jewellery
                 <span className="text-[#c9a84c]">◆</span> 5.0 ★ Rated
-                <span className="text-[#c9a84c]">◆</span> Bespoke Creations
-                <span className="text-[#c9a84c]">◆</span> Free Cleaning
+                <span className="text-[#c9a84c]">◆</span> Made-to-Order Jewellery
+                <span className="text-[#c9a84c]">◆</span> Lifetime Maintenance
               </span>
             ))}
         </div>
