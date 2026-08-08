@@ -265,6 +265,7 @@ import model1 from "../../imports/model-1.jpg";
 import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
 import model4 from "../../imports/model-4.jpg";
+import mensCollectionCover from "../../imports/mens-collection-cover.jpg";
 import model5 from "../../imports/model-5.jpg";
 import model6 from "../../imports/model-6.jpg";
 import model7 from "../../imports/model-7.jpg";
@@ -379,7 +380,7 @@ export const CATEGORIES: Category[] = [
     labelHi: "पुरुषों का संग्रह",
     tagline: "Bold & Sophisticated",
     description: "A curated selection of men's jewelry, featuring bold bracelets and distinguished rings designed for the modern gentleman.",
-    heroImage: model4,
+    heroImage: mensCollectionCover,
     subcategories: [
       { id: "mens-bracelets", name: "Men's Bracelets" },
       { id: "mens-ring", name: "Men's Ring" }
