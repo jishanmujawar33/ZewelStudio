@@ -122,13 +122,28 @@ export default function HomePage() {
   const instagramRef = useRef<HTMLElement>(null);
   const certsRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
 
   /* ─── Product carousel scroll ─── */
   const scrollProducts = (direction: number) => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: direction * 300, behavior: "smooth" });
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+      // Loop back to start if we reached the end scrolling right
+      if (direction === 1 && scrollLeft + clientWidth >= scrollWidth - 10) {
+        carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        carouselRef.current.scrollBy({ left: direction * 300, behavior: "smooth" });
+      }
     }
   };
+
+  useEffect(() => {
+    if (isCarouselHovered) return;
+    const interval = setInterval(() => {
+      scrollProducts(1);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [isCarouselHovered]);
 
   /* ─── GSAP ScrollTrigger animations ─── */
   useEffect(() => {
@@ -423,7 +438,11 @@ export default function HomePage() {
           </div>
 
           {/* Carousel */}
-          <div className="gsap-reveal relative">
+          <div 
+            className="gsap-reveal relative"
+            onMouseEnter={() => setIsCarouselHovered(true)}
+            onMouseLeave={() => setIsCarouselHovered(false)}
+          >
             {/* Left Arrow */}
             <button
               onClick={() => scrollProducts(-1)}
