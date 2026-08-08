@@ -268,6 +268,7 @@ import model4 from "../../imports/model-4.jpg";
 import mensCollectionCover from "../../imports/mens-collection-cover.jpg";
 import pendantCover from "../../imports/pendant cover.jpg";
 import braceletCover from "../../imports/bracelet cover.jpg";
+import mangalsutraCover from "../../imports/mangalsutra cover.png";
 import model5 from "../../imports/model-5.jpg";
 import model6 from "../../imports/model-6.jpg";
 import model7 from "../../imports/model-7.jpg";
@@ -307,7 +308,7 @@ export const CATEGORIES: Category[] = [
     labelHi: "मंगलसूत्र",
     tagline: "The Sacred Thread of Love",
     description: "Discover our collection of traditional and contemporary Mangalsutras, crafted to celebrate the eternal bond of marriage.",
-    heroImage: model2,
+    heroImage: mangalsutraCover,
     subcategories: [
       { id: "mangalsutra", name: "Mangalsutra" },
       { id: "hand-mangalsutra", name: "Hand Mangalsutra" }
