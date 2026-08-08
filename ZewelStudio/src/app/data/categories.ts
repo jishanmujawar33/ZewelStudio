@@ -266,7 +266,8 @@ import model2 from "../../imports/model-2.jpg";
 import model3 from "../../imports/model-3.jpg";
 import model4 from "../../imports/model-4.jpg";
 import mensCollectionCover from "../../imports/mens-collection-cover.jpg";
-import pendantCover from "../../imports/pendant-cover.jpg";
+import pendantCover from "../../imports/pendant cover.jpg";
+import braceletCover from "../../imports/bracelet cover.jpg";
 import model5 from "../../imports/model-5.jpg";
 import model6 from "../../imports/model-6.jpg";
 import model7 from "../../imports/model-7.jpg";
@@ -559,7 +560,7 @@ export const CATEGORIES: Category[] = [
     labelHi: "चूड़ियाँ और कंगन",
     tagline: "Worn With Confidence",
     description: "Adorn your wrists with our stunning collection of bangles, tennis bracelets, and flexi bracelets.",
-    heroImage: model5,
+    heroImage: braceletCover,
     subcategories: [
 
       { id: "bangles", name: "Bangles" },
